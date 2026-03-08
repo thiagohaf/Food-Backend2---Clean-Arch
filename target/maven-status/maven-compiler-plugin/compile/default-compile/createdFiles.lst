@@ -1,0 +1,6 @@
+com/thiagoferreira/foodbackend2cleanarch/cardapio/core/domain/ItemCardapio.class
+com/thiagoferreira/foodbackend2cleanarch/restaurante/core/domain/Restaurante.class
+com/thiagoferreira/foodbackend2cleanarch/cardapio/core/domain/Cardapio.class
+com/thiagoferreira/foodbackend2cleanarch/util/rule/ValidadorBase.class
+com/thiagoferreira/foodbackend2cleanarch/restaurante/core/rule/RestauranteValidador.class
+com/thiagoferreira/foodbackend2cleanarch/cardapio/core/rule/ItemCardapioValidador.class
