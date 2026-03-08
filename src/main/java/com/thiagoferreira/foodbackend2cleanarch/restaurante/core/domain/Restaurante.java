@@ -1,6 +1,6 @@
-package com.thiagoferreira.foodbackend2cleanarch.usuario.core.domain;
+package com.thiagoferreira.foodbackend2cleanarch.restaurante.core.domain;
 
-import com.thiagoferreira.foodbackend2cleanarch.usuario.core.rule.RestauranteValidador;
+import com.thiagoferreira.foodbackend2cleanarch.restaurante.core.rule.RestauranteValidador;
 
 import java.util.UUID;
 

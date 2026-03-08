@@ -1,7 +1,6 @@
-package com.thiagoferreira.foodbackend2cleanarch.usuario.core.domain;
+package com.thiagoferreira.foodbackend2cleanarch.cardapio.core.domain;
 
 import java.util.List;
-import java.util.UUID;
 
 public class Cardapio {
     private List<ItemCardapio> itens;

@@ -1,11 +1,11 @@
-package com.thiagoferreira.foodbackend2cleanarch.usuario.core.rule;
+package com.thiagoferreira.foodbackend2cleanarch.cardapio.core.rule;
 
-import com.thiagoferreira.foodbackend2cleanarch.usuario.core.domain.ItemCardapio;
+import com.thiagoferreira.foodbackend2cleanarch.cardapio.core.domain.ItemCardapio;
 import com.thiagoferreira.foodbackend2cleanarch.usuario.core.exception.ValidacaoRegraNegocioException;
 
 import java.math.BigDecimal;
 
-import static com.thiagoferreira.foodbackend2cleanarch.usuario.core.rule.ValidadorBase.validarCampoObrigatorio;
+import static com.thiagoferreira.foodbackend2cleanarch.util.rule.ValidadorBase.validarCampoObrigatorio;
 
 public class ItemCardapioValidador {
 

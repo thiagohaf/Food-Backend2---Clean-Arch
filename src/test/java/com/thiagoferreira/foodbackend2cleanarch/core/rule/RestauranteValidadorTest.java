@@ -1,6 +1,6 @@
 package com.thiagoferreira.foodbackend2cleanarch.core.rule;
 
-import com.thiagoferreira.foodbackend2cleanarch.usuario.core.domain.Restaurante;
+import com.thiagoferreira.foodbackend2cleanarch.restaurante.core.domain.Restaurante;
 import com.thiagoferreira.foodbackend2cleanarch.usuario.core.exception.ValidacaoRegraNegocioException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

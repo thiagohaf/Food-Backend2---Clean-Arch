@@ -1,4 +1,4 @@
-package com.thiagoferreira.foodbackend2cleanarch.usuario.core.rule;
+package com.thiagoferreira.foodbackend2cleanarch.util.rule;
 
 import com.thiagoferreira.foodbackend2cleanarch.usuario.core.exception.ValidacaoRegraNegocioException;
 

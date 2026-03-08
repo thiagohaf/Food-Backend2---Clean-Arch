@@ -1,6 +1,6 @@
-package com.thiagoferreira.foodbackend2cleanarch.usuario.core.domain;
+package com.thiagoferreira.foodbackend2cleanarch.cardapio.core.domain;
 
-import com.thiagoferreira.foodbackend2cleanarch.usuario.core.rule.ItemCardapioValidador;
+import com.thiagoferreira.foodbackend2cleanarch.cardapio.core.rule.ItemCardapioValidador;
 
 import java.math.BigDecimal;
 import java.util.UUID;

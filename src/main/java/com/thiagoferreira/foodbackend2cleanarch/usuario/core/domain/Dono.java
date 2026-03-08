@@ -1,5 +1,7 @@
 package com.thiagoferreira.foodbackend2cleanarch.usuario.core.domain;
 
+import com.thiagoferreira.foodbackend2cleanarch.restaurante.core.domain.Restaurante;
+
 import java.util.List;
 import java.util.UUID;
 

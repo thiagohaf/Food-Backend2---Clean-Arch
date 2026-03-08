@@ -1,11 +1,11 @@
-package com.thiagoferreira.foodbackend2cleanarch.usuario.core.rule;
+package com.thiagoferreira.foodbackend2cleanarch.restaurante.core.rule;
 
-import com.thiagoferreira.foodbackend2cleanarch.usuario.core.domain.Restaurante;
+import com.thiagoferreira.foodbackend2cleanarch.restaurante.core.domain.Restaurante;
 import com.thiagoferreira.foodbackend2cleanarch.usuario.core.exception.ValidacaoRegraNegocioException;
 
 import java.time.LocalTime;
 
-import static com.thiagoferreira.foodbackend2cleanarch.usuario.core.rule.ValidadorBase.validarCampoObrigatorio;
+import static com.thiagoferreira.foodbackend2cleanarch.util.rule.ValidadorBase.validarCampoObrigatorio;
 
 public class RestauranteValidador {
 
