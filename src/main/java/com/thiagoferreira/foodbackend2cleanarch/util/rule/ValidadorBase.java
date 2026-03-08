@@ -1,6 +1,6 @@
 package com.thiagoferreira.foodbackend2cleanarch.util.rule;
 
-import com.thiagoferreira.foodbackend2cleanarch.usuario.core.exception.ValidacaoRegraNegocioException;
+import com.thiagoferreira.foodbackend2cleanarch.util.exception.ValidacaoRegraNegocioException;
 
 public class ValidadorBase {
 

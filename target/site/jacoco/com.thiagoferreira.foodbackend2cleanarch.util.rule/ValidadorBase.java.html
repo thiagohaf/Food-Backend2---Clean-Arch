@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ValidadorBase.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">food-backend2-clean-arch</a> &gt; <a href="index.source.html" class="el_package">com.thiagoferreira.foodbackend2cleanarch.util.rule</a> &gt; <span class="el_source">ValidadorBase.java</span></div><h1>ValidadorBase.java</h1><pre class="source lang-java linenums">package com.thiagoferreira.foodbackend2cleanarch.util.rule;
+
+import com.thiagoferreira.foodbackend2cleanarch.util.exception.ValidacaoRegraNegocioException;
+
+public class ValidadorBase {
+
+<span class="nc" id="L7">    private ValidadorBase() {</span>
+<span class="nc" id="L8">        throw new UnsupportedOperationException(&quot;Esta é uma classe utilitária e não pode ser instanciada.&quot;);</span>
+    }
+
+    public static void validarCampoObrigatorio(String valor, String nomeCampo) {
+<span class="fc bfc" id="L12" title="All 4 branches covered.">        if (valor == null || valor.trim().isEmpty()) {</span>
+<span class="fc" id="L13">            throw new ValidacaoRegraNegocioException(&quot;O campo &quot; + nomeCampo + &quot; não pode ser nulo ou vazio.&quot;);</span>
+        }
+<span class="fc" id="L15">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

@@ -7,6 +7,6 @@
 /Users/thiagoferreira/Documents/FIAP/Fase 2/projeto/Food Backend2 - Clean Arch/src/main/java/com/thiagoferreira/foodbackend2cleanarch/usuario/core/domain/Cliente.java
 /Users/thiagoferreira/Documents/FIAP/Fase 2/projeto/Food Backend2 - Clean Arch/src/main/java/com/thiagoferreira/foodbackend2cleanarch/usuario/core/domain/Dono.java
 /Users/thiagoferreira/Documents/FIAP/Fase 2/projeto/Food Backend2 - Clean Arch/src/main/java/com/thiagoferreira/foodbackend2cleanarch/usuario/core/domain/UsuarioBase.java
-/Users/thiagoferreira/Documents/FIAP/Fase 2/projeto/Food Backend2 - Clean Arch/src/main/java/com/thiagoferreira/foodbackend2cleanarch/usuario/core/exception/SystemBaseException.java
-/Users/thiagoferreira/Documents/FIAP/Fase 2/projeto/Food Backend2 - Clean Arch/src/main/java/com/thiagoferreira/foodbackend2cleanarch/usuario/core/exception/ValidacaoRegraNegocioException.java
+/Users/thiagoferreira/Documents/FIAP/Fase 2/projeto/Food Backend2 - Clean Arch/src/main/java/com/thiagoferreira/foodbackend2cleanarch/util/exception/SystemBaseException.java
+/Users/thiagoferreira/Documents/FIAP/Fase 2/projeto/Food Backend2 - Clean Arch/src/main/java/com/thiagoferreira/foodbackend2cleanarch/util/exception/ValidacaoRegraNegocioException.java
 /Users/thiagoferreira/Documents/FIAP/Fase 2/projeto/Food Backend2 - Clean Arch/src/main/java/com/thiagoferreira/foodbackend2cleanarch/util/rule/ValidadorBase.java

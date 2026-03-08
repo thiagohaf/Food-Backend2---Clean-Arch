@@ -1,9 +1,7 @@
 package com.thiagoferreira.foodbackend2cleanarch.restaurante.core.rule;
 
 import com.thiagoferreira.foodbackend2cleanarch.restaurante.core.domain.Restaurante;
-import com.thiagoferreira.foodbackend2cleanarch.usuario.core.exception.ValidacaoRegraNegocioException;
-
-import java.time.LocalTime;
+import com.thiagoferreira.foodbackend2cleanarch.util.exception.ValidacaoRegraNegocioException;
 
 import static com.thiagoferreira.foodbackend2cleanarch.util.rule.ValidadorBase.validarCampoObrigatorio;
 
@@ -13,7 +11,6 @@ public class RestauranteValidador {
         validarCampoObrigatorio(restaurante.getNome(), "Nome do Restaurante");
         validarCampoObrigatorio(restaurante.getEndereco(), "Endereco");
         validarCampoObrigatorio(restaurante.getTipoCozinha(),  "Tipo de Cozinha");
-        validarCampoObrigatorio(restaurante.getHorarioFuncionamento(), "Horario de Funcionamento");
 
         if (restaurante.getDonoId() == null) {
             throw new ValidacaoRegraNegocioException("O restaurante deve ter um dono (usuário) associado.");
@@ -23,13 +20,14 @@ public class RestauranteValidador {
     }
 
     private static void validarFormatoHorario(String horario) {
-        try {
-            String[] partes = horario.split("-");
-            if (partes.length != 2) throw new Exception();
-            LocalTime.parse(partes[0].trim());
-            LocalTime.parse(partes[1].trim());
-        } catch (Exception e) {
-            throw new ValidacaoRegraNegocioException("Formato de horário inválido. Use 'HH:mm - HH:mm'.");
+        // Regex para o formato HH:mm-HH:mm
+        // ^([01]\d|2[0-3]):([0-5]\d) -> Início: 00:00 até 23:59
+        // -                          -> Separador literal
+        // ([01]\d|2[0-3]):([0-5]\d)$ -> Fim: 00:00 até 23:59
+        String regex = "^([01]\\d|2[0-3]):([0-5]\\d)-([01]\\d|2[0-3]):([0-5]\\d)$";
+
+        if (horario == null || horario.isBlank() || !horario.matches(regex)) {
+            throw new ValidacaoRegraNegocioException("O horário de funcionamento deve estar no formato HH:mm-HH:mm.");
         }
     }
 }

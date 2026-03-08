@@ -1,7 +1,7 @@
 package com.thiagoferreira.foodbackend2cleanarch.core.rule;
 
 import com.thiagoferreira.foodbackend2cleanarch.cardapio.core.domain.ItemCardapio;
-import com.thiagoferreira.foodbackend2cleanarch.usuario.core.exception.ValidacaoRegraNegocioException;
+import com.thiagoferreira.foodbackend2cleanarch.util.exception.ValidacaoRegraNegocioException;
 import com.thiagoferreira.foodbackend2cleanarch.cardapio.core.rule.ItemCardapioValidador;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

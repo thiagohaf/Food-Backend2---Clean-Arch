@@ -1,4 +1,4 @@
-package com.thiagoferreira.foodbackend2cleanarch.usuario.core.exception;
+package com.thiagoferreira.foodbackend2cleanarch.util.exception;
 
 public abstract class SystemBaseException extends RuntimeException {
     private static final long serialVersionUID = 3899886033254816856L;

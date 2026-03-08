@@ -1,4 +1,4 @@
-package com.thiagoferreira.foodbackend2cleanarch.usuario.core.exception;
+package com.thiagoferreira.foodbackend2cleanarch.util.exception;
 
 public class ValidacaoRegraNegocioException extends SystemBaseException {
     private static final long serialVersionUID = 1L;
