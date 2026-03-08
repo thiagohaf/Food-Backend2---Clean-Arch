@@ -1,12 +1,14 @@
 package com.thiagoferreira.foodbackend2cleanarch.usuario.core.domain;
 
+import com.thiagoferreira.foodbackend2cleanarch.usuario.core.rule.RestauranteValidador;
+
 import java.util.UUID;
 
 public class Restaurante {
     private UUID id;
     private String nome;
     private String endereco;
-    private String tipoCulinaria;
+    private String tipoCozinha;
     private String horarioFuncionamento;
     private UUID donoId;
 
@@ -22,8 +24,8 @@ public class Restaurante {
         return endereco;
     }
 
-    public String getTipoCulinaria() {
-        return tipoCulinaria;
+    public String getTipoCozinha() {
+        return tipoCozinha;
     }
 
     public String getHorarioFuncionamento() {
@@ -34,12 +36,18 @@ public class Restaurante {
         return donoId;
     }
 
-    public Restaurante(UUID id, String nome, String endereco, String tipoCulinaria, String horarioFuncionamento, UUID donoId) {
+    public Restaurante(UUID id, String nome, String endereco, String tipoCozinha, String horarioFuncionamento, UUID donoId) {
         this.id = id;
         this.nome = nome;
         this.endereco = endereco;
-        this.tipoCulinaria = tipoCulinaria;
+        this.tipoCozinha = tipoCozinha;
         this.horarioFuncionamento = horarioFuncionamento;
         this.donoId = donoId;
+
+        validar();
+    }
+
+    public void validar() {
+        RestauranteValidador.validar(this);
     }
 }

@@ -1,6 +1,7 @@
 package com.thiagoferreira.foodbackend2cleanarch.usuario.core.domain;
 
 import java.util.List;
+import java.util.UUID;
 
 public class Dono extends UsuarioBase {
 
@@ -10,7 +11,7 @@ public class Dono extends UsuarioBase {
         return restaurantes;
     }
 
-    public Dono(Long id, String nomeTipo, List<Restaurante> restaurantes) {
+    public Dono(UUID id, String nomeTipo, List<Restaurante> restaurantes) {
         super(id, nomeTipo);
         this.restaurantes = restaurantes;
     }
