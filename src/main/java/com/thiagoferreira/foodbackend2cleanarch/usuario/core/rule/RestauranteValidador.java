@@ -5,6 +5,8 @@ import com.thiagoferreira.foodbackend2cleanarch.usuario.core.exception.Validacao
 
 import java.time.LocalTime;
 
+import static com.thiagoferreira.foodbackend2cleanarch.usuario.core.rule.ValidadorBase.validarCampoObrigatorio;
+
 public class RestauranteValidador {
 
     public static void validar(Restaurante restaurante) {
@@ -18,12 +20,6 @@ public class RestauranteValidador {
         }
 
         validarFormatoHorario(restaurante.getHorarioFuncionamento());
-    }
-
-    private static void validarCampoObrigatorio(String valor, String nomeCampo) {
-        if (valor == null || valor.trim().isEmpty()) {
-            throw new ValidacaoRegraNegocioException("O campo " + nomeCampo + " não pode ser nulo ou vazio.");
-        }
     }
 
     private static void validarFormatoHorario(String horario) {
