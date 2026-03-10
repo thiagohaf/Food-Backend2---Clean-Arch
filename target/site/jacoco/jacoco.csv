@@ -1,4 +1,10 @@
 GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+food-backend2-clean-arch,com.thiagoferreira.foodbackend2cleanarch.cardapio.core.exception,ItemCardapioExistenteException,6,7,0,0,3,3,3,2,3,2
+food-backend2-clean-arch,com.thiagoferreira.foodbackend2cleanarch.cardapio.core.exception,RestauranteNaoEncontradoException,6,7,0,0,3,3,3,2,3,2
+food-backend2-clean-arch,com.thiagoferreira.foodbackend2cleanarch.cardapio.core.exception,ItemCardapioCoreMapperException,6,7,0,0,3,3,3,2,3,2
+food-backend2-clean-arch,com.thiagoferreira.foodbackend2cleanarch.restaurante.core.mapper,RestauranteCoreMapper,0,25,0,2,0,10,0,3,0,2
+food-backend2-clean-arch,com.thiagoferreira.foodbackend2cleanarch.cardapio.core.mapper,ItemCardapioCoreMapper,0,27,0,2,0,11,0,3,0,2
+food-backend2-clean-arch,com.thiagoferreira.foodbackend2cleanarch.restaurante.core.usecase,CriarRestauranteUseCase,0,41,0,4,0,10,0,4,0,2
 food-backend2-clean-arch,com.thiagoferreira.foodbackend2cleanarch.restaurante.core.domain,Restaurante,0,44,0,0,0,17,0,8,0,8
 food-backend2-clean-arch,com.thiagoferreira.foodbackend2cleanarch.usuario.core.domain,Dono,15,0,0,0,6,0,3,0,3,0
 food-backend2-clean-arch,com.thiagoferreira.foodbackend2cleanarch.usuario.core.domain,UsuarioBase,15,0,0,0,6,0,3,0,3,0
@@ -6,12 +12,10 @@ food-backend2-clean-arch,com.thiagoferreira.foodbackend2cleanarch.usuario.core.d
 food-backend2-clean-arch,com.thiagoferreira.foodbackend2cleanarch.restaurante.core.exception,RestauranteExistenteException,6,7,0,0,3,3,3,2,3,2
 food-backend2-clean-arch,com.thiagoferreira.foodbackend2cleanarch.restaurante.core.exception,RestauranteCoreMapperException,6,7,0,0,3,3,3,2,3,2
 food-backend2-clean-arch,com.thiagoferreira.foodbackend2cleanarch.restaurante.core.exception,RestauranteDonoNaoExisteException,6,7,0,0,3,3,3,2,3,2
-food-backend2-clean-arch,com.thiagoferreira.foodbackend2cleanarch.cardapio.core.domain,ItemCardapio,24,41,0,0,8,16,4,7,4,7
-food-backend2-clean-arch,com.thiagoferreira.foodbackend2cleanarch.cardapio.core.domain,Cardapio,9,0,0,0,4,0,2,0,2,0
-food-backend2-clean-arch,com.thiagoferreira.foodbackend2cleanarch.restaurante.core.mapper,RestauranteCoreMapper,0,25,0,2,0,10,0,3,0,2
+food-backend2-clean-arch,com.thiagoferreira.foodbackend2cleanarch.cardapio.core.usecase,CriarItemCardapioUseCase,0,41,0,4,0,10,0,4,0,2
+food-backend2-clean-arch,com.thiagoferreira.foodbackend2cleanarch.cardapio.core.domain,ItemCardapio,3,62,0,0,2,22,0,11,0,11
 food-backend2-clean-arch,com.thiagoferreira.foodbackend2cleanarch.cardapio.core.rule,ItemCardapioValidador,3,39,0,8,1,11,1,6,1,2
 food-backend2-clean-arch,com.thiagoferreira.foodbackend2cleanarch.util.rule,ValidadorBase,7,13,0,4,2,3,1,3,1,1
 food-backend2-clean-arch,com.thiagoferreira.foodbackend2cleanarch.restaurante.core.rule,RestauranteValidador,3,41,0,8,1,11,1,6,1,2
 food-backend2-clean-arch,com.thiagoferreira.foodbackend2cleanarch.util.exception,ValidacaoRegraNegocioException,5,9,0,0,2,4,2,2,2,2
 food-backend2-clean-arch,com.thiagoferreira.foodbackend2cleanarch.util.exception,SystemBaseException,0,3,0,0,0,1,0,1,0,1
-food-backend2-clean-arch,com.thiagoferreira.foodbackend2cleanarch.restaurante.core.usecase,CriarRestauranteUseCase,0,41,0,4,0,10,0,4,0,2

@@ -15,7 +15,7 @@ public class ItemCardapio {
     private UUID restauranteId;
 
     public UUID getId() {
-<span class="nc" id="L18">        return id;</span>
+<span class="fc" id="L18">        return id;</span>
     }
 
     public String getNome() {
@@ -31,11 +31,11 @@ public class ItemCardapio {
     }
 
     public boolean getDisponibilidadeLocal() {
-<span class="nc" id="L34">        return disponibilidadeLocal;</span>
+<span class="fc" id="L34">        return disponibilidadeLocal;</span>
     }
 
     public String getFotoPath() {
-<span class="nc" id="L38">        return fotoPath;</span>
+<span class="fc" id="L38">        return fotoPath;</span>
     }
 
     public UUID getRestauranteId() {
@@ -55,9 +55,9 @@ public class ItemCardapio {
 
     public ItemCardapio(UUID id, String nome, String descricao, BigDecimal preco,
                         boolean disponibilidadeLocal, String fotoPath, UUID restauranteId) {
-<span class="nc" id="L58">        this(nome, descricao, preco, disponibilidadeLocal, fotoPath, restauranteId);</span>
-<span class="nc" id="L59">        this.id = id;</span>
-<span class="nc" id="L60">    }</span>
+<span class="fc" id="L58">        this(nome, descricao, preco, disponibilidadeLocal, fotoPath, restauranteId);</span>
+<span class="fc" id="L59">        this.id = id;</span>
+<span class="fc" id="L60">    }</span>
 
     private void validar() {
 <span class="fc" id="L63">        ItemCardapioValidador.validar(this);</span>

@@ -1,4 +1,4 @@
-package com.thiagoferreira.foodbackend2cleanarch.core.rule;
+package com.thiagoferreira.foodbackend2cleanarch.restaurante.core.rule;
 
 import com.thiagoferreira.foodbackend2cleanarch.restaurante.core.domain.Restaurante;
 import com.thiagoferreira.foodbackend2cleanarch.util.exception.ValidacaoRegraNegocioException;

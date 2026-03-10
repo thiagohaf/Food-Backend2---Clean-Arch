@@ -1,4 +1,4 @@
-package com.thiagoferreira.foodbackend2cleanarch.core.usecase;
+package com.thiagoferreira.foodbackend2cleanarch.restaurante.core.usecase;
 
 import com.thiagoferreira.foodbackend2cleanarch.restaurante.core.domain.Restaurante;
 import com.thiagoferreira.foodbackend2cleanarch.restaurante.core.dto.CriarRestauranteInput;

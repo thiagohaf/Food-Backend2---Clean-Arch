@@ -1,4 +1,4 @@
-package com.thiagoferreira.foodbackend2cleanarch.core.mapper;
+package com.thiagoferreira.foodbackend2cleanarch.restaurante.core.mapper;
 
 import com.thiagoferreira.foodbackend2cleanarch.restaurante.core.domain.Restaurante;
 import com.thiagoferreira.foodbackend2cleanarch.restaurante.core.dto.CriarRestauranteInput;
