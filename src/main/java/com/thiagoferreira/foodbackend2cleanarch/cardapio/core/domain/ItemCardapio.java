@@ -67,4 +67,14 @@ public class ItemCardapio {
         this.preco = preco;
         validar();
     }
+
+    public void atualizar(String nome, String descricao, BigDecimal preco, boolean disponibilidadeLocal, String fotoPath) {
+        this.nome = nome;
+        this.descricao = descricao;
+        this.preco = preco;
+        this.disponibilidadeLocal = disponibilidadeLocal;
+        this.fotoPath = fotoPath;
+
+        validar();
+    }
 }

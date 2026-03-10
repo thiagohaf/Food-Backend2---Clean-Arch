@@ -146,4 +146,34 @@ public class ItemCardapioValidadorTest {
 
         assertEquals("O item deve pertencer a um restaurante válido (ID não pode ser nulo).", exception.getMessage());
     }
+
+    @Test
+    @DisplayName("Deve atualizar os dados do item com sucesso quando válidos")
+    void deveAtualizarDadosComSucesso() {
+        ItemCardapio item = new ItemCardapio(
+                UUID.randomUUID(), "Hamburguer", "Pão e carne", new BigDecimal("25.00"),
+                true, "/img/hamburguer.png", UUID.randomUUID()
+        );
+
+        item.atualizar("X-Salada", "Pão, carne e salada", new BigDecimal("30.00"), false, "/img/xsalada.png");
+
+        assertEquals("X-Salada", item.getNome());
+        assertEquals("Pão, carne e salada", item.getDescricao());
+        assertEquals(new BigDecimal("30.00"), item.getPreco());
+        assertFalse(item.getDisponibilidadeLocal());
+        assertEquals("/img/xsalada.png", item.getFotoPath());
+    }
+
+    @Test
+    @DisplayName("Deve lançar exceção ao tentar atualizar com dados inválidos (ex: preço negativo)")
+    void deveLancarExcecaoAoAtualizarComDadosInvalidos() {
+        ItemCardapio item = new ItemCardapio(
+                UUID.randomUUID(), "Hamburguer", "Pão e carne", new BigDecimal("25.00"),
+                true, "/img/hamburguer.png", UUID.randomUUID()
+        );
+
+        assertThrows(ValidacaoRegraNegocioException.class, () ->
+                item.atualizar("X-Salada", "Descricao", new BigDecimal("-5.00"), false, "/img/foto.png")
+        );
+    }
 }
