@@ -50,5 +50,14 @@ public class Restaurante {
     public void validar() {
 <span class="fc" id="L51">        RestauranteValidador.validar(this);</span>
 <span class="fc" id="L52">    }</span>
+
+    public void atualizar(String nome, String endereco, String tipoCozinha, String horarioFuncionamento) {
+<span class="fc" id="L55">        this.nome = nome;</span>
+<span class="fc" id="L56">        this.endereco = endereco;</span>
+<span class="fc" id="L57">        this.tipoCozinha = tipoCozinha;</span>
+<span class="fc" id="L58">        this.horarioFuncionamento = horarioFuncionamento;</span>
+
+<span class="fc" id="L60">        validar();</span>
+<span class="fc" id="L61">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

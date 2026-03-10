@@ -11,7 +11,11 @@ food-backend2-clean-arch,com.thiagoferreira.foodbackend2cleanarch.usuario.core.e
 food-backend2-clean-arch,com.thiagoferreira.foodbackend2cleanarch.restaurante.core.mapper,RestauranteCoreMapper,0,25,0,2,0,10,0,3,0,2
 food-backend2-clean-arch,com.thiagoferreira.foodbackend2cleanarch.cardapio.core.mapper,ItemCardapioCoreMapper,0,27,0,2,0,11,0,3,0,2
 food-backend2-clean-arch,com.thiagoferreira.foodbackend2cleanarch.restaurante.core.usecase,CriarRestauranteUseCase,0,41,0,4,0,10,0,4,0,2
-food-backend2-clean-arch,com.thiagoferreira.foodbackend2cleanarch.restaurante.core.domain,Restaurante,0,44,0,0,0,17,0,8,0,8
+food-backend2-clean-arch,com.thiagoferreira.foodbackend2cleanarch.restaurante.core.usecase,AtualizarRestauranteUseCase,0,33,0,0,0,11,0,3,0,3
+food-backend2-clean-arch,com.thiagoferreira.foodbackend2cleanarch.restaurante.core.usecase,ExcluirRestauranteUseCase,0,21,0,2,0,7,0,3,0,2
+food-backend2-clean-arch,com.thiagoferreira.foodbackend2cleanarch.restaurante.core.usecase,BuscarRestaurantePorIdUseCase,0,18,0,0,0,5,0,3,0,3
+food-backend2-clean-arch,com.thiagoferreira.foodbackend2cleanarch.restaurante.core.usecase,ListarRestaurantesUseCase,0,10,0,0,0,4,0,2,0,2
+food-backend2-clean-arch,com.thiagoferreira.foodbackend2cleanarch.restaurante.core.domain,Restaurante,0,59,0,0,0,23,0,9,0,9
 food-backend2-clean-arch,com.thiagoferreira.foodbackend2cleanarch.usuario.core.rule,TipoUsuarioValidador,3,12,0,2,1,4,1,2,1,1
 food-backend2-clean-arch,com.thiagoferreira.foodbackend2cleanarch.usuario.core.rule,UsuarioValidador,3,20,0,4,1,6,1,3,1,1
 food-backend2-clean-arch,com.thiagoferreira.foodbackend2cleanarch.usuario.core.domain,TipoUsuario,0,20,0,0,0,9,0,4,0,4

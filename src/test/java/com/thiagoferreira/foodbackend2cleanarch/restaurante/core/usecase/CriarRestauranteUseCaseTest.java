@@ -6,7 +6,6 @@ import com.thiagoferreira.foodbackend2cleanarch.restaurante.core.exception.Resta
 import com.thiagoferreira.foodbackend2cleanarch.restaurante.core.exception.RestauranteExistenteException;
 import com.thiagoferreira.foodbackend2cleanarch.restaurante.core.gateway.RestauranteGateway;
 import com.thiagoferreira.foodbackend2cleanarch.restaurante.core.mapper.RestauranteCoreMapper;
-import com.thiagoferreira.foodbackend2cleanarch.restaurante.core.usecase.CriarRestauranteUseCase;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

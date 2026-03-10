@@ -50,4 +50,13 @@ public class Restaurante {
     public void validar() {
         RestauranteValidador.validar(this);
     }
+
+    public void atualizar(String nome, String endereco, String tipoCozinha, String horarioFuncionamento) {
+        this.nome = nome;
+        this.endereco = endereco;
+        this.tipoCozinha = tipoCozinha;
+        this.horarioFuncionamento = horarioFuncionamento;
+
+        validar();
+    }
 }

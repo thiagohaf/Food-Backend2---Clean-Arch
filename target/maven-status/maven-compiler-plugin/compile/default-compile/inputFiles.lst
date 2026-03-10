@@ -9,6 +9,7 @@
 /Users/thiagoferreira/Documents/FIAP/Fase 2/projeto/Food Backend2 - Clean Arch/src/main/java/com/thiagoferreira/foodbackend2cleanarch/cardapio/core/rule/ItemCardapioValidador.java
 /Users/thiagoferreira/Documents/FIAP/Fase 2/projeto/Food Backend2 - Clean Arch/src/main/java/com/thiagoferreira/foodbackend2cleanarch/cardapio/core/usecase/CriarItemCardapioUseCase.java
 /Users/thiagoferreira/Documents/FIAP/Fase 2/projeto/Food Backend2 - Clean Arch/src/main/java/com/thiagoferreira/foodbackend2cleanarch/restaurante/core/domain/Restaurante.java
+/Users/thiagoferreira/Documents/FIAP/Fase 2/projeto/Food Backend2 - Clean Arch/src/main/java/com/thiagoferreira/foodbackend2cleanarch/restaurante/core/dto/AtualizarRestauranteInput.java
 /Users/thiagoferreira/Documents/FIAP/Fase 2/projeto/Food Backend2 - Clean Arch/src/main/java/com/thiagoferreira/foodbackend2cleanarch/restaurante/core/dto/CriarRestauranteInput.java
 /Users/thiagoferreira/Documents/FIAP/Fase 2/projeto/Food Backend2 - Clean Arch/src/main/java/com/thiagoferreira/foodbackend2cleanarch/restaurante/core/exception/RestauranteCoreMapperException.java
 /Users/thiagoferreira/Documents/FIAP/Fase 2/projeto/Food Backend2 - Clean Arch/src/main/java/com/thiagoferreira/foodbackend2cleanarch/restaurante/core/exception/RestauranteDonoNaoExisteException.java
@@ -16,7 +17,11 @@
 /Users/thiagoferreira/Documents/FIAP/Fase 2/projeto/Food Backend2 - Clean Arch/src/main/java/com/thiagoferreira/foodbackend2cleanarch/restaurante/core/gateway/RestauranteGateway.java
 /Users/thiagoferreira/Documents/FIAP/Fase 2/projeto/Food Backend2 - Clean Arch/src/main/java/com/thiagoferreira/foodbackend2cleanarch/restaurante/core/mapper/RestauranteCoreMapper.java
 /Users/thiagoferreira/Documents/FIAP/Fase 2/projeto/Food Backend2 - Clean Arch/src/main/java/com/thiagoferreira/foodbackend2cleanarch/restaurante/core/rule/RestauranteValidador.java
+/Users/thiagoferreira/Documents/FIAP/Fase 2/projeto/Food Backend2 - Clean Arch/src/main/java/com/thiagoferreira/foodbackend2cleanarch/restaurante/core/usecase/AtualizarRestauranteUseCase.java
+/Users/thiagoferreira/Documents/FIAP/Fase 2/projeto/Food Backend2 - Clean Arch/src/main/java/com/thiagoferreira/foodbackend2cleanarch/restaurante/core/usecase/BuscarRestaurantePorIdUseCase.java
 /Users/thiagoferreira/Documents/FIAP/Fase 2/projeto/Food Backend2 - Clean Arch/src/main/java/com/thiagoferreira/foodbackend2cleanarch/restaurante/core/usecase/CriarRestauranteUseCase.java
+/Users/thiagoferreira/Documents/FIAP/Fase 2/projeto/Food Backend2 - Clean Arch/src/main/java/com/thiagoferreira/foodbackend2cleanarch/restaurante/core/usecase/ExcluirRestauranteUseCase.java
+/Users/thiagoferreira/Documents/FIAP/Fase 2/projeto/Food Backend2 - Clean Arch/src/main/java/com/thiagoferreira/foodbackend2cleanarch/restaurante/core/usecase/ListarRestaurantesUseCase.java
 /Users/thiagoferreira/Documents/FIAP/Fase 2/projeto/Food Backend2 - Clean Arch/src/main/java/com/thiagoferreira/foodbackend2cleanarch/usuario/core/domain/TipoUsuario.java
 /Users/thiagoferreira/Documents/FIAP/Fase 2/projeto/Food Backend2 - Clean Arch/src/main/java/com/thiagoferreira/foodbackend2cleanarch/usuario/core/domain/Usuario.java
 /Users/thiagoferreira/Documents/FIAP/Fase 2/projeto/Food Backend2 - Clean Arch/src/main/java/com/thiagoferreira/foodbackend2cleanarch/usuario/core/dto/CriarTipoUsuarioInput.java

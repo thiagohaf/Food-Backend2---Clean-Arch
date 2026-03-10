@@ -130,4 +130,31 @@ public class RestauranteValidadorTest {
         );
         assertTrue(exception.getMessage().contains("O horário de funcionamento deve estar no formato HH:mm-HH:mm."));
     }
+
+    @Test
+    @DisplayName("Deve atualizar os dados do restaurante com sucesso quando válidos")
+    void deveAtualizarDadosComSucesso() {
+        Restaurante restaurante = new Restaurante(
+                UUID.randomUUID(), "Pizzaria Antiga", "Rua Velha", "Italiana", "18:00-23:00", UUID.randomUUID()
+        );
+
+        restaurante.atualizar("Pizzaria Nova", "Rua Nova", "Geral", "10:00-22:00");
+
+        assertEquals("Pizzaria Nova", restaurante.getNome());
+        assertEquals("Rua Nova", restaurante.getEndereco());
+        assertEquals("Geral", restaurante.getTipoCozinha());
+        assertEquals("10:00-22:00", restaurante.getHorarioFuncionamento());
+    }
+
+    @Test
+    @DisplayName("Deve lançar exceção ao tentar atualizar com dados inválidos")
+    void deveLancarExcecaoAoAtualizarComDadosInvalidos() {
+        Restaurante restaurante = new Restaurante(
+                UUID.randomUUID(), "Pizzaria Antiga", "Rua Velha", "Italiana", "18:00-23:00", UUID.randomUUID()
+        );
+
+        assertThrows(ValidacaoRegraNegocioException.class, () ->
+                restaurante.atualizar("Pizzaria Nova", "Rua Nova", "Geral", "horario-errado")
+        );
+    }
 }
