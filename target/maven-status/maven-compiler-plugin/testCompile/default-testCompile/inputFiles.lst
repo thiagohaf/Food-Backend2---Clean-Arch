@@ -17,5 +17,11 @@
 /Users/thiagoferreira/Documents/FIAP/Fase 2/projeto/Food Backend2 - Clean Arch/src/test/java/com/thiagoferreira/foodbackend2cleanarch/usuario/core/mapper/UsuarioCoreMapperTest.java
 /Users/thiagoferreira/Documents/FIAP/Fase 2/projeto/Food Backend2 - Clean Arch/src/test/java/com/thiagoferreira/foodbackend2cleanarch/usuario/core/rule/TipoUsuarioValidadorTest.java
 /Users/thiagoferreira/Documents/FIAP/Fase 2/projeto/Food Backend2 - Clean Arch/src/test/java/com/thiagoferreira/foodbackend2cleanarch/usuario/core/rule/UsuarioValidadorTest.java
+/Users/thiagoferreira/Documents/FIAP/Fase 2/projeto/Food Backend2 - Clean Arch/src/test/java/com/thiagoferreira/foodbackend2cleanarch/usuario/core/usecase/AtualizarTipoUsuarioUseCaseTest.java
+/Users/thiagoferreira/Documents/FIAP/Fase 2/projeto/Food Backend2 - Clean Arch/src/test/java/com/thiagoferreira/foodbackend2cleanarch/usuario/core/usecase/AtualizarUsuarioUseCaseTest.java
+/Users/thiagoferreira/Documents/FIAP/Fase 2/projeto/Food Backend2 - Clean Arch/src/test/java/com/thiagoferreira/foodbackend2cleanarch/usuario/core/usecase/BuscarTipoUsuarioPorIdUseCaseTest.java
 /Users/thiagoferreira/Documents/FIAP/Fase 2/projeto/Food Backend2 - Clean Arch/src/test/java/com/thiagoferreira/foodbackend2cleanarch/usuario/core/usecase/CriarTipoUsuarioUseCaseTest.java
 /Users/thiagoferreira/Documents/FIAP/Fase 2/projeto/Food Backend2 - Clean Arch/src/test/java/com/thiagoferreira/foodbackend2cleanarch/usuario/core/usecase/CriarUsuarioUseCaseTest.java
+/Users/thiagoferreira/Documents/FIAP/Fase 2/projeto/Food Backend2 - Clean Arch/src/test/java/com/thiagoferreira/foodbackend2cleanarch/usuario/core/usecase/ExcluirTipoUsuarioUseCaseTest.java
+/Users/thiagoferreira/Documents/FIAP/Fase 2/projeto/Food Backend2 - Clean Arch/src/test/java/com/thiagoferreira/foodbackend2cleanarch/usuario/core/usecase/ExcluirUsuarioUseCaseTest.java
+/Users/thiagoferreira/Documents/FIAP/Fase 2/projeto/Food Backend2 - Clean Arch/src/test/java/com/thiagoferreira/foodbackend2cleanarch/usuario/core/usecase/ListarTiposUsuarioUseCaseTest.java

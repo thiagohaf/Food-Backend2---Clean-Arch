@@ -3,7 +3,7 @@ package com.thiagoferreira.foodbackend2cleanarch.usuario.core.usecase;
 import com.thiagoferreira.foodbackend2cleanarch.usuario.core.domain.TipoUsuario;
 import com.thiagoferreira.foodbackend2cleanarch.usuario.core.domain.Usuario;
 import com.thiagoferreira.foodbackend2cleanarch.usuario.core.dto.CriarUsuarioInput;
-import com.thiagoferreira.foodbackend2cleanarch.usuario.core.exception.TipoUsuarioNaoExisteException;
+import com.thiagoferreira.foodbackend2cleanarch.usuario.core.exception.TipoUsuarioNaoEncontradoException;
 import com.thiagoferreira.foodbackend2cleanarch.usuario.core.gateway.TipoUsuarioGateway;
 import com.thiagoferreira.foodbackend2cleanarch.usuario.core.gateway.UsuarioGateway;
 import com.thiagoferreira.foodbackend2cleanarch.usuario.core.mapper.UsuarioCoreMapper;
@@ -23,7 +23,7 @@ public class CriarUsuarioUseCase {
     public Usuario executar(CriarUsuarioInput input) {
 
         TipoUsuario tipoUsuarioEncontrado = tipoUsuarioGateway.buscarPorId(input.tipoUsuarioId())
-                .orElseThrow(() -> new TipoUsuarioNaoExisteException());
+                .orElseThrow(() -> new TipoUsuarioNaoEncontradoException());
 
         Usuario novoUsuario = mapper.toDomain(input, tipoUsuarioEncontrado);
 

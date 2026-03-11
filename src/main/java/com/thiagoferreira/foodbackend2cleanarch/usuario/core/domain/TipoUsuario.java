@@ -18,6 +18,11 @@ public class TipoUsuario {
         TipoUsuarioValidador.validar(this);
     }
 
+    public void atualizar(String nome) {
+        this.nome = nome;
+        validar();
+    }
+
     public UUID getId() { return id; }
     public String getNome() { return nome; }
 }

@@ -55,4 +55,26 @@ public class UsuarioValidadorTest {
         );
         assertEquals("O usuário não pode ser nulo.", exception.getMessage());
     }
+
+    @Test
+    @DisplayName("Deve atualizar os dados do Usuario com sucesso")
+    void deveAtualizarDadosComSucesso() {
+        TipoUsuario tipoAntigo = new TipoUsuario(UUID.randomUUID(), "Cliente");
+        TipoUsuario tipoNovo = new TipoUsuario(UUID.randomUUID(), "Dono");
+        Usuario usuario = new Usuario(UUID.randomUUID(), "João", tipoAntigo);
+
+        usuario.atualizar("Carlos", tipoNovo);
+
+        assertEquals("Carlos", usuario.getNome());
+        assertEquals("Dono", usuario.getTipoUsuario().getNome());
+    }
+
+    @Test
+    @DisplayName("Deve lançar exceção ao atualizar Usuario sem TipoUsuario associado")
+    void deveLancarExcecaoAoAtualizarSemTipo() {
+        TipoUsuario tipo = new TipoUsuario(UUID.randomUUID(), "Cliente");
+        Usuario usuario = new Usuario(UUID.randomUUID(), "João", tipo);
+
+        assertThrows(ValidacaoRegraNegocioException.class, () -> usuario.atualizar("Carlos", null));
+    }
 }

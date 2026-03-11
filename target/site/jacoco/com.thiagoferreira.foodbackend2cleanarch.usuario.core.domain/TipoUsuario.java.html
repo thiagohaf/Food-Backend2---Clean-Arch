@@ -18,7 +18,12 @@ public class TipoUsuario {
 <span class="fc" id="L18">        TipoUsuarioValidador.validar(this);</span>
 <span class="fc" id="L19">    }</span>
 
-<span class="fc" id="L21">    public UUID getId() { return id; }</span>
-<span class="fc" id="L22">    public String getNome() { return nome; }</span>
+    public void atualizar(String nome) {
+<span class="fc" id="L22">        this.nome = nome;</span>
+<span class="fc" id="L23">        validar();</span>
+<span class="fc" id="L24">    }</span>
+
+<span class="fc" id="L26">    public UUID getId() { return id; }</span>
+<span class="fc" id="L27">    public String getNome() { return nome; }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

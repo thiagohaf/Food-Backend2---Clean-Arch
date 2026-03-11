@@ -2,12 +2,12 @@ package com.thiagoferreira.foodbackend2cleanarch.usuario.core.exception;
 
 import com.thiagoferreira.foodbackend2cleanarch.util.exception.SystemBaseException;
 
-public class TipoUsuarioNaoExisteException extends SystemBaseException {
+public class TipoUsuarioNaoEncontradoException extends SystemBaseException {
     private static final String CODE = "usuario.tipoUsuarioNaoExiste";//NOSONAR
     private static final String MESSAGE = "O Tipo de Usuário informado não foi encontrado.";//NOSONAR
     private static final Integer HTTP_STATUS = 422;//NOSONAR
 
-    public TipoUsuarioNaoExisteException() { }
+    public TipoUsuarioNaoEncontradoException() { }
 
     @Override
     public String getCode() {

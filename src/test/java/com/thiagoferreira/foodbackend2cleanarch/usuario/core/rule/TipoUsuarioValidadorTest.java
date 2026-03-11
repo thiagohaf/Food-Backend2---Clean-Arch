@@ -50,4 +50,19 @@ public class TipoUsuarioValidadorTest {
         );
         assertEquals("O tipo de usuário não pode ser nulo.", exception.getMessage());
     }
+
+    @Test
+    @DisplayName("Deve atualizar os dados do TipoUsuario com sucesso")
+    void deveAtualizarDadosComSucesso() {
+        TipoUsuario tipo = new TipoUsuario(UUID.randomUUID(), "Antigo");
+        tipo.atualizar("Novo");
+        assertEquals("Novo", tipo.getNome());
+    }
+
+    @Test
+    @DisplayName("Deve lançar exceção ao atualizar TipoUsuario com nome inválido")
+    void deveLancarExcecaoAoAtualizarTipoComNomeInvalido() {
+        TipoUsuario tipo = new TipoUsuario(UUID.randomUUID(), "Valido");
+        assertThrows(ValidacaoRegraNegocioException.class, () -> tipo.atualizar("  "));
+    }
 }

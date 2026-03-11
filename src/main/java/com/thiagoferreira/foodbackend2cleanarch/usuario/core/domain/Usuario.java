@@ -27,4 +27,10 @@ public class Usuario {
     public void validar() {
         UsuarioValidador.validar(this);
     }
+
+    public void atualizar(String nome, TipoUsuario tipoUsuario) {
+        this.nome = nome;
+        this.tipoUsuario = tipoUsuario;
+        validar();
+    }
 }

@@ -3,7 +3,7 @@ package com.thiagoferreira.foodbackend2cleanarch.usuario.core.usecase;
 import com.thiagoferreira.foodbackend2cleanarch.usuario.core.domain.TipoUsuario;
 import com.thiagoferreira.foodbackend2cleanarch.usuario.core.domain.Usuario;
 import com.thiagoferreira.foodbackend2cleanarch.usuario.core.dto.CriarUsuarioInput;
-import com.thiagoferreira.foodbackend2cleanarch.usuario.core.exception.TipoUsuarioNaoExisteException;
+import com.thiagoferreira.foodbackend2cleanarch.usuario.core.exception.TipoUsuarioNaoEncontradoException;
 import com.thiagoferreira.foodbackend2cleanarch.usuario.core.gateway.TipoUsuarioGateway;
 import com.thiagoferreira.foodbackend2cleanarch.usuario.core.gateway.UsuarioGateway;
 import com.thiagoferreira.foodbackend2cleanarch.usuario.core.mapper.UsuarioCoreMapper;
@@ -65,7 +65,7 @@ public class CriarUsuarioUseCaseTest {
 
         when(tipoUsuarioGateway.buscarPorId(tipoId)).thenReturn(Optional.empty());
 
-        assertThrows(TipoUsuarioNaoExisteException.class, () -> useCase.executar(input));
+        assertThrows(TipoUsuarioNaoEncontradoException.class, () -> useCase.executar(input));
 
         verify(mapper, never()).toDomain(any(), any());
         verify(usuarioGateway, never()).salvar(any());
