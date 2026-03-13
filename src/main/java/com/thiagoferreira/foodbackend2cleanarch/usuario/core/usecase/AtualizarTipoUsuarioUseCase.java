@@ -18,7 +18,7 @@ public class AtualizarTipoUsuarioUseCase {
 
     public TipoUsuario executar(UUID id, AtualizarTipoUsuarioInput input) {
         TipoUsuario tipo = tipoUsuarioGateway.buscarPorId(id)
-                .orElseThrow(() -> new TipoUsuarioNaoEncontradoException());
+                .orElseThrow(TipoUsuarioNaoEncontradoException::new);
 
         if (!tipo.getNome().equalsIgnoreCase(input.nome()) && tipoUsuarioGateway.existePorNome(input.nome())) {
             throw new ValidacaoRegraNegocioException("Já existe outro Tipo de Usuário com este nome.");

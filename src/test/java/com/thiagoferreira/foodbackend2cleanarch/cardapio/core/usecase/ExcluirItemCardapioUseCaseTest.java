@@ -18,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
-public class ExcluirItemCardapioUseCaseTest {
+class ExcluirItemCardapioUseCaseTest {
 
     @Mock
     private ItemCardapioGateway gateway;

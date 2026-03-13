@@ -6,6 +6,11 @@ import com.thiagoferreira.foodbackend2cleanarch.util.exception.ValidacaoRegraNeg
 import static com.thiagoferreira.foodbackend2cleanarch.util.rule.ValidadorBase.validarCampoObrigatorio;
 
 public class UsuarioValidador {
+
+    private UsuarioValidador() {
+        /* esta classe não deve ser instanciada */
+    }
+
     public static void validar(Usuario usuario) {
         if (usuario == null) {
             throw new ValidacaoRegraNegocioException("O usuário não pode ser nulo.");

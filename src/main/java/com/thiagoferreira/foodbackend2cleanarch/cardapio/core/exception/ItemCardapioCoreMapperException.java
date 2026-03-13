@@ -7,8 +7,7 @@ public class ItemCardapioCoreMapperException extends SystemBaseException {
     private static final String MESSAGE = "O input para criação de ItemCardapio não pode ser nulo.";//NOSONAR
     private static final Integer HTTP_STATUS = 422;//NOSONAR
 
-    public ItemCardapioCoreMapperException() {
-    }
+    public ItemCardapioCoreMapperException() {} //NOSONAR
 
     @Override
     public String getCode() {

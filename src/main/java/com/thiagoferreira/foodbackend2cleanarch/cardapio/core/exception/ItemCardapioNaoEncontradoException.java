@@ -8,8 +8,7 @@ public class ItemCardapioNaoEncontradoException extends SystemBaseException {
     private static final String MESSAGE = "Item do cardápio não encontrado.";//NOSONAR
     private static final Integer HTTP_STATUS = 422;//NOSONAR
 
-    public ItemCardapioNaoEncontradoException() {
-    }
+    public ItemCardapioNaoEncontradoException() {} //NOSONAR
 
     @Override
     public String getCode() {

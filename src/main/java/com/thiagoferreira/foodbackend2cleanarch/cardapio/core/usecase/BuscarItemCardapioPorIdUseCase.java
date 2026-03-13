@@ -16,6 +16,6 @@ public class BuscarItemCardapioPorIdUseCase {
 
     public ItemCardapio executar(UUID id) {
         return itemCardapioGateway.buscarPorId(id)
-                .orElseThrow(() -> new ItemCardapioNaoEncontradoException());
+                .orElseThrow(ItemCardapioNaoEncontradoException::new);
     }
 }

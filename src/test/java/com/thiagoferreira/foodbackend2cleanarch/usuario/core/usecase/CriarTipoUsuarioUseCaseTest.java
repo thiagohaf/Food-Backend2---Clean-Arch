@@ -19,7 +19,7 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
-public class CriarTipoUsuarioUseCaseTest {
+class CriarTipoUsuarioUseCaseTest {
     @Mock
     private TipoUsuarioGateway gateway;
 

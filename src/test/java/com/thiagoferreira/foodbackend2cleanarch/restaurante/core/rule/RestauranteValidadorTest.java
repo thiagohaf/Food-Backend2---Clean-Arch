@@ -11,14 +11,14 @@ import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class RestauranteValidadorTest {
+class RestauranteValidadorTest {
 
-    private final UUID ID_VALIDO = UUID.randomUUID();
-    private final UUID DONO_ID_VALIDO = UUID.randomUUID();
-    private final String NOME_VALIDO = "Restaurante Top";
-    private final String ENDERECO_VALIDO = "Rua das Flores, 123";
-    private final String COZINHA_VALIDA = "Italiana";
-    private final String HORARIO_VALIDO = "11:00-23:00";
+    private final UUID ID_VALIDO = UUID.randomUUID(); //NOSONAR
+    private final UUID DONO_ID_VALIDO = UUID.randomUUID(); //NOSONAR
+    private final String NOME_VALIDO = "Restaurante Top"; //NOSONAR
+    private final String ENDERECO_VALIDO = "Rua das Flores, 123"; //NOSONAR
+    private final String COZINHA_VALIDA = "Italiana"; //NOSONAR
+    private final String HORARIO_VALIDO = "11:00-23:00"; //NOSONAR
 
     @Test
     @DisplayName("Deve criar um restaurante com sucesso quando todos os dados forem válidos")

@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
-public class ListarTiposUsuarioUseCaseTest {
+class ListarTiposUsuarioUseCaseTest {
 
     @Mock
     private TipoUsuarioGateway gateway;

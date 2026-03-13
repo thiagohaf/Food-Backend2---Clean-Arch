@@ -16,7 +16,7 @@ public class BuscarRestaurantePorIdUseCase {
 
     public Restaurante executar(UUID id) {
 <span class="fc" id="L18">        return restauranteGateway.buscarPorId(id)</span>
-<span class="fc" id="L19">                .orElseThrow(() -&gt; new RestauranteNaoEncontradoException());</span>
+<span class="fc" id="L19">                .orElseThrow(RestauranteNaoEncontradoException::new);</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

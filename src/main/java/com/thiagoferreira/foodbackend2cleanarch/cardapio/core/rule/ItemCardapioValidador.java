@@ -9,6 +9,10 @@ import static com.thiagoferreira.foodbackend2cleanarch.util.rule.ValidadorBase.v
 
 public class ItemCardapioValidador {
 
+    private ItemCardapioValidador() {
+        /* esta classe não deve ser instanciada */
+    }
+
     public static void validar(ItemCardapio item) {
         if (item == null) {
             throw new ValidacaoRegraNegocioException("O item do cardápio não pode ser nulo.");

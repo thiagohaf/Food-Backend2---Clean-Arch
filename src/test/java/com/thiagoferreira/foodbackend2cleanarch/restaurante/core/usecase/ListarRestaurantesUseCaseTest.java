@@ -17,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
-public class ListarRestaurantesUseCaseTest {
+class ListarRestaurantesUseCaseTest {
 
     @Mock
     private RestauranteGateway gateway;

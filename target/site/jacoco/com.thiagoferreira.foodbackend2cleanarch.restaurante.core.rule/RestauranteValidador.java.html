@@ -5,30 +5,34 @@ import com.thiagoferreira.foodbackend2cleanarch.util.exception.ValidacaoRegraNeg
 
 import static com.thiagoferreira.foodbackend2cleanarch.util.rule.ValidadorBase.validarCampoObrigatorio;
 
-<span class="nc" id="L8">public class RestauranteValidador {</span>
+public class RestauranteValidador {
+
+    private RestauranteValidador() {
+        /* esta classe não deve ser instanciada */
+    }
 
     public static void validar(Restaurante restaurante) {
-<span class="fc" id="L11">        validarCampoObrigatorio(restaurante.getNome(), &quot;Nome do Restaurante&quot;);</span>
-<span class="fc" id="L12">        validarCampoObrigatorio(restaurante.getEndereco(), &quot;Endereco&quot;);</span>
-<span class="fc" id="L13">        validarCampoObrigatorio(restaurante.getTipoCozinha(),  &quot;Tipo de Cozinha&quot;);</span>
+<span class="fc" id="L15">        validarCampoObrigatorio(restaurante.getNome(), &quot;Nome do Restaurante&quot;);</span>
+<span class="fc" id="L16">        validarCampoObrigatorio(restaurante.getEndereco(), &quot;Endereco&quot;);</span>
+<span class="fc" id="L17">        validarCampoObrigatorio(restaurante.getTipoCozinha(),  &quot;Tipo de Cozinha&quot;);</span>
 
-<span class="fc bfc" id="L15" title="All 2 branches covered.">        if (restaurante.getDonoId() == null) {</span>
-<span class="fc" id="L16">            throw new ValidacaoRegraNegocioException(&quot;O restaurante deve ter um dono (usuário) associado.&quot;);</span>
+<span class="fc bfc" id="L19" title="All 2 branches covered.">        if (restaurante.getDonoId() == null) {</span>
+<span class="fc" id="L20">            throw new ValidacaoRegraNegocioException(&quot;O restaurante deve ter um dono (usuário) associado.&quot;);</span>
         }
 
-<span class="fc" id="L19">        validarFormatoHorario(restaurante.getHorarioFuncionamento());</span>
-<span class="fc" id="L20">    }</span>
+<span class="fc" id="L23">        validarFormatoHorario(restaurante.getHorarioFuncionamento());</span>
+<span class="fc" id="L24">    }</span>
 
     private static void validarFormatoHorario(String horario) {
         // Regex para o formato HH:mm-HH:mm
         // ^([01]\d|2[0-3]):([0-5]\d) -&gt; Início: 00:00 até 23:59
         // -                          -&gt; Separador literal
         // ([01]\d|2[0-3]):([0-5]\d)$ -&gt; Fim: 00:00 até 23:59
-<span class="fc" id="L27">        String regex = &quot;^([01]\\d|2[0-3]):([0-5]\\d)-([01]\\d|2[0-3]):([0-5]\\d)$&quot;;</span>
+<span class="fc" id="L31">        String regex = &quot;^([01]\\d|2[0-3]):([0-5]\\d)-([01]\\d|2[0-3]):([0-5]\\d)$&quot;;</span>
 
-<span class="fc bfc" id="L29" title="All 6 branches covered.">        if (horario == null || horario.isBlank() || !horario.matches(regex)) {</span>
-<span class="fc" id="L30">            throw new ValidacaoRegraNegocioException(&quot;O horário de funcionamento deve estar no formato HH:mm-HH:mm.&quot;);</span>
+<span class="fc bfc" id="L33" title="All 6 branches covered.">        if (horario == null || horario.isBlank() || !horario.matches(regex)) {</span>
+<span class="fc" id="L34">            throw new ValidacaoRegraNegocioException(&quot;O horário de funcionamento deve estar no formato HH:mm-HH:mm.&quot;);</span>
         }
-<span class="fc" id="L32">    }</span>
+<span class="fc" id="L36">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

@@ -8,22 +8,21 @@ public class ItemCardapioNaoEncontradoException extends SystemBaseException {
     private static final String MESSAGE = &quot;Item do cardápio não encontrado.&quot;;//NOSONAR
 <span class="fc" id="L9">    private static final Integer HTTP_STATUS = 422;//NOSONAR</span>
 
-<span class="fc" id="L11">    public ItemCardapioNaoEncontradoException() {</span>
-<span class="fc" id="L12">    }</span>
+<span class="fc" id="L11">    public ItemCardapioNaoEncontradoException() {} //NOSONAR</span>
 
     @Override
     public String getCode() {
-<span class="nc" id="L16">        return CODE;</span>
+<span class="nc" id="L15">        return CODE;</span>
     }
 
     @Override
     public Integer getHttpStatus() {
-<span class="nc" id="L21">        return HTTP_STATUS;</span>
+<span class="nc" id="L20">        return HTTP_STATUS;</span>
     }
 
     @Override
     public String getMessage() {
-<span class="nc" id="L26">        return MESSAGE;</span>
+<span class="nc" id="L25">        return MESSAGE;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

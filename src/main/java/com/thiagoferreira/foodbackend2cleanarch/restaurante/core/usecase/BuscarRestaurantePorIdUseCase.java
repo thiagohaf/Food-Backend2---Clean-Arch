@@ -16,6 +16,6 @@ public class BuscarRestaurantePorIdUseCase {
 
     public Restaurante executar(UUID id) {
         return restauranteGateway.buscarPorId(id)
-                .orElseThrow(() -> new RestauranteNaoEncontradoException());
+                .orElseThrow(RestauranteNaoEncontradoException::new);
     }
 }

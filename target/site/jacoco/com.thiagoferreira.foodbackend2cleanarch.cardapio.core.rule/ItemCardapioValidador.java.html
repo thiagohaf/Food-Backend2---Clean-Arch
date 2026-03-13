@@ -7,27 +7,31 @@ import java.math.BigDecimal;
 
 import static com.thiagoferreira.foodbackend2cleanarch.util.rule.ValidadorBase.validarCampoObrigatorio;
 
-<span class="nc" id="L10">public class ItemCardapioValidador {</span>
+public class ItemCardapioValidador {
+
+    private ItemCardapioValidador() {
+        /* esta classe não deve ser instanciada */
+    }
 
     public static void validar(ItemCardapio item) {
-<span class="fc bfc" id="L13" title="All 2 branches covered.">        if (item == null) {</span>
-<span class="fc" id="L14">            throw new ValidacaoRegraNegocioException(&quot;O item do cardápio não pode ser nulo.&quot;);</span>
+<span class="fc bfc" id="L17" title="All 2 branches covered.">        if (item == null) {</span>
+<span class="fc" id="L18">            throw new ValidacaoRegraNegocioException(&quot;O item do cardápio não pode ser nulo.&quot;);</span>
         }
 
-<span class="fc" id="L17">        validarCampoObrigatorio(item.getNome(), &quot;Nome do Item&quot;);</span>
-<span class="fc" id="L18">        validarCampoObrigatorio(item.getDescricao(), &quot;Descrição&quot;);</span>
+<span class="fc" id="L21">        validarCampoObrigatorio(item.getNome(), &quot;Nome do Item&quot;);</span>
+<span class="fc" id="L22">        validarCampoObrigatorio(item.getDescricao(), &quot;Descrição&quot;);</span>
 
-<span class="fc" id="L20">        validarPreco(item.getPreco());</span>
+<span class="fc" id="L24">        validarPreco(item.getPreco());</span>
 
-<span class="fc bfc" id="L22" title="All 2 branches covered.">        if (item.getRestauranteId() == null) {</span>
-<span class="fc" id="L23">            throw new ValidacaoRegraNegocioException(&quot;O item deve pertencer a um restaurante válido (ID não pode ser nulo).&quot;);</span>
+<span class="fc bfc" id="L26" title="All 2 branches covered.">        if (item.getRestauranteId() == null) {</span>
+<span class="fc" id="L27">            throw new ValidacaoRegraNegocioException(&quot;O item deve pertencer a um restaurante válido (ID não pode ser nulo).&quot;);</span>
         }
-<span class="fc" id="L25">    }</span>
+<span class="fc" id="L29">    }</span>
 
     private static void validarPreco(BigDecimal preco) {
-<span class="fc bfc" id="L28" title="All 4 branches covered.">        if (preco == null || preco.compareTo(BigDecimal.ZERO) &lt;= 0) {</span>
-<span class="fc" id="L29">            throw new ValidacaoRegraNegocioException(&quot;O preço do item deve ser obrigatório e maior que zero.&quot;);</span>
+<span class="fc bfc" id="L32" title="All 4 branches covered.">        if (preco == null || preco.compareTo(BigDecimal.ZERO) &lt;= 0) {</span>
+<span class="fc" id="L33">            throw new ValidacaoRegraNegocioException(&quot;O preço do item deve ser obrigatório e maior que zero.&quot;);</span>
         }
-<span class="fc" id="L31">    }</span>
+<span class="fc" id="L35">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

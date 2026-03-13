@@ -22,10 +22,10 @@ public class AtualizarUsuarioUseCase {
 
     public Usuario executar(UUID id, AtualizarUsuarioInput input) {
         Usuario usuario = usuarioGateway.buscarPorId(id)
-                .orElseThrow(() -> new UsuarioNaoEncontradoException());
+                .orElseThrow(UsuarioNaoEncontradoException::new);
 
         TipoUsuario tipoUsuario = tipoUsuarioGateway.buscarPorId(input.tipoUsuarioId())
-                .orElseThrow(() -> new TipoUsuarioNaoEncontradoException());
+                .orElseThrow(TipoUsuarioNaoEncontradoException::new);
 
         usuario.atualizar(input.nome(), tipoUsuario);
 

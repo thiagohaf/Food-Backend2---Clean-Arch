@@ -20,7 +20,7 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
-public class CriarRestauranteUseCaseTest {
+class CriarRestauranteUseCaseTest {
     @Mock
     private RestauranteGateway restauranteGateway;
 

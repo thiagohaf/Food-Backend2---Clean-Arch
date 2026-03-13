@@ -12,7 +12,7 @@ import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class UsuarioCoreMapperTest {
+class UsuarioCoreMapperTest {
 
     private final UsuarioCoreMapper mapper = new UsuarioCoreMapper();
 

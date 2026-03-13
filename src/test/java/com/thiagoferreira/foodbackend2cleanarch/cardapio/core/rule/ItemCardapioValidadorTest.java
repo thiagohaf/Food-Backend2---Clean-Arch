@@ -10,7 +10,7 @@ import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class ItemCardapioValidadorTest {
+class ItemCardapioValidadorTest {
 
     private ItemCardapio criarItemValido() {
        return new ItemCardapio(
@@ -44,51 +44,46 @@ public class ItemCardapioValidadorTest {
     @Test
     @DisplayName("Deve lançar exceção quando o nome for nulo ou vazio")
     void deveLancarExcecaoQuandoNomeNulo() {
+        String nomeNulo = null;
+        String descricao = "Pão brioche, blend de 180g e queijo cheddar";
+        BigDecimal preco = new BigDecimal("35.90");
+        UUID categoriaId = UUID.randomUUID();
 
         ValidacaoRegraNegocioException exceptionNull = assertThrows(
                 ValidacaoRegraNegocioException.class,
-                () -> new ItemCardapio(
-                        null,
-                        "Pão brioche, blend de 180g e queijo cheddar",
-                        new BigDecimal("35.90"),
-                        true,
-                        null,
-                        UUID.randomUUID()
-                )
+                () -> new ItemCardapio(nomeNulo, descricao, preco, true, null, categoriaId)
         );
+
         assertEquals("O campo Nome do Item não pode ser nulo ou vazio.", exceptionNull.getMessage());
     }
 
     @Test
     @DisplayName("Deve lançar exceção quando o nome for nulo ou vazio")
     void deveLancarExcecaoQuandoNomeVazio() {
+        String nomeVazio = "    ";
+        String descricao = "Pão brioche, blend de 180g e queijo cheddar";
+        BigDecimal preco = new BigDecimal("35.90");
+        UUID categoriaId = UUID.randomUUID();
+
         ValidacaoRegraNegocioException exceptionVazio = assertThrows(
                 ValidacaoRegraNegocioException.class,
-                () -> new ItemCardapio(
-                        "    ",
-                        "Pão brioche, blend de 180g e queijo cheddar",
-                        new BigDecimal("35.90"),
-                        true,
-                        null,
-                        UUID.randomUUID()
-                )
+                () -> new ItemCardapio(nomeVazio, descricao, preco, true, null, categoriaId)
         );
+
         assertEquals("O campo Nome do Item não pode ser nulo ou vazio.", exceptionVazio.getMessage());
     }
 
     @Test
     @DisplayName("Deve lançar exceção quando a descrição for nula ou vazia")
     void deveLancarExcecaoQuandoDescricaoNula() {
+        String nome = "Hambúrguer Artesanal";
+        String descricaoNula = null;
+        BigDecimal preco = new BigDecimal("35.90");
+        UUID categoriaId = UUID.randomUUID();
+
         ValidacaoRegraNegocioException exception = assertThrows(
                 ValidacaoRegraNegocioException.class,
-                () -> new ItemCardapio(
-                        "Hambúrguer Artesanal",
-                        null,
-                        new BigDecimal("35.90"),
-                        true,
-                        null,
-                        UUID.randomUUID()
-                )
+                () -> new ItemCardapio(nome, descricaoNula, preco, true, null, categoriaId)
         );
 
         assertEquals("O campo Descrição não pode ser nulo ou vazio.", exception.getMessage());
@@ -97,16 +92,14 @@ public class ItemCardapioValidadorTest {
     @Test
     @DisplayName("Deve lançar exceção quando a descrição for nula ou vazia")
     void deveLancarExcecaoQuandoDescricaoVazia() {
+        String nome = "Hambúrguer Artesanal";
+        String descricaoVazia = ""; // O alvo do teste
+        BigDecimal preco = new BigDecimal("35.90");
+        UUID categoriaId = UUID.randomUUID();
+
         ValidacaoRegraNegocioException exception = assertThrows(
                 ValidacaoRegraNegocioException.class,
-                () -> new ItemCardapio(
-                        "Hambúrguer Artesanal",
-                        "",
-                        new BigDecimal("35.90"),
-                        true,
-                        null,
-                        UUID.randomUUID()
-                )
+                () -> new ItemCardapio(nome, descricaoVazia, preco, true, null, categoriaId)
         );
 
         assertEquals("O campo Descrição não pode ser nulo ou vazio.", exception.getMessage());
@@ -116,14 +109,15 @@ public class ItemCardapioValidadorTest {
     @DisplayName("Deve lançar exceção quando o preço for nulo, zero ou negativo")
     void deveLancarExcecaoQuandoPrecoInvalido() {
         ItemCardapio item = criarItemValido();
+        BigDecimal precoZero = BigDecimal.ZERO;
+        BigDecimal precoNegativo = new BigDecimal("-10.00");
 
         assertThrows(ValidacaoRegraNegocioException.class, () -> item.alterarPreco(null));
-
-        assertThrows(ValidacaoRegraNegocioException.class, () -> item.alterarPreco(BigDecimal.ZERO));
+        assertThrows(ValidacaoRegraNegocioException.class, () -> item.alterarPreco(precoZero));
 
         ValidacaoRegraNegocioException exception = assertThrows(
                 ValidacaoRegraNegocioException.class,
-                () -> item.alterarPreco(new BigDecimal("-10.00"))
+                () -> item.alterarPreco(precoNegativo)
         );
 
         assertEquals("O preço do item deve ser obrigatório e maior que zero.", exception.getMessage());
@@ -132,16 +126,14 @@ public class ItemCardapioValidadorTest {
     @Test
     @DisplayName("Deve lançar exceção quando restauranteId for nulo")
     void deveLancarExcecaoQuandoRestauranteIdNulo() {
+        String nome = "Hambúrguer Artesanal";
+        String descricao = "Pão brioche, blend de 180g e queijo cheddar";
+        BigDecimal preco = new BigDecimal("35.90");
+        UUID restauranteIdNulo = null;
+
         ValidacaoRegraNegocioException exception = assertThrows(
                 ValidacaoRegraNegocioException.class,
-                () -> new ItemCardapio(
-                        "Hambúrguer Artesanal",
-                        "Pão brioche, blend de 180g e queijo cheddar",
-                        new BigDecimal("35.90"),
-                        true,
-                        null,
-                        null
-                )
+                () -> new ItemCardapio(nome, descricao, preco, true, null, restauranteIdNulo)
         );
 
         assertEquals("O item deve pertencer a um restaurante válido (ID não pode ser nulo).", exception.getMessage());
@@ -172,8 +164,10 @@ public class ItemCardapioValidadorTest {
                 true, "/img/hamburguer.png", UUID.randomUUID()
         );
 
+        BigDecimal precoInvalido = new BigDecimal("-5.00");
+
         assertThrows(ValidacaoRegraNegocioException.class, () ->
-                item.atualizar("X-Salada", "Descricao", new BigDecimal("-5.00"), false, "/img/foto.png")
+                item.atualizar("X-Salada", "Descricao", precoInvalido, false, "/img/foto.png")
         );
     }
 }

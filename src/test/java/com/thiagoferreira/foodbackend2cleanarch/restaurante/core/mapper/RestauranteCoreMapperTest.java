@@ -3,7 +3,6 @@ package com.thiagoferreira.foodbackend2cleanarch.restaurante.core.mapper;
 import com.thiagoferreira.foodbackend2cleanarch.restaurante.core.domain.Restaurante;
 import com.thiagoferreira.foodbackend2cleanarch.restaurante.core.dto.CriarRestauranteInput;
 import com.thiagoferreira.foodbackend2cleanarch.restaurante.core.exception.RestauranteCoreMapperException;
-import com.thiagoferreira.foodbackend2cleanarch.restaurante.core.mapper.RestauranteCoreMapper;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -11,7 +10,7 @@ import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class RestauranteCoreMapperTest {
+class RestauranteCoreMapperTest {
     private final RestauranteCoreMapper mapper = new RestauranteCoreMapper();
 
     @Test

@@ -23,7 +23,7 @@ public class CriarUsuarioUseCase {
     public Usuario executar(CriarUsuarioInput input) {
 
         TipoUsuario tipoUsuarioEncontrado = tipoUsuarioGateway.buscarPorId(input.tipoUsuarioId())
-                .orElseThrow(() -> new TipoUsuarioNaoEncontradoException());
+                .orElseThrow(TipoUsuarioNaoEncontradoException::new);
 
         Usuario novoUsuario = mapper.toDomain(input, tipoUsuarioEncontrado);
 

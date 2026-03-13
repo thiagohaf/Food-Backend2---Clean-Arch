@@ -9,7 +9,7 @@ import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class TipoUsuarioValidadorTest {
+class TipoUsuarioValidadorTest {
     @Test
     @DisplayName("Deve instanciar TipoUsuario com sucesso quando os dados forem válidos")
     void deveCriarTipoUsuarioValido() {
@@ -24,20 +24,28 @@ public class TipoUsuarioValidadorTest {
     @Test
     @DisplayName("Deve lançar exceção quando o nome do TipoUsuario for nulo")
     void deveLancarExcecaoQuandoNomeNulo() {
+        UUID idAleatorio = UUID.randomUUID();
+        String nomeNulo = null;
+
         ValidacaoRegraNegocioException exception = assertThrows(
                 ValidacaoRegraNegocioException.class,
-                () -> new TipoUsuario(UUID.randomUUID(), null)
+                () -> new TipoUsuario(idAleatorio, nomeNulo)
         );
+
         assertEquals("O campo Nome do Tipo não pode ser nulo ou vazio.", exception.getMessage());
     }
 
     @Test
     @DisplayName("Deve lançar exceção quando o nome do TipoUsuario for vazio ou espaços")
     void deveLancarExcecaoQuandoNomeVazio() {
+        UUID idAleatorio = UUID.randomUUID();
+        String nomeComEspacos = "   ";
+
         ValidacaoRegraNegocioException exception = assertThrows(
                 ValidacaoRegraNegocioException.class,
-                () -> new TipoUsuario(UUID.randomUUID(), "   ")
+                () -> new TipoUsuario(idAleatorio, nomeComEspacos)
         );
+
         assertEquals("O campo Nome do Tipo não pode ser nulo ou vazio.", exception.getMessage());
     }
 

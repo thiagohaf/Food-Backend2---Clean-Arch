@@ -7,22 +7,21 @@ public class ItemCardapioCoreMapperException extends SystemBaseException {
     private static final String MESSAGE = &quot;O input para criação de ItemCardapio não pode ser nulo.&quot;;//NOSONAR
 <span class="fc" id="L8">    private static final Integer HTTP_STATUS = 422;//NOSONAR</span>
 
-<span class="fc" id="L10">    public ItemCardapioCoreMapperException() {</span>
-<span class="fc" id="L11">    }</span>
+<span class="fc" id="L10">    public ItemCardapioCoreMapperException() {} //NOSONAR</span>
 
     @Override
     public String getCode() {
-<span class="nc" id="L15">        return CODE;</span>
+<span class="nc" id="L14">        return CODE;</span>
     }
 
     @Override
     public Integer getHttpStatus() {
-<span class="nc" id="L20">        return HTTP_STATUS;</span>
+<span class="nc" id="L19">        return HTTP_STATUS;</span>
     }
 
     @Override
     public String getMessage() {
-<span class="nc" id="L25">        return MESSAGE;</span>
+<span class="nc" id="L24">        return MESSAGE;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

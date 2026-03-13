@@ -16,6 +16,6 @@ public class BuscarUsuarioPorIdUseCase {
 
     public Usuario buscarPorId(UUID id) {
         return usuarioGateway.buscarPorId(id)
-                .orElseThrow(() -> new UsuarioNaoEncontradoException());
+                .orElseThrow(UsuarioNaoEncontradoException::new);
     }
 }

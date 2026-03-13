@@ -17,7 +17,7 @@ public class AtualizarItemCardapioUseCase {
 
     public ItemCardapio executar(UUID id, AtualizarItemCardapioInput input) {
         ItemCardapio item = itemCardapioGateway.buscarPorId(id)
-                .orElseThrow(() -> new ItemCardapioNaoEncontradoException());
+                .orElseThrow(ItemCardapioNaoEncontradoException::new);
 
         item.atualizar(
                 input.nome(),

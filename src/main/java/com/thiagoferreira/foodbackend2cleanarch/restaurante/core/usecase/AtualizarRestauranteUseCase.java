@@ -18,7 +18,7 @@ public class AtualizarRestauranteUseCase {
     public Restaurante executar(UUID id, AtualizarRestauranteInput input) {
 
         Restaurante restaurante = restauranteGateway.buscarPorId(id)
-                .orElseThrow(() -> new RestauranteNaoEncontradoException());
+                .orElseThrow(RestauranteNaoEncontradoException::new);
 
         restaurante.atualizar(
                 input.nome(),

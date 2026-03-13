@@ -7,6 +7,10 @@ import static com.thiagoferreira.foodbackend2cleanarch.util.rule.ValidadorBase.v
 
 public class RestauranteValidador {
 
+    private RestauranteValidador() {
+        /* esta classe não deve ser instanciada */
+    }
+
     public static void validar(Restaurante restaurante) {
         validarCampoObrigatorio(restaurante.getNome(), "Nome do Restaurante");
         validarCampoObrigatorio(restaurante.getEndereco(), "Endereco");
