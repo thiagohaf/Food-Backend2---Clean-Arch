@@ -13,6 +13,9 @@
 /Users/thiagoferreira/Documents/FIAP/Fase 2/projeto/Food Backend2 - Clean Arch/src/test/java/com/thiagoferreira/foodbackend2cleanarch/restaurante/core/usecase/CriarRestauranteUseCaseTest.java
 /Users/thiagoferreira/Documents/FIAP/Fase 2/projeto/Food Backend2 - Clean Arch/src/test/java/com/thiagoferreira/foodbackend2cleanarch/restaurante/core/usecase/ExcluirRestauranteUseCaseTest.java
 /Users/thiagoferreira/Documents/FIAP/Fase 2/projeto/Food Backend2 - Clean Arch/src/test/java/com/thiagoferreira/foodbackend2cleanarch/restaurante/core/usecase/ListarRestaurantesUseCaseTest.java
+/Users/thiagoferreira/Documents/FIAP/Fase 2/projeto/Food Backend2 - Clean Arch/src/test/java/com/thiagoferreira/foodbackend2cleanarch/restaurante/infra/controller/RestauranteControllerTest.java
+/Users/thiagoferreira/Documents/FIAP/Fase 2/projeto/Food Backend2 - Clean Arch/src/test/java/com/thiagoferreira/foodbackend2cleanarch/restaurante/infra/gateway/RestauranteGatewayImplTest.java
+/Users/thiagoferreira/Documents/FIAP/Fase 2/projeto/Food Backend2 - Clean Arch/src/test/java/com/thiagoferreira/foodbackend2cleanarch/restaurante/infra/persistence/repository/RestauranteRepositoryTest.java
 /Users/thiagoferreira/Documents/FIAP/Fase 2/projeto/Food Backend2 - Clean Arch/src/test/java/com/thiagoferreira/foodbackend2cleanarch/usuario/core/mapper/TipoUsuarioCoreMapperTest.java
 /Users/thiagoferreira/Documents/FIAP/Fase 2/projeto/Food Backend2 - Clean Arch/src/test/java/com/thiagoferreira/foodbackend2cleanarch/usuario/core/mapper/UsuarioCoreMapperTest.java
 /Users/thiagoferreira/Documents/FIAP/Fase 2/projeto/Food Backend2 - Clean Arch/src/test/java/com/thiagoferreira/foodbackend2cleanarch/usuario/core/rule/TipoUsuarioValidadorTest.java
@@ -25,3 +28,4 @@
 /Users/thiagoferreira/Documents/FIAP/Fase 2/projeto/Food Backend2 - Clean Arch/src/test/java/com/thiagoferreira/foodbackend2cleanarch/usuario/core/usecase/ExcluirTipoUsuarioUseCaseTest.java
 /Users/thiagoferreira/Documents/FIAP/Fase 2/projeto/Food Backend2 - Clean Arch/src/test/java/com/thiagoferreira/foodbackend2cleanarch/usuario/core/usecase/ExcluirUsuarioUseCaseTest.java
 /Users/thiagoferreira/Documents/FIAP/Fase 2/projeto/Food Backend2 - Clean Arch/src/test/java/com/thiagoferreira/foodbackend2cleanarch/usuario/core/usecase/ListarTiposUsuarioUseCaseTest.java
+/Users/thiagoferreira/Documents/FIAP/Fase 2/projeto/Food Backend2 - Clean Arch/src/test/java/com/thiagoferreira/foodbackend2cleanarch/util/config/GlobalExceptionHandlerTest.java

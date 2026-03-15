@@ -3,6 +3,7 @@ food-backend2-clean-arch,com.thiagoferreira.foodbackend2cleanarch.cardapio.core.
 food-backend2-clean-arch,com.thiagoferreira.foodbackend2cleanarch.cardapio.core.exception,ItemCardapioExistenteException,6,7,0,0,3,2,3,2,3,2
 food-backend2-clean-arch,com.thiagoferreira.foodbackend2cleanarch.cardapio.core.exception,RestauranteNaoEncontradoException,6,7,0,0,3,3,3,2,3,2
 food-backend2-clean-arch,com.thiagoferreira.foodbackend2cleanarch.cardapio.core.exception,ItemCardapioCoreMapperException,6,7,0,0,3,2,3,2,3,2
+food-backend2-clean-arch,com.thiagoferreira.foodbackend2cleanarch.restaurante.infra.controller,RestauranteController,0,98,0,0,0,33,0,6,0,6
 food-backend2-clean-arch,com.thiagoferreira.foodbackend2cleanarch.usuario.core.usecase,CriarTipoUsuarioUseCase,0,29,0,2,0,8,0,3,0,2
 food-backend2-clean-arch,com.thiagoferreira.foodbackend2cleanarch.usuario.core.usecase,CriarUsuarioUseCase,0,32,0,0,0,9,0,2,0,2
 food-backend2-clean-arch,com.thiagoferreira.foodbackend2cleanarch.usuario.core.usecase,ExcluirUsuarioUseCase,0,21,0,2,0,7,0,3,0,2
@@ -13,6 +14,8 @@ food-backend2-clean-arch,com.thiagoferreira.foodbackend2cleanarch.usuario.core.u
 food-backend2-clean-arch,com.thiagoferreira.foodbackend2cleanarch.usuario.core.usecase,ListarTiposUsuarioUseCase,0,10,0,0,0,4,0,2,0,2
 food-backend2-clean-arch,com.thiagoferreira.foodbackend2cleanarch.usuario.core.usecase,ExcluirTipoUsuarioUseCase,0,21,0,2,0,7,0,3,0,2
 food-backend2-clean-arch,com.thiagoferreira.foodbackend2cleanarch.usuario.core.usecase,AtualizarUsuarioUseCase,0,36,0,0,0,10,0,2,0,2
+food-backend2-clean-arch,com.thiagoferreira.foodbackend2cleanarch.restaurante.infra.gateway,RestauranteGatewayImpl,0,71,0,0,0,14,0,7,0,7
+food-backend2-clean-arch,com.thiagoferreira.foodbackend2cleanarch.restaurante.infra.persistence.mapper,RestauranteMapperImpl,92,3,4,0,32,1,4,1,2,1
 food-backend2-clean-arch,com.thiagoferreira.foodbackend2cleanarch.usuario.core.exception,UsuarioCoreMapperException,6,7,0,0,3,3,3,2,3,2
 food-backend2-clean-arch,com.thiagoferreira.foodbackend2cleanarch.usuario.core.exception,TipoUsuarioCoreMapperException,6,7,0,0,3,3,3,2,3,2
 food-backend2-clean-arch,com.thiagoferreira.foodbackend2cleanarch.usuario.core.exception,TipoUsuarioNaoEncontradoException,6,7,0,0,3,2,3,2,3,2
@@ -31,7 +34,7 @@ food-backend2-clean-arch,com.thiagoferreira.foodbackend2cleanarch.usuario.core.r
 food-backend2-clean-arch,com.thiagoferreira.foodbackend2cleanarch.usuario.core.domain,Usuario,0,35,0,0,0,15,0,6,0,6
 food-backend2-clean-arch,com.thiagoferreira.foodbackend2cleanarch.usuario.core.domain,TipoUsuario,0,26,0,0,0,12,0,5,0,5
 food-backend2-clean-arch,com.thiagoferreira.foodbackend2cleanarch.usuario.core.mapper,TipoUsuarioCoreMapper,0,17,0,2,0,6,0,3,0,2
-food-backend2-clean-arch,com.thiagoferreira.foodbackend2cleanarch.usuario.core.mapper,UsuarioCoreMapper,0,24,0,4,0,8,0,4,0,2
+food-backend2-clean-arch,com.thiagoferreira.foodbackend2cleanarch.usuario.core.mapper,UsuarioCoreMapper,0,24,0,4,0,9,0,4,0,2
 food-backend2-clean-arch,com.thiagoferreira.foodbackend2cleanarch.restaurante.core.exception,RestauranteCoreMapperException,6,7,0,0,3,3,3,2,3,2
 food-backend2-clean-arch,com.thiagoferreira.foodbackend2cleanarch.restaurante.core.exception,RestauranteExistenteException,6,7,0,0,3,3,3,2,3,2
 food-backend2-clean-arch,com.thiagoferreira.foodbackend2cleanarch.restaurante.core.exception,RestauranteDonoNaoExisteException,6,7,0,0,3,3,3,2,3,2
