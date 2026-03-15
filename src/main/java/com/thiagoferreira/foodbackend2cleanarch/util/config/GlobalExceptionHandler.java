@@ -8,8 +8,11 @@ import com.thiagoferreira.foodbackend2cleanarch.util.exception.ValidacaoRegraNeg
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ProblemDetail;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+
+import java.util.stream.Collectors;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
@@ -17,6 +20,16 @@ public class GlobalExceptionHandler {
     private static final String TITLE_VALIDACAO = "Validação de regra de negócio";
     private static final String TITLE_NOT_FOUND = "Recurso não encontrado";
     private static final String DETAIL_ERRO_INESPERADO = "Erro inesperado";
+
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResponseEntity<ProblemDetail> handleMethodArgumentNotValid(MethodArgumentNotValidException ex) {
+        String detail = ex.getBindingResult().getFieldErrors().stream()
+                .map(err -> err.getField() + ": " + (err.getDefaultMessage() != null ? err.getDefaultMessage() : "inválido"))
+                .collect(Collectors.joining("; "));
+        ProblemDetail problem = ProblemDetail.forStatusAndDetail(HttpStatus.BAD_REQUEST, detail);
+        problem.setTitle("Erro de validação");
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(problem);
+    }
 
     @ExceptionHandler(ValidacaoRegraNegocioException.class)
     public ResponseEntity<ProblemDetail> handleValidacaoRegraNegocio(ValidacaoRegraNegocioException ex) {
