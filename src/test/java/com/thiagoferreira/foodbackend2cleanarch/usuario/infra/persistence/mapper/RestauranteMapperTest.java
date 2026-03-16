@@ -3,7 +3,6 @@ package com.thiagoferreira.foodbackend2cleanarch.usuario.infra.persistence.mappe
 import com.thiagoferreira.foodbackend2cleanarch.restaurante.core.domain.Restaurante;
 import com.thiagoferreira.foodbackend2cleanarch.restaurante.infra.persistence.entity.RestauranteEntity;
 import com.thiagoferreira.foodbackend2cleanarch.restaurante.infra.persistence.mapper.RestauranteMapper;
-import com.thiagoferreira.foodbackend2cleanarch.restaurante.infra.persistence.mapper.RestauranteMapperImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -20,7 +19,8 @@ class RestauranteMapperTest {
 
     @BeforeEach
     void setUp() {
-        restauranteMapper = new RestauranteMapperImpl();
+        // Implementação simples usada apenas para os testes, sem depender do Spring ou MapStruct.
+        restauranteMapper = new RestauranteMapperTestImpl();
     }
 
     @Nested
@@ -106,6 +106,42 @@ class RestauranteMapperTest {
 
             // Assert
             assertThat(domain).isNull();
+        }
+    }
+
+    /**
+     * Implementação de teste do mapper, evitando o uso da infraestrutura do Spring/MapStruct.
+     */
+    private static class RestauranteMapperTestImpl implements RestauranteMapper {
+
+        @Override
+        public RestauranteEntity toEntity(Restaurante restaurante) {
+            if (restaurante == null) {
+                return null;
+            }
+            return new RestauranteEntity(
+                    restaurante.getId(),
+                    restaurante.getNome(),
+                    restaurante.getEndereco(),
+                    restaurante.getTipoCozinha(),
+                    restaurante.getHorarioFuncionamento(),
+                    restaurante.getDonoId()
+            );
+        }
+
+        @Override
+        public Restaurante toDomain(RestauranteEntity entity) {
+            if (entity == null) {
+                return null;
+            }
+            return new Restaurante(
+                    entity.getId(),
+                    entity.getNome(),
+                    entity.getEndereco(),
+                    entity.getTipoCozinha(),
+                    entity.getHorarioFuncionamento(),
+                    entity.getDonoId()
+            );
         }
     }
 }

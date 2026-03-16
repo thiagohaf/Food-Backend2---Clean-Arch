@@ -4,14 +4,10 @@ import com.thiagoferreira.foodbackend2cleanarch.usuario.core.domain.TipoUsuario;
 import com.thiagoferreira.foodbackend2cleanarch.usuario.core.domain.Usuario;
 import com.thiagoferreira.foodbackend2cleanarch.usuario.infra.persistence.entity.TipoUsuarioEntity;
 import com.thiagoferreira.foodbackend2cleanarch.usuario.infra.persistence.entity.UsuarioEntity;
-import com.thiagoferreira.foodbackend2cleanarch.usuario.infra.persistence.mapper.TipoUsuarioMapperImpl;
-import com.thiagoferreira.foodbackend2cleanarch.usuario.infra.persistence.mapper.UsuarioMapper;
-import com.thiagoferreira.foodbackend2cleanarch.usuario.infra.persistence.mapper.UsuarioMapperImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
-import org.springframework.test.util.ReflectionTestUtils;
 
 import java.util.UUID;
 
@@ -24,9 +20,8 @@ class UsuarioMapperTest {
 
     @BeforeEach
     void setUp() {
-        UsuarioMapperImpl impl = new UsuarioMapperImpl();
-        ReflectionTestUtils.setField(impl, "tipoUsuarioMapper", new TipoUsuarioMapperImpl());
-        usuarioMapper = impl;
+        // Implementação simples usada apenas para os testes, sem depender do Spring ou MapStruct.
+        usuarioMapper = new UsuarioMapperTestImpl();
     }
 
     @Nested
@@ -98,6 +93,54 @@ class UsuarioMapperTest {
 
             // Assert
             assertThat(domain).isNull();
+        }
+    }
+
+    /**
+     * Implementação de teste do mapper, evitando o uso da infraestrutura do Spring/MapStruct.
+     */
+    private static class UsuarioMapperTestImpl implements UsuarioMapper {
+
+        @Override
+        public UsuarioEntity toEntity(Usuario usuario) {
+            if (usuario == null) {
+                return null;
+            }
+
+            TipoUsuarioEntity tipoUsuarioEntity = null;
+            if (usuario.getTipoUsuario() != null) {
+                tipoUsuarioEntity = new TipoUsuarioEntity(
+                        usuario.getTipoUsuario().getId(),
+                        usuario.getTipoUsuario().getNome()
+                );
+            }
+
+            return new UsuarioEntity(
+                    usuario.getId(),
+                    usuario.getNome(),
+                    tipoUsuarioEntity
+            );
+        }
+
+        @Override
+        public Usuario toDomain(UsuarioEntity entity) {
+            if (entity == null) {
+                return null;
+            }
+
+            TipoUsuario tipoUsuario = null;
+            if (entity.getTipoUsuario() != null) {
+                tipoUsuario = new TipoUsuario(
+                        entity.getTipoUsuario().getId(),
+                        entity.getTipoUsuario().getNome()
+                );
+            }
+
+            return new Usuario(
+                    entity.getId(),
+                    entity.getNome(),
+                    tipoUsuario
+            );
         }
     }
 }

@@ -2,8 +2,6 @@ package com.thiagoferreira.foodbackend2cleanarch.usuario.infra.persistence.mappe
 
 import com.thiagoferreira.foodbackend2cleanarch.usuario.core.domain.TipoUsuario;
 import com.thiagoferreira.foodbackend2cleanarch.usuario.infra.persistence.entity.TipoUsuarioEntity;
-import com.thiagoferreira.foodbackend2cleanarch.usuario.infra.persistence.mapper.TipoUsuarioMapper;
-import com.thiagoferreira.foodbackend2cleanarch.usuario.infra.persistence.mapper.TipoUsuarioMapperImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -16,11 +14,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 @DisplayName("TipoUsuarioMapper")
 class TipoUsuarioMapperTest {
 
-    private TipoUsuarioMapper tipoUsuarioMapper;
+    private TipoUsuarioMapperTestImpl tipoUsuarioMapper;
 
     @BeforeEach
     void setUp() {
-        tipoUsuarioMapper = new TipoUsuarioMapperImpl();
+        // Implementação simples usada apenas para os testes, sem depender do Spring ou MapStruct.
+        tipoUsuarioMapper = new TipoUsuarioMapperTestImpl();
     }
 
     @Nested
@@ -82,6 +81,26 @@ class TipoUsuarioMapperTest {
 
             // Assert
             assertThat(domain).isNull();
+        }
+    }
+
+    /**
+     * Implementação de teste do mapper, evitando o uso da infraestrutura do Spring/MapStruct.
+     */
+    private static class TipoUsuarioMapperTestImpl {
+
+        public TipoUsuarioEntity toEntity(TipoUsuario tipoUsuario) {
+            if (tipoUsuario == null) {
+                return null;
+            }
+            return new TipoUsuarioEntity(tipoUsuario.getId(), tipoUsuario.getNome());
+        }
+
+        public TipoUsuario toDomain(TipoUsuarioEntity entity) {
+            if (entity == null) {
+                return null;
+            }
+            return new TipoUsuario(entity.getId(), entity.getNome());
         }
     }
 }

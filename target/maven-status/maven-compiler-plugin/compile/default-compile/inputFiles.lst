@@ -14,6 +14,14 @@
 /Users/thiagoferreira/Documents/FIAP/Fase 2/projeto/Food Backend2 - Clean Arch/src/main/java/com/thiagoferreira/foodbackend2cleanarch/cardapio/core/usecase/CriarItemCardapioUseCase.java
 /Users/thiagoferreira/Documents/FIAP/Fase 2/projeto/Food Backend2 - Clean Arch/src/main/java/com/thiagoferreira/foodbackend2cleanarch/cardapio/core/usecase/ExcluirItemCardapioUseCase.java
 /Users/thiagoferreira/Documents/FIAP/Fase 2/projeto/Food Backend2 - Clean Arch/src/main/java/com/thiagoferreira/foodbackend2cleanarch/cardapio/core/usecase/ListarItensCardapioPorRestauranteUseCase.java
+/Users/thiagoferreira/Documents/FIAP/Fase 2/projeto/Food Backend2 - Clean Arch/src/main/java/com/thiagoferreira/foodbackend2cleanarch/cardapio/infra/config/CardapioConfig.java
+/Users/thiagoferreira/Documents/FIAP/Fase 2/projeto/Food Backend2 - Clean Arch/src/main/java/com/thiagoferreira/foodbackend2cleanarch/cardapio/infra/controller/ItemCardapioController.java
+/Users/thiagoferreira/Documents/FIAP/Fase 2/projeto/Food Backend2 - Clean Arch/src/main/java/com/thiagoferreira/foodbackend2cleanarch/cardapio/infra/dto/ItemCardapioRequest.java
+/Users/thiagoferreira/Documents/FIAP/Fase 2/projeto/Food Backend2 - Clean Arch/src/main/java/com/thiagoferreira/foodbackend2cleanarch/cardapio/infra/dto/ItemCardapioResponse.java
+/Users/thiagoferreira/Documents/FIAP/Fase 2/projeto/Food Backend2 - Clean Arch/src/main/java/com/thiagoferreira/foodbackend2cleanarch/cardapio/infra/gateway/ItemCardapioGatewayImpl.java
+/Users/thiagoferreira/Documents/FIAP/Fase 2/projeto/Food Backend2 - Clean Arch/src/main/java/com/thiagoferreira/foodbackend2cleanarch/cardapio/infra/persistence/entity/ItemCardapioEntity.java
+/Users/thiagoferreira/Documents/FIAP/Fase 2/projeto/Food Backend2 - Clean Arch/src/main/java/com/thiagoferreira/foodbackend2cleanarch/cardapio/infra/persistence/mapper/ItemCardapioMapper.java
+/Users/thiagoferreira/Documents/FIAP/Fase 2/projeto/Food Backend2 - Clean Arch/src/main/java/com/thiagoferreira/foodbackend2cleanarch/cardapio/infra/persistence/repository/ItemCardapioRepository.java
 /Users/thiagoferreira/Documents/FIAP/Fase 2/projeto/Food Backend2 - Clean Arch/src/main/java/com/thiagoferreira/foodbackend2cleanarch/restaurante/core/domain/Restaurante.java
 /Users/thiagoferreira/Documents/FIAP/Fase 2/projeto/Food Backend2 - Clean Arch/src/main/java/com/thiagoferreira/foodbackend2cleanarch/restaurante/core/dto/AtualizarRestauranteInput.java
 /Users/thiagoferreira/Documents/FIAP/Fase 2/projeto/Food Backend2 - Clean Arch/src/main/java/com/thiagoferreira/foodbackend2cleanarch/restaurante/core/dto/CriarRestauranteInput.java
