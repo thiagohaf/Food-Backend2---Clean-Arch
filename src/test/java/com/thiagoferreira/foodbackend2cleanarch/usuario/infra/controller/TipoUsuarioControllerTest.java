@@ -114,4 +114,59 @@ class TipoUsuarioControllerTest {
 
         verify(listarTiposUsuarioUseCase).listarTodos();
     }
+
+    @Test
+    @DisplayName("POST /api/v1/tipos-usuario com nome em branco deve retornar 400 Bad Request por validação")
+    void deveRetornar400BadRequestQuandoCriarComNomeEmBranco() throws Exception {
+        // Arrange
+        String body = """
+                {
+                    "nome": "   "
+                }
+                """;
+
+        // Act & Assert
+        mockMvc.perform(post("/api/v1/tipos-usuario")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(body))
+                .andExpect(status().isBadRequest());
+
+        verify(criarTipoUsuarioUseCase, org.mockito.Mockito.never()).executar(any());
+    }
+
+    @Test
+    @DisplayName("PUT /api/v1/tipos-usuario/{id} com nome em branco deve retornar 400 Bad Request por validação")
+    void deveRetornar400BadRequestQuandoAtualizarComNomeEmBranco() throws Exception {
+        // Arrange
+        UUID id = UUID.randomUUID();
+        String body = """
+                {
+                    "nome": "   "
+                }
+                """;
+
+        // Act & Assert
+        mockMvc.perform(put("/api/v1/tipos-usuario/{id}", id)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(body))
+                .andExpect(status().isBadRequest());
+
+        verify(atualizarTipoUsuarioUseCase, org.mockito.Mockito.never()).executar(any(), any());
+    }
+
+    @Test
+    @DisplayName("GET /api/v1/tipos-usuario/{id} deve retornar 404 Not Found quando tipo de usuário não existir")
+    void deveRetornar404QuandoTipoUsuarioNaoExistir() throws Exception {
+        // Arrange
+        UUID id = UUID.randomUUID();
+        when(buscarTipoUsuarioPorIdUseCase.buscarPorId(id))
+                .thenThrow(new com.thiagoferreira.foodbackend2cleanarch.usuario.core.exception.TipoUsuarioNaoEncontradoException());
+
+        // Act & Assert
+        mockMvc.perform(get("/api/v1/tipos-usuario/{id}", id))
+                .andExpect(status().isNotFound())
+                .andExpect(jsonPath("$.title").value("Recurso não encontrado"));
+
+        verify(buscarTipoUsuarioPorIdUseCase).buscarPorId(id);
+    }
 }

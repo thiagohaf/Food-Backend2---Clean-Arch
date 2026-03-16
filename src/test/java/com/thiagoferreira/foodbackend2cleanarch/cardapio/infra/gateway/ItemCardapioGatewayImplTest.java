@@ -18,6 +18,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
@@ -74,6 +75,71 @@ class ItemCardapioGatewayImplTest {
         verify(itemCardapioRepository).findByIdWithRestaurante(id);
         verify(itemCardapioRepository, never()).findById(any());
         verify(itemCardapioMapper).toDomain(entity);
+    }
+
+    @Test
+    @DisplayName("Deve retornar Optional vazio quando buscar item de cardápio por ID inexistente")
+    void deveRetornarOptionalVazioQuandoBuscarPorIdInexistente() {
+        // Arrange
+        UUID id = UUID.randomUUID();
+        when(itemCardapioRepository.findByIdWithRestaurante(id)).thenReturn(Optional.empty());
+
+        // Act
+        Optional<ItemCardapio> resultado = itemCardapioGateway.buscarPorId(id);
+
+        // Assert
+        assertThat(resultado).isEmpty();
+        verify(itemCardapioRepository).findByIdWithRestaurante(id);
+        verify(itemCardapioMapper, never()).toDomain(any());
+    }
+
+    @Test
+    @DisplayName("Deve propagar DataAccessException quando repositório falhar ao salvar item de cardápio")
+    void devePropagarExcecaoQuandoRepositorioLancarErroAoSalvarItemCardapio() {
+        // Arrange
+        UUID itemId = UUID.randomUUID();
+        UUID restauranteId = UUID.randomUUID();
+        ItemCardapio dominio = new ItemCardapio(
+                itemId,
+                "Pizza Margherita",
+                "Pizza clássica",
+                new BigDecimal("39.90"),
+                true,
+                null,
+                restauranteId
+        );
+
+        var restauranteRef = new com.thiagoferreira.foodbackend2cleanarch.restaurante.infra.persistence.entity.RestauranteEntity(
+                restauranteId,
+                "Ristorante Italiano",
+                "Rua A, 123",
+                "Italiana",
+                "18:00-23:00",
+                UUID.randomUUID()
+        );
+
+        ItemCardapioEntity entity = new ItemCardapioEntity(
+                itemId,
+                "Pizza Margherita",
+                "Pizza clássica",
+                new BigDecimal("39.90"),
+                "GERAL",
+                restauranteRef,
+                LocalDateTime.now()
+        );
+
+        when(restauranteRepository.getReferenceById(restauranteId)).thenReturn(restauranteRef);
+        when(itemCardapioMapper.toEntity(dominio, restauranteRef)).thenReturn(entity);
+        when(itemCardapioRepository.save(entity))
+                .thenThrow(new org.springframework.dao.DataIntegrityViolationException("erro de banco"));
+
+        // Act & Assert
+        assertThatThrownBy(() -> itemCardapioGateway.salvar(dominio))
+                .isInstanceOf(org.springframework.dao.DataAccessException.class);
+
+        verify(restauranteRepository).getReferenceById(restauranteId);
+        verify(itemCardapioMapper).toEntity(dominio, restauranteRef);
+        verify(itemCardapioRepository).save(entity);
     }
 }
 

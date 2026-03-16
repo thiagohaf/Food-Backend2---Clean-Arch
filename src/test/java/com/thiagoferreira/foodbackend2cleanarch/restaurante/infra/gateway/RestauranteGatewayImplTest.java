@@ -214,4 +214,24 @@ class RestauranteGatewayImplTest {
         // Assert
         assertFalse(resultado);
     }
+
+    @Test
+    @DisplayName("Deve propagar DataAccessException quando repositório falhar ao salvar restaurante")
+    void devePropagarExcecaoQuandoRepositorioLancarErroAoSalvarRestaurante() {
+        // Arrange
+        UUID id = UUID.randomUUID();
+        UUID donoId = UUID.randomUUID();
+        Restaurante dominio = new Restaurante(id, "Pizzaria", "Rua A", "Italiana", "18:00-23:00", donoId);
+        RestauranteEntity entity = new RestauranteEntity(id, "Pizzaria", "Rua A", "Italiana", "18:00-23:00", donoId);
+
+        when(restauranteMapper.toEntity(dominio)).thenReturn(entity);
+        when(restauranteRepository.save(entity))
+                .thenThrow(new org.springframework.dao.DataIntegrityViolationException("erro de banco"));
+
+        // Act & Assert
+        assertThrows(org.springframework.dao.DataAccessException.class, () -> restauranteGateway.salvar(dominio));
+
+        verify(restauranteMapper).toEntity(dominio);
+        verify(restauranteRepository).save(entity);
+    }
 }

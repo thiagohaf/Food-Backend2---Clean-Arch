@@ -25,6 +25,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.header;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -171,6 +172,71 @@ class ItemCardapioControllerTest {
                 .andExpect(jsonPath("$.preco").value(39.90))
                 .andExpect(jsonPath("$.categoria").value("GERAL"))
                 .andExpect(jsonPath("$.restauranteId").value(restauranteId.toString()));
+
+        verify(buscarItemCardapioPorIdUseCase).executar(id);
+    }
+
+    @Test
+    @DisplayName("PUT /api/v1/itens-cardapio/{id} com nome em branco deve retornar 400 Bad Request por validação")
+    void deveRetornar400BadRequestQuandoAtualizarComNomeEmBranco() throws Exception {
+        // Arrange
+        UUID id = UUID.randomUUID();
+        String body = """
+                {
+                    "nome": "   ",
+                    "descricao": "Hambúrguer artesanal",
+                    "preco": 25.50,
+                    "categoria": "LANCHE",
+                    "restauranteId": "%s"
+                }
+                """.formatted(UUID.randomUUID());
+
+        // Act & Assert
+        mockMvc.perform(put("/api/v1/itens-cardapio/{id}", id)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(body))
+                .andExpect(status().isBadRequest());
+
+        verify(atualizarItemCardapioUseCase, never()).executar(any(), any());
+    }
+
+    @Test
+    @DisplayName("PUT /api/v1/itens-cardapio/{id} com preço negativo deve retornar 400 Bad Request por validação")
+    void deveRetornar400BadRequestQuandoAtualizarComPrecoNegativo() throws Exception {
+        // Arrange
+        UUID id = UUID.randomUUID();
+        String body = """
+                {
+                    "nome": "Hambúrguer",
+                    "descricao": "Hambúrguer artesanal",
+                    "preco": -10.00,
+                    "categoria": "LANCHE",
+                    "restauranteId": "%s"
+                }
+                """.formatted(UUID.randomUUID());
+
+        // Act & Assert
+        mockMvc.perform(put("/api/v1/itens-cardapio/{id}", id)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(body))
+                .andExpect(status().isBadRequest());
+
+        verify(atualizarItemCardapioUseCase, never()).executar(any(), any());
+    }
+
+    @Test
+    @DisplayName("GET /api/v1/itens-cardapio/{id} deve retornar 404 Not Found quando item não existir")
+    void deveRetornar404QuandoItemCardapioNaoExistir() throws Exception {
+        // Arrange
+        UUID id = UUID.randomUUID();
+        when(buscarItemCardapioPorIdUseCase.executar(id))
+                .thenThrow(new com.thiagoferreira.foodbackend2cleanarch.cardapio.core.exception.ItemCardapioNaoEncontradoException());
+
+        // Act & Assert
+        mockMvc.perform(get("/api/v1/itens-cardapio/{id}", id))
+                .andExpect(status().isNotFound())
+                .andExpect(jsonPath("$.title").value("Recurso não encontrado"))
+                .andExpect(jsonPath("$.detail").value("Item do cardápio não encontrado."));
 
         verify(buscarItemCardapioPorIdUseCase).executar(id);
     }

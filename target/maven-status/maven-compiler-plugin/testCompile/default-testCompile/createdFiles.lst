@@ -1,3 +1,4 @@
+com/thiagoferreira/foodbackend2cleanarch/usuario/infra/persistence/mapper/RestauranteMapperTest$RestauranteMapperTestImpl.class
 com/thiagoferreira/foodbackend2cleanarch/usuario/core/mapper/TipoUsuarioCoreMapperTest.class
 com/thiagoferreira/foodbackend2cleanarch/restaurante/core/usecase/BuscarRestaurantePorIdUseCaseTest.class
 com/thiagoferreira/foodbackend2cleanarch/cardapio/core/usecase/AtualizarItemCardapioUseCaseTest.class
@@ -12,6 +13,7 @@ com/thiagoferreira/foodbackend2cleanarch/cardapio/infra/gateway/ItemCardapioGate
 com/thiagoferreira/foodbackend2cleanarch/cardapio/core/usecase/ExcluirItemCardapioUseCaseTest.class
 com/thiagoferreira/foodbackend2cleanarch/cardapio/core/usecase/BuscarItemCardapioPorIdUseCaseTest.class
 com/thiagoferreira/foodbackend2cleanarch/cardapio/core/rule/ItemCardapioValidadorTest.class
+com/thiagoferreira/foodbackend2cleanarch/usuario/infra/persistence/mapper/TipoUsuarioMapperTest$TipoUsuarioMapperTestImpl.class
 com/thiagoferreira/foodbackend2cleanarch/usuario/infra/persistence/mapper/UsuarioMapperTest$ToEntity.class
 com/thiagoferreira/foodbackend2cleanarch/cardapio/infra/persistence/mapper/ItemCardapioMapperTest.class
 com/thiagoferreira/foodbackend2cleanarch/restaurante/core/mapper/RestauranteCoreMapperTest.class
@@ -30,6 +32,7 @@ com/thiagoferreira/foodbackend2cleanarch/usuario/core/usecase/AtualizarTipoUsuar
 com/thiagoferreira/foodbackend2cleanarch/cardapio/infra/persistence/repository/ItemCardapioRepositoryTest.class
 com/thiagoferreira/foodbackend2cleanarch/restaurante/core/usecase/CriarRestauranteUseCaseTest.class
 com/thiagoferreira/foodbackend2cleanarch/util/config/GlobalExceptionHandlerTest.class
+com/thiagoferreira/foodbackend2cleanarch/usuario/infra/persistence/mapper/UsuarioMapperTest$UsuarioMapperTestImpl.class
 com/thiagoferreira/foodbackend2cleanarch/usuario/core/usecase/ExcluirTipoUsuarioUseCaseTest.class
 com/thiagoferreira/foodbackend2cleanarch/usuario/infra/persistence/mapper/TipoUsuarioMapperTest$ToEntity.class
 com/thiagoferreira/foodbackend2cleanarch/usuario/infra/persistence/repository/TipoUsuarioRepositoryTest.class
@@ -41,6 +44,7 @@ com/thiagoferreira/foodbackend2cleanarch/usuario/infra/persistence/mapper/Restau
 com/thiagoferreira/foodbackend2cleanarch/usuario/core/usecase/CriarTipoUsuarioUseCaseTest.class
 com/thiagoferreira/foodbackend2cleanarch/usuario/infra/persistence/repository/UsuarioRepositoryTest.class
 com/thiagoferreira/foodbackend2cleanarch/cardapio/infra/persistence/mapper/ItemCardapioMapperTest$ToEntity.class
+com/thiagoferreira/foodbackend2cleanarch/cardapio/infra/persistence/mapper/ItemCardapioMapperTest$ItemCardapioMapperTestImpl.class
 com/thiagoferreira/foodbackend2cleanarch/usuario/core/mapper/UsuarioCoreMapperTest.class
 com/thiagoferreira/foodbackend2cleanarch/usuario/core/usecase/AtualizarUsuarioUseCaseTest.class
 com/thiagoferreira/foodbackend2cleanarch/usuario/infra/persistence/mapper/TipoUsuarioMapperTest.class

@@ -24,8 +24,8 @@ public class ItemCardapioGatewayImpl implements ItemCardapioGateway {
 
     @Override
     public ItemCardapio salvar(ItemCardapio itemCardapio) {
-<span class="nc" id="L27">        RestauranteEntity restauranteRef = restauranteRepository.getReferenceById(itemCardapio.getRestauranteId());</span>
-<span class="nc" id="L28">        ItemCardapioEntity entity = itemCardapioMapper.toEntity(itemCardapio, restauranteRef);</span>
+<span class="fc" id="L27">        RestauranteEntity restauranteRef = restauranteRepository.getReferenceById(itemCardapio.getRestauranteId());</span>
+<span class="fc" id="L28">        ItemCardapioEntity entity = itemCardapioMapper.toEntity(itemCardapio, restauranteRef);</span>
 <span class="nc" id="L29">        ItemCardapioEntity saved = itemCardapioRepository.save(entity);</span>
 <span class="nc" id="L30">        return itemCardapioMapper.toDomain(saved);</span>
     }

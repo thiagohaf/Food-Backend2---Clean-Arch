@@ -174,4 +174,21 @@ class RestauranteControllerTest {
 
         verify(excluirRestauranteUseCase).executar(id);
     }
+
+    @Test
+    @DisplayName("GET /api/v1/restaurantes/{id} deve retornar 404 Not Found quando restaurante não existir")
+    void deveRetornar404QuandoRestauranteNaoExistir() throws Exception {
+        // Arrange
+        UUID id = UUID.randomUUID();
+        when(buscarRestaurantePorIdUseCase.executar(id))
+                .thenThrow(new com.thiagoferreira.foodbackend2cleanarch.cardapio.core.exception.RestauranteNaoEncontradoException());
+
+        // Act & Assert
+        mockMvc.perform(get("/api/v1/restaurantes/{id}", id))
+                .andExpect(status().isNotFound())
+                .andExpect(jsonPath("$.title").value("Recurso não encontrado"))
+                .andExpect(jsonPath("$.detail").value("Não é possível cadastrar o item. O restaurante informado não existe."));
+
+        verify(buscarRestaurantePorIdUseCase).executar(id);
+    }
 }

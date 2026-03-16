@@ -155,4 +155,23 @@ class TipoUsuarioGatewayImplTest {
         // Assert
         verify(tipoUsuarioRepository).deleteById(id);
     }
+
+    @Test
+    @DisplayName("Deve propagar DataAccessException quando repositório falhar ao salvar TipoUsuario")
+    void devePropagarExcecaoQuandoRepositorioLancarErroAoSalvarTipoUsuario() {
+        // Arrange
+        UUID id = UUID.randomUUID();
+        TipoUsuario dominio = new TipoUsuario(id, "Admin");
+        TipoUsuarioEntity entity = new TipoUsuarioEntity(id, "Admin");
+
+        when(tipoUsuarioMapper.toEntity(dominio)).thenReturn(entity);
+        when(tipoUsuarioRepository.save(entity))
+                .thenThrow(new org.springframework.dao.DataIntegrityViolationException("erro de banco"));
+
+        // Act & Assert
+        assertThrows(org.springframework.dao.DataAccessException.class, () -> tipoUsuarioGateway.salvar(dominio));
+
+        verify(tipoUsuarioMapper).toEntity(dominio);
+        verify(tipoUsuarioRepository).save(entity);
+    }
 }

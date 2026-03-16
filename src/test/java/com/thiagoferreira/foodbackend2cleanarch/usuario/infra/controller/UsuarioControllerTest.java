@@ -122,4 +122,64 @@ class UsuarioControllerTest {
 
         verify(criarUsuarioUseCase, org.mockito.Mockito.never()).executar(any());
     }
+
+    @Test
+    @DisplayName("PUT /api/v1/usuarios/{id} com nome em branco deve retornar 400 Bad Request por validação")
+    void deveRetornar400BadRequestAoAtualizarQuandoNomeEmBranco() throws Exception {
+        // Arrange
+        UUID id = UUID.randomUUID();
+        UUID tipoUsuarioId = UUID.randomUUID();
+        String body = """
+                {
+                    "nome": "   ",
+                    "tipoUsuarioId": "%s"
+                }
+                """.formatted(tipoUsuarioId);
+
+        // Act & Assert
+        mockMvc.perform(put("/api/v1/usuarios/{id}", id)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(body))
+                .andExpect(status().isBadRequest());
+
+        verify(atualizarUsuarioUseCase, org.mockito.Mockito.never()).executar(any(), any());
+    }
+
+    @Test
+    @DisplayName("PUT /api/v1/usuarios/{id} com tipoUsuarioId nulo deve retornar 400 Bad Request por validação")
+    void deveRetornar400BadRequestAoAtualizarQuandoTipoUsuarioIdNulo() throws Exception {
+        // Arrange
+        UUID id = UUID.randomUUID();
+        String body = """
+                {
+                    "nome": "João Silva",
+                    "tipoUsuarioId": null
+                }
+                """;
+
+        // Act & Assert
+        mockMvc.perform(put("/api/v1/usuarios/{id}", id)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(body))
+                .andExpect(status().isBadRequest());
+
+        verify(atualizarUsuarioUseCase, org.mockito.Mockito.never()).executar(any(), any());
+    }
+
+    @Test
+    @DisplayName("GET /api/v1/usuarios/{id} deve retornar 404 Not Found quando usuário não existir")
+    void deveRetornar404QuandoUsuarioNaoExistir() throws Exception {
+        // Arrange
+        UUID id = UUID.randomUUID();
+        when(buscarUsuarioPorIdUseCase.buscarPorId(id))
+                .thenThrow(new com.thiagoferreira.foodbackend2cleanarch.usuario.core.exception.UsuarioNaoEncontradoException());
+
+        // Act & Assert
+        mockMvc.perform(get("/api/v1/usuarios/{id}", id))
+                .andExpect(status().isNotFound())
+                .andExpect(jsonPath("$.title").value("Recurso não encontrado"))
+                .andExpect(jsonPath("$.detail").value("O Usuário informado não foi encontrado."));
+
+        verify(buscarUsuarioPorIdUseCase).buscarPorId(id);
+    }
 }
