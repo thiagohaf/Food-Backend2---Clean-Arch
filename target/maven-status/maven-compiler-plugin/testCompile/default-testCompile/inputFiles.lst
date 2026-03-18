@@ -1,4 +1,3 @@
-/Users/thiagoferreira/Documents/FIAP/Fase 2/projeto/Food Backend2 - Clean Arch/src/test/java/com/thiagoferreira/foodbackend2cleanarch/AbstractIntegrationTest.java
 /Users/thiagoferreira/Documents/FIAP/Fase 2/projeto/Food Backend2 - Clean Arch/src/test/java/com/thiagoferreira/foodbackend2cleanarch/FoodBackend2CleanArchApplicationTests.java
 /Users/thiagoferreira/Documents/FIAP/Fase 2/projeto/Food Backend2 - Clean Arch/src/test/java/com/thiagoferreira/foodbackend2cleanarch/cardapio/core/mapper/ItemCardapioCoreMapperTest.java
 /Users/thiagoferreira/Documents/FIAP/Fase 2/projeto/Food Backend2 - Clean Arch/src/test/java/com/thiagoferreira/foodbackend2cleanarch/cardapio/core/rule/ItemCardapioValidadorTest.java
@@ -46,4 +45,5 @@
 /Users/thiagoferreira/Documents/FIAP/Fase 2/projeto/Food Backend2 - Clean Arch/src/test/java/com/thiagoferreira/foodbackend2cleanarch/usuario/infra/persistence/mapper/UsuarioMapperTest.java
 /Users/thiagoferreira/Documents/FIAP/Fase 2/projeto/Food Backend2 - Clean Arch/src/test/java/com/thiagoferreira/foodbackend2cleanarch/usuario/infra/persistence/repository/TipoUsuarioRepositoryTest.java
 /Users/thiagoferreira/Documents/FIAP/Fase 2/projeto/Food Backend2 - Clean Arch/src/test/java/com/thiagoferreira/foodbackend2cleanarch/usuario/infra/persistence/repository/UsuarioRepositoryTest.java
+/Users/thiagoferreira/Documents/FIAP/Fase 2/projeto/Food Backend2 - Clean Arch/src/test/java/com/thiagoferreira/foodbackend2cleanarch/util/config/AbstractIntegrationTest.java
 /Users/thiagoferreira/Documents/FIAP/Fase 2/projeto/Food Backend2 - Clean Arch/src/test/java/com/thiagoferreira/foodbackend2cleanarch/util/config/GlobalExceptionHandlerTest.java

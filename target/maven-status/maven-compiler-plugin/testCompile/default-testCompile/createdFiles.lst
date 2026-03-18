@@ -19,7 +19,6 @@ com/thiagoferreira/foodbackend2cleanarch/usuario/infra/persistence/mapper/Usuari
 com/thiagoferreira/foodbackend2cleanarch/cardapio/infra/persistence/mapper/ItemCardapioMapperTest.class
 com/thiagoferreira/foodbackend2cleanarch/restaurante/core/mapper/RestauranteCoreMapperTest.class
 com/thiagoferreira/foodbackend2cleanarch/restaurante/infra/controller/RestauranteControllerIntegrationTest.class
-com/thiagoferreira/foodbackend2cleanarch/AbstractIntegrationTest.class
 com/thiagoferreira/foodbackend2cleanarch/restaurante/infra/gateway/RestauranteGatewayImplTest.class
 com/thiagoferreira/foodbackend2cleanarch/restaurante/core/usecase/AtualizarRestauranteUseCaseTest.class
 com/thiagoferreira/foodbackend2cleanarch/usuario/core/usecase/ExcluirUsuarioUseCaseTest.class
