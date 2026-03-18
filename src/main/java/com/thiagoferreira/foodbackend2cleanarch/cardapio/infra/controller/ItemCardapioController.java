@@ -7,6 +7,7 @@ import com.thiagoferreira.foodbackend2cleanarch.cardapio.core.usecase.AtualizarI
 import com.thiagoferreira.foodbackend2cleanarch.cardapio.core.usecase.BuscarItemCardapioPorIdUseCase;
 import com.thiagoferreira.foodbackend2cleanarch.cardapio.core.usecase.CriarItemCardapioUseCase;
 import com.thiagoferreira.foodbackend2cleanarch.cardapio.core.usecase.ExcluirItemCardapioUseCase;
+import com.thiagoferreira.foodbackend2cleanarch.cardapio.core.usecase.ListarItensCardapioPorRestauranteUseCase;
 import com.thiagoferreira.foodbackend2cleanarch.cardapio.infra.dto.ItemCardapioRequest;
 import com.thiagoferreira.foodbackend2cleanarch.cardapio.infra.dto.ItemCardapioResponse;
 import jakarta.validation.Valid;
@@ -19,9 +20,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.util.List;
 import java.util.UUID;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
@@ -35,6 +38,7 @@ public class ItemCardapioController {
     private final BuscarItemCardapioPorIdUseCase buscarItemCardapioPorIdUseCase;
     private final AtualizarItemCardapioUseCase atualizarItemCardapioUseCase;
     private final ExcluirItemCardapioUseCase excluirItemCardapioUseCase;
+    private final ListarItensCardapioPorRestauranteUseCase listarItensCardapioPorRestauranteUseCase;
 
     @PostMapping(consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
     public ResponseEntity<ItemCardapioResponse> criar(@Valid @RequestBody ItemCardapioRequest request) {
@@ -44,7 +48,7 @@ public class ItemCardapioController {
                 request.descricao(),
                 request.preco(),
                 true,
-                null,
+                request.fotoPath(),
                 request.restauranteId()
         );
 
@@ -65,6 +69,14 @@ public class ItemCardapioController {
         return ResponseEntity.ok(toResponse(item));
     }
 
+    @GetMapping(produces = APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<ItemCardapioResponse>> listarPorRestaurante(@RequestParam UUID restauranteId) {
+        List<ItemCardapioResponse> response = listarItensCardapioPorRestauranteUseCase.executar(restauranteId).stream()
+                .map(this::toResponse)
+                .toList();
+        return ResponseEntity.ok(response);
+    }
+
     @PutMapping(value = "/{id}", consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
     public ResponseEntity<ItemCardapioResponse> atualizar(@PathVariable UUID id,
                                                           @Valid @RequestBody ItemCardapioRequest request) {
@@ -73,7 +85,7 @@ public class ItemCardapioController {
                 request.descricao(),
                 request.preco(),
                 true,
-                null
+                request.fotoPath()
         );
 
         ItemCardapio itemAtualizado = atualizarItemCardapioUseCase.executar(id, input);
@@ -92,7 +104,7 @@ public class ItemCardapioController {
                 item.getNome(),
                 item.getDescricao(),
                 item.getPreco(),
-                "GERAL",
+                item.getFotoPath(),
                 item.getRestauranteId()
         );
     }

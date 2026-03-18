@@ -11,7 +11,7 @@ public record ItemCardapioRequest(
         @NotBlank String nome,
         String descricao,
         @NotNull @Positive BigDecimal preco,
-        @NotBlank String categoria,
+        String fotoPath,
         @NotNull UUID restauranteId
 ) {
 }

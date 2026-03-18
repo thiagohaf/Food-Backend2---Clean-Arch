@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>TipoUsuarioController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">food-backend2-clean-arch</a> &gt; <a href="index.source.html" class="el_package">com.thiagoferreira.foodbackend2cleanarch.usuario.infra.controller</a> &gt; <span class="el_source">TipoUsuarioController.java</span></div><h1>TipoUsuarioController.java</h1><pre class="source lang-java linenums">package com.thiagoferreira.foodbackend2cleanarch.usuario.infra.controller;
+
+import com.thiagoferreira.foodbackend2cleanarch.usuario.infra.dto.TipoUsuarioRequest;
+import com.thiagoferreira.foodbackend2cleanarch.usuario.infra.dto.TipoUsuarioResponse;
+import com.thiagoferreira.foodbackend2cleanarch.usuario.core.domain.TipoUsuario;
+import com.thiagoferreira.foodbackend2cleanarch.usuario.core.dto.AtualizarTipoUsuarioInput;
+import com.thiagoferreira.foodbackend2cleanarch.usuario.core.dto.CriarTipoUsuarioInput;
+import com.thiagoferreira.foodbackend2cleanarch.usuario.core.usecase.AtualizarTipoUsuarioUseCase;
+import com.thiagoferreira.foodbackend2cleanarch.usuario.core.usecase.BuscarTipoUsuarioPorIdUseCase;
+import com.thiagoferreira.foodbackend2cleanarch.usuario.core.usecase.CriarTipoUsuarioUseCase;
+import com.thiagoferreira.foodbackend2cleanarch.usuario.core.usecase.ExcluirTipoUsuarioUseCase;
+import com.thiagoferreira.foodbackend2cleanarch.usuario.core.usecase.ListarTiposUsuarioUseCase;
+import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
+import java.util.List;
+import java.util.UUID;
+
+import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
+
+@RestController
+@RequestMapping(&quot;/api/v1/tipos-usuario&quot;)
+@RequiredArgsConstructor
+public class TipoUsuarioController {
+
+    private final CriarTipoUsuarioUseCase criarTipoUsuarioUseCase;
+    private final BuscarTipoUsuarioPorIdUseCase buscarTipoUsuarioPorIdUseCase;
+    private final ListarTiposUsuarioUseCase listarTiposUsuarioUseCase;
+    private final AtualizarTipoUsuarioUseCase atualizarTipoUsuarioUseCase;
+    private final ExcluirTipoUsuarioUseCase excluirTipoUsuarioUseCase;
+
+    @PostMapping(consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
+    public ResponseEntity&lt;TipoUsuarioResponse&gt; criar(@Valid @RequestBody TipoUsuarioRequest request) {
+<span class="fc" id="L37">        CriarTipoUsuarioInput input = new CriarTipoUsuarioInput(UUID.randomUUID(), request.nome());</span>
+<span class="fc" id="L38">        TipoUsuario tipoUsuario = criarTipoUsuarioUseCase.executar(input);</span>
+<span class="fc" id="L39">        TipoUsuarioResponse response = toResponse(tipoUsuario);</span>
+<span class="fc" id="L40">        return ResponseEntity</span>
+<span class="fc" id="L41">                .created(ServletUriComponentsBuilder.fromCurrentRequest()</span>
+<span class="fc" id="L42">                        .path(&quot;/{id}&quot;)</span>
+<span class="fc" id="L43">                        .buildAndExpand(tipoUsuario.getId())</span>
+<span class="fc" id="L44">                        .toUri())</span>
+<span class="fc" id="L45">                .body(response);</span>
+    }
+
+    @GetMapping(value = &quot;/{id}&quot;, produces = APPLICATION_JSON_VALUE)
+    public ResponseEntity&lt;TipoUsuarioResponse&gt; buscarPorId(@PathVariable UUID id) {
+<span class="fc" id="L50">        TipoUsuario tipoUsuario = buscarTipoUsuarioPorIdUseCase.buscarPorId(id);</span>
+<span class="fc" id="L51">        return ResponseEntity.ok(toResponse(tipoUsuario));</span>
+    }
+
+    @GetMapping(produces = APPLICATION_JSON_VALUE)
+    public ResponseEntity&lt;List&lt;TipoUsuarioResponse&gt;&gt; listar() {
+<span class="fc" id="L56">        List&lt;TipoUsuario&gt; tipos = listarTiposUsuarioUseCase.listarTodos();</span>
+<span class="fc" id="L57">        List&lt;TipoUsuarioResponse&gt; response = tipos.stream()</span>
+<span class="fc" id="L58">                .map(this::toResponse)</span>
+<span class="fc" id="L59">                .toList();</span>
+<span class="fc" id="L60">        return ResponseEntity.ok(response);</span>
+    }
+
+    @PutMapping(value = &quot;/{id}&quot;, consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
+    public ResponseEntity&lt;TipoUsuarioResponse&gt; atualizar(@PathVariable UUID id,
+                                                         @Valid @RequestBody TipoUsuarioRequest request) {
+<span class="nc" id="L66">        AtualizarTipoUsuarioInput input = new AtualizarTipoUsuarioInput(request.nome());</span>
+<span class="nc" id="L67">        TipoUsuario tipoUsuario = atualizarTipoUsuarioUseCase.executar(id, input);</span>
+<span class="nc" id="L68">        return ResponseEntity.ok(toResponse(tipoUsuario));</span>
+    }
+
+    @DeleteMapping(&quot;/{id}&quot;)
+    public ResponseEntity&lt;Void&gt; excluir(@PathVariable UUID id) {
+<span class="nc" id="L73">        excluirTipoUsuarioUseCase.excluir(id);</span>
+<span class="nc" id="L74">        return ResponseEntity.noContent().build();</span>
+    }
+
+    private TipoUsuarioResponse toResponse(TipoUsuario tipoUsuario) {
+<span class="fc" id="L78">        return new TipoUsuarioResponse(tipoUsuario.getId(), tipoUsuario.getNome());</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

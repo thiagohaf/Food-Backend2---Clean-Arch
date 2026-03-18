@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>TipoUsuarioMapperImpl.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">food-backend2-clean-arch</a> &gt; <a href="index.source.html" class="el_package">com.thiagoferreira.foodbackend2cleanarch.usuario.infra.persistence.mapper</a> &gt; <span class="el_source">TipoUsuarioMapperImpl.java</span></div><h1>TipoUsuarioMapperImpl.java</h1><pre class="source lang-java linenums">package com.thiagoferreira.foodbackend2cleanarch.usuario.infra.persistence.mapper;
+
+<span class="nc" id="L3">import com.thiagoferreira.foodbackend2cleanarch.usuario.core.domain.TipoUsuario;</span>
+import com.thiagoferreira.foodbackend2cleanarch.usuario.infra.persistence.entity.TipoUsuarioEntity;
+import java.util.UUID;
+import javax.annotation.processing.Generated;
+import org.springframework.stereotype.Component;
+
+@Generated(
+    value = &quot;org.mapstruct.ap.MappingProcessor&quot;,
+    date = &quot;2026-03-18T08:05:01-0300&quot;,
+    comments = &quot;version: 1.6.3, compiler: javac, environment: Java 21.0.7 (JetBrains s.r.o.)&quot;
+)
+@Component
+public class TipoUsuarioMapperImpl implements TipoUsuarioMapper {
+
+    @Override
+<span class="nc" id="L18">    public TipoUsuarioEntity toEntity(TipoUsuario tipoUsuario) {</span>
+        if ( tipoUsuario == null ) {
+            return null;
+        }
+
+        UUID id = null;
+        String nome = null;
+
+        id = tipoUsuario.getId();
+        nome = tipoUsuario.getNome();
+
+        TipoUsuarioEntity tipoUsuarioEntity = new TipoUsuarioEntity( id, nome );
+
+        return tipoUsuarioEntity;
+    }
+
+    @Override
+<span class="nc" id="L35">    public TipoUsuario toDomain(TipoUsuarioEntity entity) {</span>
+        if ( entity == null ) {
+            return null;
+        }
+
+        UUID id = null;
+        String nome = null;
+
+        id = entity.getId();
+        nome = entity.getNome();
+
+        TipoUsuario tipoUsuario = new TipoUsuario( id, nome );
+
+        return tipoUsuario;
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

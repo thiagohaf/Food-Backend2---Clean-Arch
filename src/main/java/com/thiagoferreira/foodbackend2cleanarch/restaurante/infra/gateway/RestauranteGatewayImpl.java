@@ -17,7 +17,7 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class RestauranteGatewayImpl implements RestauranteGateway {
 
-    private static final String TIPO_DONO_NOME = "Dono de Restaurante";
+    private static final String TIPO_DONO_NOME = "DONO_RESTAURANTE";
 
     private final RestauranteRepository restauranteRepository;
     private final RestauranteMapper restauranteMapper;

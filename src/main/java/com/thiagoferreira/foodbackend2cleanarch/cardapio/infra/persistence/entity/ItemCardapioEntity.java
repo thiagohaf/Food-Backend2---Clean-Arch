@@ -26,7 +26,6 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class ItemCardapioEntity {
-
     @Id
     @JdbcTypeCode(SqlTypes.CHAR)
     @Column(name = "id", nullable = false, length = 36, columnDefinition = "CHAR(36)")
@@ -41,8 +40,8 @@ public class ItemCardapioEntity {
     @Column(name = "preco", nullable = false, precision = 10, scale = 2)
     private BigDecimal preco;
 
-    @Column(name = "categoria", nullable = false, length = 50)
-    private String categoria;
+    @Column(name = "foto_path", length = 255)
+    private String fotoPath;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "restaurante_id", nullable = false)

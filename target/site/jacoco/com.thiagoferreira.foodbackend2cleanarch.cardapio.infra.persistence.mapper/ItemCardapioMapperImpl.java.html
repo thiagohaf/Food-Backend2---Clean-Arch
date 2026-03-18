@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = &quot;org.mapstruct.ap.MappingProcessor&quot;,
-    date = &quot;2026-03-17T23:47:33-0300&quot;,
+    date = &quot;2026-03-18T08:15:44-0300&quot;,
     comments = &quot;version: 1.6.3, compiler: javac, environment: Java 21.0.7 (JetBrains s.r.o.)&quot;
 )
 @Component
@@ -38,21 +38,22 @@ import org.springframework.stereotype.Component;
 <span class="nc" id="L38">        String nome = null;</span>
 <span class="nc" id="L39">        String descricao = null;</span>
 <span class="nc" id="L40">        BigDecimal preco = null;</span>
-<span class="nc bnc" id="L41" title="All 2 branches missed.">        if ( itemCardapio != null ) {</span>
-<span class="nc" id="L42">            id = itemCardapio.getId();</span>
-<span class="nc" id="L43">            nome = itemCardapio.getNome();</span>
-<span class="nc" id="L44">            descricao = itemCardapio.getDescricao();</span>
-<span class="nc" id="L45">            preco = itemCardapio.getPreco();</span>
+<span class="nc" id="L41">        String fotoPath = null;</span>
+<span class="nc bnc" id="L42" title="All 2 branches missed.">        if ( itemCardapio != null ) {</span>
+<span class="nc" id="L43">            id = itemCardapio.getId();</span>
+<span class="nc" id="L44">            nome = itemCardapio.getNome();</span>
+<span class="nc" id="L45">            descricao = itemCardapio.getDescricao();</span>
+<span class="nc" id="L46">            preco = itemCardapio.getPreco();</span>
+<span class="nc" id="L47">            fotoPath = itemCardapio.getFotoPath();</span>
         }
-<span class="nc" id="L47">        RestauranteEntity restaurante1 = null;</span>
-<span class="nc" id="L48">        restaurante1 = restaurante;</span>
+<span class="nc" id="L49">        RestauranteEntity restaurante1 = null;</span>
+<span class="nc" id="L50">        restaurante1 = restaurante;</span>
 
-<span class="nc" id="L50">        String categoria = &quot;GERAL&quot;;</span>
-<span class="nc" id="L51">        LocalDateTime dataCadastro = java.time.LocalDateTime.now();</span>
+<span class="nc" id="L52">        LocalDateTime dataCadastro = java.time.LocalDateTime.now();</span>
 
-<span class="nc" id="L53">        ItemCardapioEntity itemCardapioEntity = new ItemCardapioEntity( id, nome, descricao, preco, categoria, restaurante1, dataCadastro );</span>
+<span class="nc" id="L54">        ItemCardapioEntity itemCardapioEntity = new ItemCardapioEntity( id, nome, descricao, preco, fotoPath, restaurante1, dataCadastro );</span>
 
-<span class="nc" id="L55">        return itemCardapioEntity;</span>
+<span class="nc" id="L56">        return itemCardapioEntity;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

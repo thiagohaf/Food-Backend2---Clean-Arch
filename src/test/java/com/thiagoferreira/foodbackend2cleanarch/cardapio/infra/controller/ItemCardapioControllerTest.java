@@ -5,6 +5,7 @@ import com.thiagoferreira.foodbackend2cleanarch.cardapio.core.usecase.AtualizarI
 import com.thiagoferreira.foodbackend2cleanarch.cardapio.core.usecase.BuscarItemCardapioPorIdUseCase;
 import com.thiagoferreira.foodbackend2cleanarch.cardapio.core.usecase.CriarItemCardapioUseCase;
 import com.thiagoferreira.foodbackend2cleanarch.cardapio.core.usecase.ExcluirItemCardapioUseCase;
+import com.thiagoferreira.foodbackend2cleanarch.cardapio.core.usecase.ListarItensCardapioPorRestauranteUseCase;
 import com.thiagoferreira.foodbackend2cleanarch.util.config.GlobalExceptionHandler;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -16,6 +17,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.math.BigDecimal;
+import java.util.List;
 import java.util.UUID;
 
 import static org.hamcrest.Matchers.containsString;
@@ -50,6 +52,9 @@ class ItemCardapioControllerTest {
     @MockBean
     private ExcluirItemCardapioUseCase excluirItemCardapioUseCase;
 
+    @MockBean
+    private ListarItensCardapioPorRestauranteUseCase listarItensCardapioPorRestauranteUseCase;
+
     @Test
     @DisplayName("POST /api/v1/itens-cardapio com payload válido deve retornar 201 Created e header Location")
     void deveRetornar201CreatedEHeaderLocationComPayloadValido() throws Exception {
@@ -62,7 +67,7 @@ class ItemCardapioControllerTest {
                 "Hambúrguer artesanal",
                 new BigDecimal("25.50"),
                 true,
-                null,
+                "/img/hamburguer.png",
                 restauranteId
         );
 
@@ -73,7 +78,7 @@ class ItemCardapioControllerTest {
                     "nome": "Hambúrguer",
                     "descricao": "Hambúrguer artesanal",
                     "preco": 25.50,
-                    "categoria": "LANCHE",
+                    "fotoPath": "/img/hamburguer.png",
                     "restauranteId": "%s"
                 }
                 """.formatted(restauranteId);
@@ -90,7 +95,7 @@ class ItemCardapioControllerTest {
                 .andExpect(jsonPath("$.nome").value("Hambúrguer"))
                 .andExpect(jsonPath("$.descricao").value("Hambúrguer artesanal"))
                 .andExpect(jsonPath("$.preco").value(25.50))
-                .andExpect(jsonPath("$.categoria").value("GERAL"))
+                .andExpect(jsonPath("$.fotoPath").value("/img/hamburguer.png"))
                 .andExpect(jsonPath("$.restauranteId").value(restauranteId.toString()));
 
         verify(criarItemCardapioUseCase).executar(any());
@@ -106,7 +111,7 @@ class ItemCardapioControllerTest {
                     "nome": "   ",
                     "descricao": "Hambúrguer artesanal",
                     "preco": 25.50,
-                    "categoria": "LANCHE",
+                    "fotoPath": "/img/hamburguer.png",
                     "restauranteId": "%s"
                 }
                 """.formatted(restauranteId);
@@ -130,7 +135,7 @@ class ItemCardapioControllerTest {
                     "nome": "Hambúrguer",
                     "descricao": "Hambúrguer artesanal",
                     "preco": -10.00,
-                    "categoria": "LANCHE",
+                    "fotoPath": "/img/hamburguer.png",
                     "restauranteId": "%s"
                 }
                 """.formatted(restauranteId);
@@ -156,7 +161,7 @@ class ItemCardapioControllerTest {
                 "Pizza clássica",
                 new BigDecimal("39.90"),
                 true,
-                null,
+                "/img/pizza.png",
                 restauranteId
         );
 
@@ -170,10 +175,42 @@ class ItemCardapioControllerTest {
                 .andExpect(jsonPath("$.nome").value("Pizza Margherita"))
                 .andExpect(jsonPath("$.descricao").value("Pizza clássica"))
                 .andExpect(jsonPath("$.preco").value(39.90))
-                .andExpect(jsonPath("$.categoria").value("GERAL"))
+                .andExpect(jsonPath("$.fotoPath").value("/img/pizza.png"))
                 .andExpect(jsonPath("$.restauranteId").value(restauranteId.toString()));
 
         verify(buscarItemCardapioPorIdUseCase).executar(id);
+    }
+
+    @Test
+    @DisplayName("GET /api/v1/itens-cardapio?restauranteId=... deve retornar 200 OK e lista de itens")
+    void deveRetornar200OKEListaAoListarPorRestaurante() throws Exception {
+        UUID restauranteId = UUID.randomUUID();
+        UUID itemId = UUID.randomUUID();
+
+        when(listarItensCardapioPorRestauranteUseCase.executar(restauranteId)).thenReturn(List.of(
+                new ItemCardapio(
+                        itemId,
+                        "Pizza",
+                        "Saborosa",
+                        new BigDecimal("40.00"),
+                        true,
+                        "/img/pizza.png",
+                        restauranteId
+                )
+        ));
+
+        mockMvc.perform(get("/api/v1/itens-cardapio")
+                        .param("restauranteId", restauranteId.toString()))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("$[0].id").value(itemId.toString()))
+                .andExpect(jsonPath("$[0].nome").value("Pizza"))
+                .andExpect(jsonPath("$[0].descricao").value("Saborosa"))
+                .andExpect(jsonPath("$[0].preco").value(40.00))
+                .andExpect(jsonPath("$[0].fotoPath").value("/img/pizza.png"))
+                .andExpect(jsonPath("$[0].restauranteId").value(restauranteId.toString()));
+
+        verify(listarItensCardapioPorRestauranteUseCase).executar(restauranteId);
     }
 
     @Test
@@ -186,7 +223,7 @@ class ItemCardapioControllerTest {
                     "nome": "   ",
                     "descricao": "Hambúrguer artesanal",
                     "preco": 25.50,
-                    "categoria": "LANCHE",
+                    "fotoPath": "/img/hamburguer.png",
                     "restauranteId": "%s"
                 }
                 """.formatted(UUID.randomUUID());
@@ -210,7 +247,7 @@ class ItemCardapioControllerTest {
                     "nome": "Hambúrguer",
                     "descricao": "Hambúrguer artesanal",
                     "preco": -10.00,
-                    "categoria": "LANCHE",
+                    "fotoPath": "/img/hamburguer.png",
                     "restauranteId": "%s"
                 }
                 """.formatted(UUID.randomUUID());

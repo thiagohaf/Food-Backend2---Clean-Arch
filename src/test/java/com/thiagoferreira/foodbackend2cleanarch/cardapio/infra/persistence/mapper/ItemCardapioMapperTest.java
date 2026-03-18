@@ -64,7 +64,7 @@ class ItemCardapioMapperTest {
             assertThat(entity.getNome()).isEqualTo("Pizza Margherita");
             assertThat(entity.getDescricao()).isEqualTo("Pizza clássica");
             assertThat(entity.getPreco()).isEqualByComparingTo("39.90");
-            assertThat(entity.getCategoria()).isEqualTo("GERAL");
+            assertThat(entity.getFotoPath()).isEqualTo(null);
             assertThat(entity.getRestaurante()).isNotNull();
             assertThat(entity.getRestaurante().getId()).isEqualTo(restauranteId);
             assertThat(entity.getDataCadastro()).isNotNull();
@@ -115,7 +115,7 @@ class ItemCardapioMapperTest {
                     "Prato Executivo",
                     "Arroz, feijão e bife",
                     new BigDecimal("29.90"),
-                    "PRATO_PRINCIPAL",
+                    "/img/prato-executivo.png",
                     restauranteEntity,
                     LocalDateTime.now()
             );
@@ -130,7 +130,7 @@ class ItemCardapioMapperTest {
             assertThat(domain.getDescricao()).isEqualTo("Arroz, feijão e bife");
             assertThat(domain.getPreco()).isEqualByComparingTo("29.90");
             assertThat(domain.getDisponibilidadeLocal()).isTrue();
-            assertThat(domain.getFotoPath()).isNull();
+            assertThat(domain.getFotoPath()).isEqualTo("/img/prato-executivo.png");
             assertThat(domain.getRestauranteId()).isEqualTo(restauranteId);
         }
 
@@ -167,7 +167,7 @@ class ItemCardapioMapperTest {
                     itemCardapio.getNome(),
                     itemCardapio.getDescricao(),
                     itemCardapio.getPreco(),
-                    "GERAL",
+                    itemCardapio.getFotoPath(),
                     restaurante,
                     LocalDateTime.now()
             );

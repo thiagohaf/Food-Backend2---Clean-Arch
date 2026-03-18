@@ -169,11 +169,11 @@ class RestauranteGatewayImplTest {
     }
 
     @Test
-    @DisplayName("Deve retornar true quando dono for válido (tipo Dono de Restaurante)")
+    @DisplayName("Deve retornar true quando dono for válido (tipo DONO_RESTAURANTE)")
     void deveRetornarTrueQuandoDonoForValido() {
         // Arrange
         UUID donoId = UUID.randomUUID();
-        TipoUsuario tipoDono = new TipoUsuario(UUID.randomUUID(), "Dono de Restaurante");
+        TipoUsuario tipoDono = new TipoUsuario(UUID.randomUUID(), "DONO_RESTAURANTE");
         Usuario usuario = new Usuario(donoId, "João", tipoDono);
         when(usuarioGateway.buscarPorId(donoId)).thenReturn(Optional.of(usuario));
 
@@ -186,7 +186,7 @@ class RestauranteGatewayImplTest {
     }
 
     @Test
-    @DisplayName("Deve retornar false quando dono não for do tipo Dono de Restaurante")
+    @DisplayName("Deve retornar false quando dono não for do tipo DONO_RESTAURANTE")
     void deveRetornarFalseQuandoDonoNaoForTipoDonoRestaurante() {
         // Arrange
         UUID donoId = UUID.randomUUID();

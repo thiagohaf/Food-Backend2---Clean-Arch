@@ -54,7 +54,7 @@ class ItemCardapioRepositoryTest {
                 "Pizza Margherita",
                 "Pizza clássica com tomate e mussarela",
                 new BigDecimal("39.90"),
-                "PIZZA",
+                "/pizza.png",
                 restaurante,
                 LocalDateTime.now()
         );
@@ -69,7 +69,7 @@ class ItemCardapioRepositoryTest {
         assertEquals("Pizza Margherita", salvo.getNome());
         assertEquals("Pizza clássica com tomate e mussarela", salvo.getDescricao());
         assertEquals(new BigDecimal("39.90"), salvo.getPreco());
-        assertEquals("PIZZA", salvo.getCategoria());
+        assertEquals("/pizza.png", salvo.getFotoPath());
         assertNotNull(salvo.getRestaurante());
         assertEquals(restauranteId, salvo.getRestaurante().getId());
 

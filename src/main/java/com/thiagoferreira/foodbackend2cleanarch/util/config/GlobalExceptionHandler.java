@@ -5,6 +5,7 @@ import com.thiagoferreira.foodbackend2cleanarch.cardapio.core.exception.Restaura
 import com.thiagoferreira.foodbackend2cleanarch.usuario.core.exception.TipoUsuarioNaoEncontradoException;
 import com.thiagoferreira.foodbackend2cleanarch.usuario.core.exception.UsuarioNaoEncontradoException;
 import com.thiagoferreira.foodbackend2cleanarch.util.exception.ValidacaoRegraNegocioException;
+import com.thiagoferreira.foodbackend2cleanarch.util.exception.SystemBaseException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ProblemDetail;
 import org.springframework.http.ResponseEntity;
@@ -41,6 +42,18 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body(problem);
     }
 
+    @ExceptionHandler(SystemBaseException.class)
+    public ResponseEntity<ProblemDetail> handleSystemBaseException(SystemBaseException ex) {
+        HttpStatus status = HttpStatus.resolve(ex.getHttpStatus());
+        if (status == null) {
+            status = HttpStatus.INTERNAL_SERVER_ERROR;
+        }
+        ProblemDetail problem = ProblemDetail.forStatusAndDetail(status, ex.getMessage());
+        problem.setTitle(status.getReasonPhrase());
+        problem.setProperty("code", ex.getCode());
+        return ResponseEntity.status(status).body(problem);
+    }
+
     @ExceptionHandler({
             RestauranteNaoEncontradoException.class,
             UsuarioNaoEncontradoException.class,
@@ -56,6 +69,7 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ProblemDetail> handleErroInesperado(Exception ex) {
+        ex.printStackTrace();
         ProblemDetail problem = ProblemDetail.forStatusAndDetail(
                 HttpStatus.INTERNAL_SERVER_ERROR,
                 DETAIL_ERRO_INESPERADO

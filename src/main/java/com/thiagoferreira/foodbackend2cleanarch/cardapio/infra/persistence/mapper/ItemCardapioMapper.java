@@ -17,8 +17,8 @@ public interface ItemCardapioMapper {
     @Mapping(target = "nome", source = "itemCardapio.nome")
     @Mapping(target = "descricao", source = "itemCardapio.descricao")
     @Mapping(target = "preco", source = "itemCardapio.preco")
+    @Mapping(target = "fotoPath", source = "itemCardapio.fotoPath")
     @Mapping(target = "restaurante", source = "restaurante")
-    @Mapping(target = "categoria", constant = "GERAL")
     @Mapping(target = "dataCadastro", expression = "java(java.time.LocalDateTime.now())")
     ItemCardapioEntity toEntity(ItemCardapio itemCardapio, RestauranteEntity restaurante);
 
@@ -38,7 +38,7 @@ public interface ItemCardapioMapper {
                 entity.getDescricao(),
                 entity.getPreco(),
                 true,
-                null,
+                entity.getFotoPath(),
                 entity.getRestaurante() != null ? entity.getRestaurante().getId() : null
         );
     }

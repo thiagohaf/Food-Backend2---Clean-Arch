@@ -171,6 +171,30 @@
           }
         },
         {
+          "name": "Listar Itens Cardápio por Restaurante",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/itens-cardapio?restauranteId={{restauranteId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "itens-cardapio"
+              ],
+              "query": [
+                {
+                  "key": "restauranteId",
+                  "value": "{{restauranteId}}"
+                }
+              ]
+            }
+          }
+        },
+        {
           "name": "Atualizar Item Cardápio",
           "request": {
             "method": "PUT",

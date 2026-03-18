@@ -47,11 +47,10 @@ class ItemCardapioValidadorTest {
         String nomeNulo = null;
         String descricao = "Pão brioche, blend de 180g e queijo cheddar";
         BigDecimal preco = new BigDecimal("35.90");
-        UUID categoriaId = UUID.randomUUID();
 
         ValidacaoRegraNegocioException exceptionNull = assertThrows(
                 ValidacaoRegraNegocioException.class,
-                () -> new ItemCardapio(nomeNulo, descricao, preco, true, null, categoriaId)
+                () -> new ItemCardapio(nomeNulo, descricao, preco, true, null, UUID.randomUUID())
         );
 
         assertEquals("O campo Nome do Item não pode ser nulo ou vazio.", exceptionNull.getMessage());
@@ -63,11 +62,10 @@ class ItemCardapioValidadorTest {
         String nomeVazio = "    ";
         String descricao = "Pão brioche, blend de 180g e queijo cheddar";
         BigDecimal preco = new BigDecimal("35.90");
-        UUID categoriaId = UUID.randomUUID();
 
         ValidacaoRegraNegocioException exceptionVazio = assertThrows(
                 ValidacaoRegraNegocioException.class,
-                () -> new ItemCardapio(nomeVazio, descricao, preco, true, null, categoriaId)
+                () -> new ItemCardapio(nomeVazio, descricao, preco, true, null, UUID.randomUUID())
         );
 
         assertEquals("O campo Nome do Item não pode ser nulo ou vazio.", exceptionVazio.getMessage());
@@ -79,11 +77,10 @@ class ItemCardapioValidadorTest {
         String nome = "Hambúrguer Artesanal";
         String descricaoNula = null;
         BigDecimal preco = new BigDecimal("35.90");
-        UUID categoriaId = UUID.randomUUID();
 
         ValidacaoRegraNegocioException exception = assertThrows(
                 ValidacaoRegraNegocioException.class,
-                () -> new ItemCardapio(nome, descricaoNula, preco, true, null, categoriaId)
+                () -> new ItemCardapio(nome, descricaoNula, preco, true, null, UUID.randomUUID())
         );
 
         assertEquals("O campo Descrição não pode ser nulo ou vazio.", exception.getMessage());
@@ -95,11 +92,10 @@ class ItemCardapioValidadorTest {
         String nome = "Hambúrguer Artesanal";
         String descricaoVazia = ""; // O alvo do teste
         BigDecimal preco = new BigDecimal("35.90");
-        UUID categoriaId = UUID.randomUUID();
 
         ValidacaoRegraNegocioException exception = assertThrows(
                 ValidacaoRegraNegocioException.class,
-                () -> new ItemCardapio(nome, descricaoVazia, preco, true, null, categoriaId)
+                () -> new ItemCardapio(nome, descricaoVazia, preco, true, null, UUID.randomUUID())
         );
 
         assertEquals("O campo Descrição não pode ser nulo ou vazio.", exception.getMessage());
