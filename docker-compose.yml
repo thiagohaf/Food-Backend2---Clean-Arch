@@ -18,5 +18,22 @@ services:
       timeout: 5s
       retries: 10
 
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    depends_on:
+      mysql:
+        condition: service_healthy
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/tech_challenge?createDatabaseIfNotExist=true&serverTimezone=UTC
+      SPRING_DATASOURCE_USERNAME: app
+      SPRING_DATASOURCE_PASSWORD: app
+      SPRING_FLYWAY_URL: jdbc:mysql://mysql:3306/tech_challenge?createDatabaseIfNotExist=true&serverTimezone=UTC
+      SPRING_FLYWAY_USER: root
+      SPRING_FLYWAY_PASSWORD: root
+
 volumes:
   mysql_data:
