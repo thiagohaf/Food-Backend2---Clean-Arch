@@ -11,8 +11,8 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2026-03-18T19:29:54-0300",
-    comments = "version: 1.6.3, compiler: Eclipse JDT (IDE) 3.45.0.v20260224-0835, environment: Java 21.0.10 (Eclipse Adoptium)"
+    date = "2026-03-19T22:33:38-0300",
+    comments = "version: 1.6.3, compiler: javac, environment: Java 21.0.7 (JetBrains s.r.o.)"
 )
 @Component
 public class ItemCardapioMapperImpl implements ItemCardapioMapper {
@@ -38,12 +38,14 @@ public class ItemCardapioMapperImpl implements ItemCardapioMapper {
         String nome = null;
         String descricao = null;
         BigDecimal preco = null;
+        boolean disponibilidadeLocal = false;
         String fotoPath = null;
         if ( itemCardapio != null ) {
             id = itemCardapio.getId();
             nome = itemCardapio.getNome();
             descricao = itemCardapio.getDescricao();
             preco = itemCardapio.getPreco();
+            disponibilidadeLocal = itemCardapio.getDisponibilidadeLocal();
             fotoPath = itemCardapio.getFotoPath();
         }
         RestauranteEntity restaurante1 = null;
@@ -51,7 +53,7 @@ public class ItemCardapioMapperImpl implements ItemCardapioMapper {
 
         LocalDateTime dataCadastro = java.time.LocalDateTime.now();
 
-        ItemCardapioEntity itemCardapioEntity = new ItemCardapioEntity( id, nome, descricao, preco, fotoPath, restaurante1, dataCadastro );
+        ItemCardapioEntity itemCardapioEntity = new ItemCardapioEntity( id, nome, descricao, preco, disponibilidadeLocal, fotoPath, restaurante1, dataCadastro );
 
         return itemCardapioEntity;
     }

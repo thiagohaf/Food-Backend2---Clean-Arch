@@ -84,7 +84,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"nome\": \"Restaurante Atualizado\",\n  \"endereco\": \"Rua Atualizada, 456\",\n  \"tipoCozinha\": \"Brasileira\",\n  \"horarioFuncionamento\": \"11:00-23:00\",\n  \"donoId\": \"00000000-0000-0000-0000-000000000000\"\n}"
+              "raw": "{\n  \"nome\": \"Restaurante Atualizado\",\n  \"endereco\": \"Rua Atualizada, 456\",\n  \"tipoCozinha\": \"Brasileira\",\n  \"horarioFuncionamento\": \"11:00-23:00\"\n}"
             },
             "url": {
               "raw": "{{baseUrl}}/api/v1/restaurantes/{{restauranteId}}",
@@ -136,7 +136,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"nome\": \"Pizza Margherita\",\n  \"descricao\": \"Pizza com queijo e manjericão\",\n  \"preco\": 49.9,\n  \"restauranteId\": \"{{restauranteId}}\"\n}"
+              "raw": "{\n  \"nome\": \"Pizza Margherita\",\n  \"descricao\": \"Pizza com queijo e manjericão\",\n  \"preco\": 49.9,\n  \"disponibilidadeApenasRestaurante\": true,\n  \"fotoPath\": \"/img/pizza-margherita.png\",\n  \"restauranteId\": \"{{restauranteId}}\"\n}"
             },
             "url": {
               "raw": "{{baseUrl}}/api/v1/itens-cardapio",
@@ -206,7 +206,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"nome\": \"Pizza Margherita Grande\",\n  \"descricao\": \"Pizza grande com queijo e manjericão\",\n  \"preco\": 59.9,\n  \"restauranteId\": \"{{restauranteId}}\"\n}"
+              "raw": "{\n  \"nome\": \"Pizza Margherita Grande\",\n  \"descricao\": \"Pizza grande com queijo e manjericão\",\n  \"preco\": 59.9,\n  \"disponibilidadeApenasRestaurante\": false,\n  \"fotoPath\": \"/img/pizza-margherita-grande.png\",\n  \"restauranteId\": \"{{restauranteId}}\"\n}"
             },
             "url": {
               "raw": "{{baseUrl}}/api/v1/itens-cardapio/{{itemCardapioId}}",

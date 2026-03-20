@@ -11,8 +11,8 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = &quot;org.mapstruct.ap.MappingProcessor&quot;,
-    date = &quot;2026-03-18T19:29:54-0300&quot;,
-    comments = &quot;version: 1.6.3, compiler: Eclipse JDT (IDE) 3.45.0.v20260224-0835, environment: Java 21.0.10 (Eclipse Adoptium)&quot;
+    date = &quot;2026-03-19T22:33:38-0300&quot;,
+    comments = &quot;version: 1.6.3, compiler: javac, environment: Java 21.0.7 (JetBrains s.r.o.)&quot;
 )
 @Component
 <span class="fc" id="L18">public class ItemCardapioMapperImpl implements ItemCardapioMapper {</span>
@@ -38,22 +38,24 @@ import org.springframework.stereotype.Component;
 <span class="fc" id="L38">        String nome = null;</span>
 <span class="fc" id="L39">        String descricao = null;</span>
 <span class="fc" id="L40">        BigDecimal preco = null;</span>
-<span class="fc" id="L41">        String fotoPath = null;</span>
-<span class="pc bpc" id="L42" title="1 of 2 branches missed.">        if ( itemCardapio != null ) {</span>
-<span class="fc" id="L43">            id = itemCardapio.getId();</span>
-<span class="fc" id="L44">            nome = itemCardapio.getNome();</span>
-<span class="fc" id="L45">            descricao = itemCardapio.getDescricao();</span>
-<span class="fc" id="L46">            preco = itemCardapio.getPreco();</span>
-<span class="fc" id="L47">            fotoPath = itemCardapio.getFotoPath();</span>
+<span class="fc" id="L41">        boolean disponibilidadeLocal = false;</span>
+<span class="fc" id="L42">        String fotoPath = null;</span>
+<span class="pc bpc" id="L43" title="1 of 2 branches missed.">        if ( itemCardapio != null ) {</span>
+<span class="fc" id="L44">            id = itemCardapio.getId();</span>
+<span class="fc" id="L45">            nome = itemCardapio.getNome();</span>
+<span class="fc" id="L46">            descricao = itemCardapio.getDescricao();</span>
+<span class="fc" id="L47">            preco = itemCardapio.getPreco();</span>
+<span class="fc" id="L48">            disponibilidadeLocal = itemCardapio.getDisponibilidadeLocal();</span>
+<span class="fc" id="L49">            fotoPath = itemCardapio.getFotoPath();</span>
         }
-<span class="fc" id="L49">        RestauranteEntity restaurante1 = null;</span>
-<span class="fc" id="L50">        restaurante1 = restaurante;</span>
+<span class="fc" id="L51">        RestauranteEntity restaurante1 = null;</span>
+<span class="fc" id="L52">        restaurante1 = restaurante;</span>
 
-<span class="fc" id="L52">        LocalDateTime dataCadastro = java.time.LocalDateTime.now();</span>
+<span class="fc" id="L54">        LocalDateTime dataCadastro = java.time.LocalDateTime.now();</span>
 
-<span class="fc" id="L54">        ItemCardapioEntity itemCardapioEntity = new ItemCardapioEntity( id, nome, descricao, preco, fotoPath, restaurante1, dataCadastro );</span>
+<span class="fc" id="L56">        ItemCardapioEntity itemCardapioEntity = new ItemCardapioEntity( id, nome, descricao, preco, disponibilidadeLocal, fotoPath, restaurante1, dataCadastro );</span>
 
-<span class="fc" id="L56">        return itemCardapioEntity;</span>
+<span class="fc" id="L58">        return itemCardapioEntity;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

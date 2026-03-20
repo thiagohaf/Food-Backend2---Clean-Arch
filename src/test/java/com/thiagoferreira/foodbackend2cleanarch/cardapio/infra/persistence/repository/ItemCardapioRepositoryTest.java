@@ -54,6 +54,7 @@ class ItemCardapioRepositoryTest {
                 "Pizza Margherita",
                 "Pizza clássica com tomate e mussarela",
                 new BigDecimal("39.90"),
+                true,
                 "/pizza.png",
                 restaurante,
                 LocalDateTime.now()
@@ -98,6 +99,7 @@ class ItemCardapioRepositoryTest {
                 "Prato Executivo",
                 "Arroz, feijão, bife e salada",
                 new BigDecimal("29.90"),
+                true,
                 "PRATO_PRINCIPAL",
                 restaurante,
                 LocalDateTime.now()

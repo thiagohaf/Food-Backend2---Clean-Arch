@@ -8,6 +8,7 @@ public record ItemCardapioResponse(
         String nome,
         String descricao,
         BigDecimal preco,
+        boolean disponibilidadeApenasRestaurante,
         String fotoPath,
         UUID restauranteId
 ) {

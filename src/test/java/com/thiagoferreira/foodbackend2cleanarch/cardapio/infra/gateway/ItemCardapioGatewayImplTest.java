@@ -17,8 +17,7 @@ import java.time.LocalDateTime;
 import java.util.Optional;
 import java.util.UUID;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
@@ -49,6 +48,7 @@ class ItemCardapioGatewayImplTest {
                 "Pizza Margherita",
                 "Pizza clássica",
                 new BigDecimal("39.90"),
+                true,
                 "PIZZA",
                 null,
                 LocalDateTime.now()
@@ -123,6 +123,7 @@ class ItemCardapioGatewayImplTest {
                 "Pizza Margherita",
                 "Pizza clássica",
                 new BigDecimal("39.90"),
+                true,
                 "GERAL",
                 restauranteRef,
                 LocalDateTime.now()

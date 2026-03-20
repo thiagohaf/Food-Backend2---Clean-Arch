@@ -47,7 +47,7 @@ public class ItemCardapioController {
                 request.nome(),
                 request.descricao(),
                 request.preco(),
-                true,
+                request.disponibilidadeApenasRestaurante(),
                 request.fotoPath(),
                 request.restauranteId()
         );
@@ -84,7 +84,7 @@ public class ItemCardapioController {
                 request.nome(),
                 request.descricao(),
                 request.preco(),
-                true,
+                request.disponibilidadeApenasRestaurante(),
                 request.fotoPath()
         );
 
@@ -104,6 +104,7 @@ public class ItemCardapioController {
                 item.getNome(),
                 item.getDescricao(),
                 item.getPreco(),
+                item.getDisponibilidadeLocal(),
                 item.getFotoPath(),
                 item.getRestauranteId()
         );

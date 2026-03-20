@@ -40,6 +40,9 @@ public class ItemCardapioEntity {
     @Column(name = "preco", nullable = false, precision = 10, scale = 2)
     private BigDecimal preco;
 
+    @Column(name = "disponibilidade_local", nullable = false)
+    private boolean disponibilidadeLocal;
+
     @Column(name = "foto_path", length = 255)
     private String fotoPath;
 

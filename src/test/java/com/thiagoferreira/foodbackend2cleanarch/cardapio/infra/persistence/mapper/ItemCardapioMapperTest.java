@@ -115,6 +115,7 @@ class ItemCardapioMapperTest {
                     "Prato Executivo",
                     "Arroz, feijão e bife",
                     new BigDecimal("29.90"),
+                    true,
                     "/img/prato-executivo.png",
                     restauranteEntity,
                     LocalDateTime.now()
@@ -167,6 +168,7 @@ class ItemCardapioMapperTest {
                     itemCardapio.getNome(),
                     itemCardapio.getDescricao(),
                     itemCardapio.getPreco(),
+                    itemCardapio.getDisponibilidadeLocal(),
                     itemCardapio.getFotoPath(),
                     restaurante,
                     LocalDateTime.now()

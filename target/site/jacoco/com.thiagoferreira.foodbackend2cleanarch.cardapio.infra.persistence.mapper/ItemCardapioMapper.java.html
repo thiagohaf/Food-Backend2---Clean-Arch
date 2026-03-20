@@ -17,6 +17,7 @@ public interface ItemCardapioMapper {
     @Mapping(target = &quot;nome&quot;, source = &quot;itemCardapio.nome&quot;)
     @Mapping(target = &quot;descricao&quot;, source = &quot;itemCardapio.descricao&quot;)
     @Mapping(target = &quot;preco&quot;, source = &quot;itemCardapio.preco&quot;)
+    @Mapping(target = &quot;disponibilidadeLocal&quot;, source = &quot;itemCardapio.disponibilidadeLocal&quot;)
     @Mapping(target = &quot;fotoPath&quot;, source = &quot;itemCardapio.fotoPath&quot;)
     @Mapping(target = &quot;restaurante&quot;, source = &quot;restaurante&quot;)
     @Mapping(target = &quot;dataCadastro&quot;, expression = &quot;java(java.time.LocalDateTime.now())&quot;)
@@ -28,18 +29,18 @@ public interface ItemCardapioMapper {
      */
     @ObjectFactory
     default ItemCardapio createItemCardapio(ItemCardapioEntity entity) {
-<span class="fc bfc" id="L31" title="All 2 branches covered.">        if (entity == null) {</span>
-<span class="fc" id="L32">            return null;</span>
+<span class="fc bfc" id="L32" title="All 2 branches covered.">        if (entity == null) {</span>
+<span class="fc" id="L33">            return null;</span>
         }
 
-<span class="fc" id="L35">        return new ItemCardapio(</span>
-<span class="fc" id="L36">                entity.getId(),</span>
-<span class="fc" id="L37">                entity.getNome(),</span>
-<span class="fc" id="L38">                entity.getDescricao(),</span>
-<span class="fc" id="L39">                entity.getPreco(),</span>
-<span class="fc" id="L40">                true,</span>
-<span class="fc" id="L41">                entity.getFotoPath(),</span>
-<span class="pc bpc" id="L42" title="1 of 2 branches missed.">                entity.getRestaurante() != null ? entity.getRestaurante().getId() : null</span>
+<span class="fc" id="L36">        return new ItemCardapio(</span>
+<span class="fc" id="L37">                entity.getId(),</span>
+<span class="fc" id="L38">                entity.getNome(),</span>
+<span class="fc" id="L39">                entity.getDescricao(),</span>
+<span class="fc" id="L40">                entity.getPreco(),</span>
+<span class="fc" id="L41">                entity.isDisponibilidadeLocal(),</span>
+<span class="fc" id="L42">                entity.getFotoPath(),</span>
+<span class="pc bpc" id="L43" title="1 of 2 branches missed.">                entity.getRestaurante() != null ? entity.getRestaurante().getId() : null</span>
         );
     }
 }

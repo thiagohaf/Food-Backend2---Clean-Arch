@@ -40,6 +40,7 @@ class ItemCardapioControllerIntegrationTest extends AbstractIntegrationTest {
                         "Hambúrguer",
                         "Hambúrguer artesanal",
                         new BigDecimal("25.50"),
+                        true,
                         "/img/hamburguer.png",
                         restauranteId
                 ))
@@ -51,6 +52,7 @@ class ItemCardapioControllerIntegrationTest extends AbstractIntegrationTest {
                 .body("nome", equalTo("Hambúrguer"))
                 .body("descricao", equalTo("Hambúrguer artesanal"))
                 .body("preco", equalTo(25.50f))
+                .body("disponibilidadeApenasRestaurante", equalTo(true))
                 .body("fotoPath", equalTo("/img/hamburguer.png"))
                 .body("restauranteId", equalTo(restauranteId.toString()));
     }
@@ -71,6 +73,7 @@ class ItemCardapioControllerIntegrationTest extends AbstractIntegrationTest {
                 .body("nome", equalTo("Pizza"))
                 .body("descricao", equalTo("Pizza clássica"))
                 .body("preco", equalTo(39.90f))
+                .body("disponibilidadeApenasRestaurante", equalTo(true))
                 .body("fotoPath", equalTo("/img/pizza.png"))
                 .body("restauranteId", equalTo(restauranteId.toString()));
     }
@@ -118,6 +121,7 @@ class ItemCardapioControllerIntegrationTest extends AbstractIntegrationTest {
                         "Item Novo",
                         "Desc nova",
                         new BigDecimal("12.50"),
+                        false,
                         "/img/new.png",
                         restauranteId
                 ))
@@ -129,6 +133,7 @@ class ItemCardapioControllerIntegrationTest extends AbstractIntegrationTest {
                 .body("nome", equalTo("Item Novo"))
                 .body("descricao", equalTo("Desc nova"))
                 .body("preco", equalTo(12.50f))
+                .body("disponibilidadeApenasRestaurante", equalTo(false))
                 .body("fotoPath", equalTo("/img/new.png"))
                 .body("restauranteId", equalTo(restauranteId.toString()));
     }
@@ -229,7 +234,7 @@ class ItemCardapioControllerIntegrationTest extends AbstractIntegrationTest {
         return given()
                 .contentType(APPLICATION_JSON_VALUE)
                 .accept(APPLICATION_JSON_VALUE)
-                .body(new ItemCardapioRequest(nome, descricao, preco, fotoPath, restauranteId))
+                .body(new ItemCardapioRequest(nome, descricao, preco, true, fotoPath, restauranteId))
         .when()
                 .post(ENDPOINT_ITENS)
         .then()
