@@ -11,6 +11,8 @@ import com.thiagoferreira.foodbackend2cleanarch.cardapio.core.usecase.ListarIten
 import com.thiagoferreira.foodbackend2cleanarch.cardapio.infra.dto.ItemCardapioRequest;
 import com.thiagoferreira.foodbackend2cleanarch.cardapio.infra.dto.ItemCardapioResponse;
 import jakarta.validation.Valid;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -29,6 +31,7 @@ import java.util.UUID;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
+@Tag(name = "Cardápio", description = "Endpoints para gestão de itens do cardápio")
 @RestController
 @RequestMapping("/api/v1/itens-cardapio")
 @RequiredArgsConstructor
@@ -40,6 +43,7 @@ public class ItemCardapioController {
     private final ExcluirItemCardapioUseCase excluirItemCardapioUseCase;
     private final ListarItensCardapioPorRestauranteUseCase listarItensCardapioPorRestauranteUseCase;
 
+    @Operation(summary = "Criar item do cardápio")
     @PostMapping(consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
     public ResponseEntity<ItemCardapioResponse> criar(@Valid @RequestBody ItemCardapioRequest request) {
         CriarItemCardapioInput input = new CriarItemCardapioInput(
@@ -63,12 +67,14 @@ public class ItemCardapioController {
                 .body(response);
     }
 
+    @Operation(summary = "Buscar item do cardápio por id")
     @GetMapping(value = "/{id}", produces = APPLICATION_JSON_VALUE)
     public ResponseEntity<ItemCardapioResponse> buscarPorId(@PathVariable UUID id) {
         ItemCardapio item = buscarItemCardapioPorIdUseCase.executar(id);
         return ResponseEntity.ok(toResponse(item));
     }
 
+    @Operation(summary = "Listar itens do cardápio por restaurante")
     @GetMapping(produces = APPLICATION_JSON_VALUE)
     public ResponseEntity<List<ItemCardapioResponse>> listarPorRestaurante(@RequestParam UUID restauranteId) {
         List<ItemCardapioResponse> response = listarItensCardapioPorRestauranteUseCase.executar(restauranteId).stream()
@@ -77,6 +83,7 @@ public class ItemCardapioController {
         return ResponseEntity.ok(response);
     }
 
+    @Operation(summary = "Atualizar item do cardápio")
     @PutMapping(value = "/{id}", consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
     public ResponseEntity<ItemCardapioResponse> atualizar(@PathVariable UUID id,
                                                           @Valid @RequestBody ItemCardapioRequest request) {
@@ -92,6 +99,7 @@ public class ItemCardapioController {
         return ResponseEntity.ok(toResponse(itemAtualizado));
     }
 
+    @Operation(summary = "Excluir item do cardápio")
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> excluir(@PathVariable UUID id) {
         excluirItemCardapioUseCase.executar(id);

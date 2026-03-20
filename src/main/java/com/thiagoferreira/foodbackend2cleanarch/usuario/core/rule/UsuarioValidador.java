@@ -18,7 +18,6 @@ public class UsuarioValidador {
 
         validarCampoObrigatorio(usuario.getNome(), "Nome do Usuário");
 
-        // Regra de Ouro do Tech Challenge: A associação!
         if (usuario.getTipoUsuario() == null) {
             throw new ValidacaoRegraNegocioException("O usuário deve obrigatoriamente estar associado a um Tipo de Usuário.");
         }

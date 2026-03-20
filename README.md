@@ -74,6 +74,31 @@ Observações sobre a integração:
 - O serviço `app` depende do `mysql` via `depends_on` com `condition: service_healthy`.
 - O `Dockerfile` utiliza build multi-stage (primeiro compila via Maven, depois gera imagem enxuta apenas com JRE).
 
+## 📚 Documentação (Javadoc e Swagger)
+
+### Javadoc
+
+A documentação da API Java (classes e pacotes públicos) é gerada pelo **Maven Javadoc Plugin** e escrita na pasta **`docs/`** na raiz do repositório (índice em [`docs/index.html`](docs/index.html)).
+
+Para (re)gerar após alterações no código:
+
+```bash
+mvn javadoc:javadoc
+```
+
+Abra `docs/index.html` no navegador (arquivo local) para navegar pelo Javadoc.
+
+### Swagger / OpenAPI (Springdoc)
+
+Com a aplicação em execução (por exemplo em `http://localhost:8080` após `docker-compose up` ou `mvn spring-boot:run`):
+
+| Recurso | URL |
+|--------|-----|
+| **Swagger UI** (explorar e testar endpoints) | [http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html) |
+| **OpenAPI 3 (JSON)** | [http://localhost:8080/v3/api-docs](http://localhost:8080/v3/api-docs) |
+
+A interface Swagger é fornecida pela dependência **springdoc-openapi** (`springdoc-openapi-starter-webmvc-ui` no `pom.xml`).
+
 ## 🧪 Qualidade e Testes (Superando a Meta)
 
 O PDF da Fase 2 exige:

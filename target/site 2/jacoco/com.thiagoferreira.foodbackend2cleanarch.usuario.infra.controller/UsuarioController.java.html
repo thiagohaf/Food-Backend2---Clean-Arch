@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>UsuarioController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">food-backend2-clean-arch</a> &gt; <a href="index.source.html" class="el_package">com.thiagoferreira.foodbackend2cleanarch.usuario.infra.controller</a> &gt; <span class="el_source">UsuarioController.java</span></div><h1>UsuarioController.java</h1><pre class="source lang-java linenums">package com.thiagoferreira.foodbackend2cleanarch.usuario.infra.controller;
+
+import com.thiagoferreira.foodbackend2cleanarch.usuario.infra.dto.TipoUsuarioResponse;
+import com.thiagoferreira.foodbackend2cleanarch.usuario.infra.dto.UsuarioRequest;
+import com.thiagoferreira.foodbackend2cleanarch.usuario.infra.dto.UsuarioResponse;
+import com.thiagoferreira.foodbackend2cleanarch.usuario.core.domain.TipoUsuario;
+import com.thiagoferreira.foodbackend2cleanarch.usuario.core.domain.Usuario;
+import com.thiagoferreira.foodbackend2cleanarch.usuario.core.dto.AtualizarUsuarioInput;
+import com.thiagoferreira.foodbackend2cleanarch.usuario.core.dto.CriarUsuarioInput;
+import com.thiagoferreira.foodbackend2cleanarch.usuario.core.usecase.AtualizarUsuarioUseCase;
+import com.thiagoferreira.foodbackend2cleanarch.usuario.core.usecase.BuscarUsuarioPorIdUseCase;
+import com.thiagoferreira.foodbackend2cleanarch.usuario.core.usecase.CriarUsuarioUseCase;
+import com.thiagoferreira.foodbackend2cleanarch.usuario.core.usecase.ExcluirUsuarioUseCase;
+import com.thiagoferreira.foodbackend2cleanarch.usuario.core.usecase.ListarUsuariosUseCase;
+import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
+import java.util.List;
+import java.util.UUID;
+
+import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
+
+@RestController
+@RequestMapping(&quot;/api/v1/usuarios&quot;)
+@RequiredArgsConstructor
+public class UsuarioController {
+
+    private final CriarUsuarioUseCase criarUsuarioUseCase;
+    private final BuscarUsuarioPorIdUseCase buscarUsuarioPorIdUseCase;
+    private final ListarUsuariosUseCase listarUsuariosUseCase;
+    private final AtualizarUsuarioUseCase atualizarUsuarioUseCase;
+    private final ExcluirUsuarioUseCase excluirUsuarioUseCase;
+
+    @PostMapping(consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
+    public ResponseEntity&lt;UsuarioResponse&gt; criar(@Valid @RequestBody UsuarioRequest request) {
+<span class="fc" id="L39">        CriarUsuarioInput input = new CriarUsuarioInput(</span>
+<span class="fc" id="L40">                UUID.randomUUID(),</span>
+<span class="fc" id="L41">                request.nome(),</span>
+<span class="fc" id="L42">                request.tipoUsuarioId()</span>
+        );
+<span class="fc" id="L44">        Usuario usuario = criarUsuarioUseCase.executar(input);</span>
+<span class="fc" id="L45">        UsuarioResponse response = toResponse(usuario);</span>
+<span class="fc" id="L46">        return ResponseEntity</span>
+<span class="fc" id="L47">                .created(ServletUriComponentsBuilder.fromCurrentRequest()</span>
+<span class="fc" id="L48">                        .path(&quot;/{id}&quot;)</span>
+<span class="fc" id="L49">                        .buildAndExpand(usuario.getId())</span>
+<span class="fc" id="L50">                        .toUri())</span>
+<span class="fc" id="L51">                .body(response);</span>
+    }
+
+    @GetMapping(value = &quot;/{id}&quot;, produces = APPLICATION_JSON_VALUE)
+    public ResponseEntity&lt;UsuarioResponse&gt; buscarPorId(@PathVariable UUID id) {
+<span class="fc" id="L56">        Usuario usuario = buscarUsuarioPorIdUseCase.buscarPorId(id);</span>
+<span class="fc" id="L57">        return ResponseEntity.ok(toResponse(usuario));</span>
+    }
+
+    @GetMapping(produces = APPLICATION_JSON_VALUE)
+    public ResponseEntity&lt;List&lt;UsuarioResponse&gt;&gt; listar() {
+<span class="fc" id="L62">        List&lt;Usuario&gt; usuarios = listarUsuariosUseCase.listarTodos();</span>
+<span class="fc" id="L63">        List&lt;UsuarioResponse&gt; response = usuarios.stream()</span>
+<span class="fc" id="L64">                .map(this::toResponse)</span>
+<span class="fc" id="L65">                .toList();</span>
+<span class="fc" id="L66">        return ResponseEntity.ok(response);</span>
+    }
+
+    @PutMapping(value = &quot;/{id}&quot;, consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
+    public ResponseEntity&lt;UsuarioResponse&gt; atualizar(@PathVariable UUID id,
+                                                     @Valid @RequestBody UsuarioRequest request) {
+<span class="fc" id="L72">        AtualizarUsuarioInput input = new AtualizarUsuarioInput(request.nome(), request.tipoUsuarioId());</span>
+<span class="fc" id="L73">        Usuario usuario = atualizarUsuarioUseCase.executar(id, input);</span>
+<span class="fc" id="L74">        return ResponseEntity.ok(toResponse(usuario));</span>
+    }
+
+    @DeleteMapping(&quot;/{id}&quot;)
+    public ResponseEntity&lt;Void&gt; excluir(@PathVariable UUID id) {
+<span class="fc" id="L79">        excluirUsuarioUseCase.excluir(id);</span>
+<span class="fc" id="L80">        return ResponseEntity.noContent().build();</span>
+    }
+
+    private UsuarioResponse toResponse(Usuario usuario) {
+<span class="fc" id="L84">        TipoUsuario tipo = usuario.getTipoUsuario();</span>
+<span class="fc" id="L85">        TipoUsuarioResponse tipoResponse = new TipoUsuarioResponse(tipo.getId(), tipo.getNome());</span>
+<span class="fc" id="L86">        return new UsuarioResponse(usuario.getId(), usuario.getNome(), tipoResponse);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

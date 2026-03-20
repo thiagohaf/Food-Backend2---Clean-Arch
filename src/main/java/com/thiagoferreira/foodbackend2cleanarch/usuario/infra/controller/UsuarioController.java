@@ -13,6 +13,8 @@ import com.thiagoferreira.foodbackend2cleanarch.usuario.core.usecase.CriarUsuari
 import com.thiagoferreira.foodbackend2cleanarch.usuario.core.usecase.ExcluirUsuarioUseCase;
 import com.thiagoferreira.foodbackend2cleanarch.usuario.core.usecase.ListarUsuariosUseCase;
 import jakarta.validation.Valid;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -23,6 +25,7 @@ import java.util.UUID;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
+@Tag(name = "Usuários", description = "Endpoints para gestão de usuários")
 @RestController
 @RequestMapping("/api/v1/usuarios")
 @RequiredArgsConstructor
@@ -34,6 +37,7 @@ public class UsuarioController {
     private final AtualizarUsuarioUseCase atualizarUsuarioUseCase;
     private final ExcluirUsuarioUseCase excluirUsuarioUseCase;
 
+    @Operation(summary = "Criar usuário")
     @PostMapping(consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
     public ResponseEntity<UsuarioResponse> criar(@Valid @RequestBody UsuarioRequest request) {
         CriarUsuarioInput input = new CriarUsuarioInput(
@@ -51,12 +55,14 @@ public class UsuarioController {
                 .body(response);
     }
 
+    @Operation(summary = "Buscar usuário por id")
     @GetMapping(value = "/{id}", produces = APPLICATION_JSON_VALUE)
     public ResponseEntity<UsuarioResponse> buscarPorId(@PathVariable UUID id) {
         Usuario usuario = buscarUsuarioPorIdUseCase.buscarPorId(id);
         return ResponseEntity.ok(toResponse(usuario));
     }
 
+    @Operation(summary = "Listar usuários")
     @GetMapping(produces = APPLICATION_JSON_VALUE)
     public ResponseEntity<List<UsuarioResponse>> listar() {
         List<Usuario> usuarios = listarUsuariosUseCase.listarTodos();
@@ -66,6 +72,7 @@ public class UsuarioController {
         return ResponseEntity.ok(response);
     }
 
+    @Operation(summary = "Atualizar usuário")
     @PutMapping(value = "/{id}", consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
     public ResponseEntity<UsuarioResponse> atualizar(@PathVariable UUID id,
                                                      @Valid @RequestBody UsuarioRequest request) {
@@ -74,6 +81,7 @@ public class UsuarioController {
         return ResponseEntity.ok(toResponse(usuario));
     }
 
+    @Operation(summary = "Excluir usuário")
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> excluir(@PathVariable UUID id) {
         excluirUsuarioUseCase.excluir(id);

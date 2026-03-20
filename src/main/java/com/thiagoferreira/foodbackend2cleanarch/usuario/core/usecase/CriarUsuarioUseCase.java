@@ -8,18 +8,30 @@ import com.thiagoferreira.foodbackend2cleanarch.usuario.core.gateway.TipoUsuario
 import com.thiagoferreira.foodbackend2cleanarch.usuario.core.gateway.UsuarioGateway;
 import com.thiagoferreira.foodbackend2cleanarch.usuario.core.mapper.UsuarioCoreMapper;
 
+/**
+ * Caso de uso que cria usuário garantindo que o tipo informado exista no catálogo antes da persistência.
+ */
 public class CriarUsuarioUseCase {
 
     private final UsuarioGateway usuarioGateway;
     private final TipoUsuarioGateway tipoUsuarioGateway;
     private final UsuarioCoreMapper mapper;
 
+    /**
+     * @param usuarioGateway persistência de usuário
+     * @param tipoUsuarioGateway consulta de tipos de usuário
+     * @param mapper montagem da entidade a partir do input e do tipo resolvido
+     */
     public CriarUsuarioUseCase(UsuarioGateway usuarioGateway, TipoUsuarioGateway tipoUsuarioGateway, UsuarioCoreMapper mapper) {
         this.usuarioGateway = usuarioGateway;
         this.tipoUsuarioGateway = tipoUsuarioGateway;
         this.mapper = mapper;
     }
 
+    /**
+     * @param input dados do novo usuário e referência ao tipo
+     * @return usuário gravado
+     */
     public Usuario executar(CriarUsuarioInput input) {
 
         TipoUsuario tipoUsuarioEncontrado = tipoUsuarioGateway.buscarPorId(input.tipoUsuarioId())

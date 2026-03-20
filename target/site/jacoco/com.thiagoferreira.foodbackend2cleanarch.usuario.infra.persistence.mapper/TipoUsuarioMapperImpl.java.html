@@ -8,44 +8,44 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = &quot;org.mapstruct.ap.MappingProcessor&quot;,
-    date = &quot;2026-03-19T22:33:38-0300&quot;,
-    comments = &quot;version: 1.6.3, compiler: javac, environment: Java 21.0.7 (JetBrains s.r.o.)&quot;
+    date = &quot;2026-03-20T00:01:23-0300&quot;,
+    comments = &quot;version: 1.6.3, compiler: javac, environment: Java 21.0.2 (GraalVM Community)&quot;
 )
 @Component
-<span class="fc" id="L15">public class TipoUsuarioMapperImpl implements TipoUsuarioMapper {</span>
+<span class="nc" id="L15">public class TipoUsuarioMapperImpl implements TipoUsuarioMapper {</span>
 
     @Override
     public TipoUsuarioEntity toEntity(TipoUsuario tipoUsuario) {
-<span class="pc bpc" id="L19" title="1 of 2 branches missed.">        if ( tipoUsuario == null ) {</span>
+<span class="nc bnc" id="L19" title="All 2 branches missed.">        if ( tipoUsuario == null ) {</span>
 <span class="nc" id="L20">            return null;</span>
         }
 
-<span class="fc" id="L23">        UUID id = null;</span>
-<span class="fc" id="L24">        String nome = null;</span>
+<span class="nc" id="L23">        UUID id = null;</span>
+<span class="nc" id="L24">        String nome = null;</span>
 
-<span class="fc" id="L26">        id = tipoUsuario.getId();</span>
-<span class="fc" id="L27">        nome = tipoUsuario.getNome();</span>
+<span class="nc" id="L26">        id = tipoUsuario.getId();</span>
+<span class="nc" id="L27">        nome = tipoUsuario.getNome();</span>
 
-<span class="fc" id="L29">        TipoUsuarioEntity tipoUsuarioEntity = new TipoUsuarioEntity( id, nome );</span>
+<span class="nc" id="L29">        TipoUsuarioEntity tipoUsuarioEntity = new TipoUsuarioEntity( id, nome );</span>
 
-<span class="fc" id="L31">        return tipoUsuarioEntity;</span>
+<span class="nc" id="L31">        return tipoUsuarioEntity;</span>
     }
 
     @Override
     public TipoUsuario toDomain(TipoUsuarioEntity entity) {
-<span class="pc bpc" id="L36" title="1 of 2 branches missed.">        if ( entity == null ) {</span>
+<span class="nc bnc" id="L36" title="All 2 branches missed.">        if ( entity == null ) {</span>
 <span class="nc" id="L37">            return null;</span>
         }
 
-<span class="fc" id="L40">        UUID id = null;</span>
-<span class="fc" id="L41">        String nome = null;</span>
+<span class="nc" id="L40">        UUID id = null;</span>
+<span class="nc" id="L41">        String nome = null;</span>
 
-<span class="fc" id="L43">        id = entity.getId();</span>
-<span class="fc" id="L44">        nome = entity.getNome();</span>
+<span class="nc" id="L43">        id = entity.getId();</span>
+<span class="nc" id="L44">        nome = entity.getNome();</span>
 
-<span class="fc" id="L46">        TipoUsuario tipoUsuario = new TipoUsuario( id, nome );</span>
+<span class="nc" id="L46">        TipoUsuario tipoUsuario = new TipoUsuario( id, nome );</span>
 
-<span class="fc" id="L48">        return tipoUsuario;</span>
+<span class="nc" id="L48">        return tipoUsuario;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

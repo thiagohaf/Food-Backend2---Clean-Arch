@@ -8,14 +8,25 @@ import com.thiagoferreira.foodbackend2cleanarch.util.exception.ValidacaoRegraNeg
 
 import java.util.UUID;
 
+/**
+ * Caso de uso que renomeia um tipo de usuário, impedindo colisão de nome com outro registro distinto.
+ */
 public class AtualizarTipoUsuarioUseCase {
 
     private final TipoUsuarioGateway tipoUsuarioGateway;
 
+    /**
+     * @param tipoUsuarioGateway persistência e consultas de unicidade
+     */
     public AtualizarTipoUsuarioUseCase(TipoUsuarioGateway tipoUsuarioGateway) {
         this.tipoUsuarioGateway = tipoUsuarioGateway;
     }
 
+    /**
+     * @param id identificador do tipo
+     * @param input novo nome desejado
+     * @return tipo atualizado persistido
+     */
     public TipoUsuario executar(UUID id, AtualizarTipoUsuarioInput input) {
         TipoUsuario tipo = tipoUsuarioGateway.buscarPorId(id)
                 .orElseThrow(TipoUsuarioNaoEncontradoException::new);

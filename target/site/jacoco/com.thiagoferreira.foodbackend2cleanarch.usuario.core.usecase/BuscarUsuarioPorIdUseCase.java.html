@@ -6,17 +6,27 @@ import com.thiagoferreira.foodbackend2cleanarch.usuario.core.gateway.UsuarioGate
 
 import java.util.UUID;
 
+/**
+ * Caso de uso que retorna um usuário pelo id ou falha com exceção de domínio.
+ */
 public class BuscarUsuarioPorIdUseCase {
 
     private final UsuarioGateway usuarioGateway;
 
-<span class="fc" id="L13">    public BuscarUsuarioPorIdUseCase(UsuarioGateway usuarioGateway) {</span>
-<span class="fc" id="L14">        this.usuarioGateway = usuarioGateway;</span>
-<span class="fc" id="L15">    }</span>
+    /**
+     * @param usuarioGateway porta de consulta
+     */
+<span class="nc" id="L19">    public BuscarUsuarioPorIdUseCase(UsuarioGateway usuarioGateway) {</span>
+<span class="nc" id="L20">        this.usuarioGateway = usuarioGateway;</span>
+<span class="nc" id="L21">    }</span>
 
+    /**
+     * @param id identificador do usuário
+     * @return usuário encontrado
+     */
     public Usuario buscarPorId(UUID id) {
-<span class="fc" id="L18">        return usuarioGateway.buscarPorId(id)</span>
-<span class="fc" id="L19">                .orElseThrow(UsuarioNaoEncontradoException::new);</span>
+<span class="nc" id="L28">        return usuarioGateway.buscarPorId(id)</span>
+<span class="nc" id="L29">                .orElseThrow(UsuarioNaoEncontradoException::new);</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

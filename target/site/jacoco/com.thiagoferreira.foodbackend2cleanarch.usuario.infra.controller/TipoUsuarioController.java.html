@@ -63,15 +63,15 @@ public class TipoUsuarioController {
     @PutMapping(value = &quot;/{id}&quot;, consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
     public ResponseEntity&lt;TipoUsuarioResponse&gt; atualizar(@PathVariable UUID id,
                                                          @Valid @RequestBody TipoUsuarioRequest request) {
-<span class="fc" id="L66">        AtualizarTipoUsuarioInput input = new AtualizarTipoUsuarioInput(request.nome());</span>
-<span class="fc" id="L67">        TipoUsuario tipoUsuario = atualizarTipoUsuarioUseCase.executar(id, input);</span>
-<span class="fc" id="L68">        return ResponseEntity.ok(toResponse(tipoUsuario));</span>
+<span class="nc" id="L66">        AtualizarTipoUsuarioInput input = new AtualizarTipoUsuarioInput(request.nome());</span>
+<span class="nc" id="L67">        TipoUsuario tipoUsuario = atualizarTipoUsuarioUseCase.executar(id, input);</span>
+<span class="nc" id="L68">        return ResponseEntity.ok(toResponse(tipoUsuario));</span>
     }
 
     @DeleteMapping(&quot;/{id}&quot;)
     public ResponseEntity&lt;Void&gt; excluir(@PathVariable UUID id) {
-<span class="fc" id="L73">        excluirTipoUsuarioUseCase.excluir(id);</span>
-<span class="fc" id="L74">        return ResponseEntity.noContent().build();</span>
+<span class="nc" id="L73">        excluirTipoUsuarioUseCase.excluir(id);</span>
+<span class="nc" id="L74">        return ResponseEntity.noContent().build();</span>
     }
 
     private TipoUsuarioResponse toResponse(TipoUsuario tipoUsuario) {

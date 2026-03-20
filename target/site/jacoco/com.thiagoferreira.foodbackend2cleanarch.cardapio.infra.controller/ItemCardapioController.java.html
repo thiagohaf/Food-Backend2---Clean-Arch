@@ -80,22 +80,22 @@ public class ItemCardapioController {
     @PutMapping(value = &quot;/{id}&quot;, consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
     public ResponseEntity&lt;ItemCardapioResponse&gt; atualizar(@PathVariable UUID id,
                                                           @Valid @RequestBody ItemCardapioRequest request) {
-<span class="fc" id="L83">        AtualizarItemCardapioInput input = new AtualizarItemCardapioInput(</span>
-<span class="fc" id="L84">                request.nome(),</span>
-<span class="fc" id="L85">                request.descricao(),</span>
-<span class="fc" id="L86">                request.preco(),</span>
-<span class="fc" id="L87">                request.disponibilidadeApenasRestaurante(),</span>
-<span class="fc" id="L88">                request.fotoPath()</span>
+<span class="nc" id="L83">        AtualizarItemCardapioInput input = new AtualizarItemCardapioInput(</span>
+<span class="nc" id="L84">                request.nome(),</span>
+<span class="nc" id="L85">                request.descricao(),</span>
+<span class="nc" id="L86">                request.preco(),</span>
+<span class="nc" id="L87">                request.disponibilidadeApenasRestaurante(),</span>
+<span class="nc" id="L88">                request.fotoPath()</span>
         );
 
-<span class="fc" id="L91">        ItemCardapio itemAtualizado = atualizarItemCardapioUseCase.executar(id, input);</span>
-<span class="fc" id="L92">        return ResponseEntity.ok(toResponse(itemAtualizado));</span>
+<span class="nc" id="L91">        ItemCardapio itemAtualizado = atualizarItemCardapioUseCase.executar(id, input);</span>
+<span class="nc" id="L92">        return ResponseEntity.ok(toResponse(itemAtualizado));</span>
     }
 
     @DeleteMapping(&quot;/{id}&quot;)
     public ResponseEntity&lt;Void&gt; excluir(@PathVariable UUID id) {
-<span class="fc" id="L97">        excluirItemCardapioUseCase.executar(id);</span>
-<span class="fc" id="L98">        return ResponseEntity.noContent().build();</span>
+<span class="nc" id="L97">        excluirItemCardapioUseCase.executar(id);</span>
+<span class="nc" id="L98">        return ResponseEntity.noContent().build();</span>
     }
 
     private ItemCardapioResponse toResponse(ItemCardapio item) {

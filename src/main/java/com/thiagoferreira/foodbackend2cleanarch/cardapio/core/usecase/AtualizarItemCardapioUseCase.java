@@ -7,14 +7,25 @@ import com.thiagoferreira.foodbackend2cleanarch.cardapio.core.gateway.ItemCardap
 
 import java.util.UUID;
 
+/**
+ * Caso de uso que aplica alterações em um item existente (dados cadastrais, preço, disponibilidade local e referência de foto).
+ */
 public class AtualizarItemCardapioUseCase {
 
     private ItemCardapioGateway itemCardapioGateway;
 
+    /**
+     * @param itemCardapioGateway porta de persistência de cardápio
+     */
     public AtualizarItemCardapioUseCase(ItemCardapioGateway itemCardapioGateway) {
         this.itemCardapioGateway = itemCardapioGateway;
     }
 
+    /**
+     * @param id identificador do item
+     * @param input novos valores (foto como {@code fotoPath})
+     * @return item atualizado persistido
+     */
     public ItemCardapio executar(UUID id, AtualizarItemCardapioInput input) {
         ItemCardapio item = itemCardapioGateway.buscarPorId(id)
                 .orElseThrow(ItemCardapioNaoEncontradoException::new);

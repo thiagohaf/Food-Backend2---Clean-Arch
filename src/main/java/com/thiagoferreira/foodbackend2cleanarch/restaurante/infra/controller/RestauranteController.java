@@ -10,6 +10,8 @@ import com.thiagoferreira.foodbackend2cleanarch.restaurante.core.usecase.Excluir
 import com.thiagoferreira.foodbackend2cleanarch.restaurante.core.usecase.ListarRestaurantesUseCase;
 import com.thiagoferreira.foodbackend2cleanarch.restaurante.infra.dto.CriarRestauranteRequest;
 import com.thiagoferreira.foodbackend2cleanarch.restaurante.infra.dto.RestauranteResponse;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -20,6 +22,7 @@ import java.util.UUID;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
+@Tag(name = "Restaurantes", description = "Endpoints para gestão de restaurantes")
 @RestController
 @RequestMapping("/api/v1/restaurantes")
 @RequiredArgsConstructor
@@ -31,6 +34,7 @@ public class RestauranteController {
     private final AtualizarRestauranteUseCase atualizarRestauranteUseCase;
     private final ExcluirRestauranteUseCase excluirRestauranteUseCase;
 
+    @Operation(summary = "Criar restaurante")
     @PostMapping(consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
     public ResponseEntity<RestauranteResponse> criar(@RequestBody CriarRestauranteRequest request) {
         CriarRestauranteInput input = new CriarRestauranteInput(
@@ -51,12 +55,14 @@ public class RestauranteController {
                 .body(response);
     }
 
+    @Operation(summary = "Buscar restaurante por id")
     @GetMapping(value = "/{id}", produces = APPLICATION_JSON_VALUE)
     public ResponseEntity<RestauranteResponse> buscarPorId(@PathVariable UUID id) {
         Restaurante restaurante = buscarRestaurantePorIdUseCase.executar(id);
         return ResponseEntity.ok(toResponse(restaurante));
     }
 
+    @Operation(summary = "Listar restaurantes")
     @GetMapping(produces = APPLICATION_JSON_VALUE)
     public ResponseEntity<List<RestauranteResponse>> listar() {
         List<Restaurante> restaurantes = listarRestaurantesUseCase.executar();
@@ -66,6 +72,7 @@ public class RestauranteController {
         return ResponseEntity.ok(response);
     }
 
+    @Operation(summary = "Atualizar restaurante")
     @PutMapping(value = "/{id}", consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
     public ResponseEntity<RestauranteResponse> atualizar(@PathVariable UUID id,
                                                          @RequestBody AtualizarRestauranteInput input) {
@@ -73,6 +80,7 @@ public class RestauranteController {
         return ResponseEntity.ok(toResponse(restaurante));
     }
 
+    @Operation(summary = "Excluir restaurante")
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> excluir(@PathVariable UUID id) {
         excluirRestauranteUseCase.executar(id);

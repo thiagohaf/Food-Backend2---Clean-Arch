@@ -5,15 +5,24 @@ import com.thiagoferreira.foodbackend2cleanarch.usuario.core.gateway.UsuarioGate
 
 import java.util.List;
 
+/**
+ * Caso de uso que lista todos os usuários.
+ */
 public class ListarUsuariosUseCase {
     private final UsuarioGateway usuarioGateway;
 
-<span class="fc" id="L11">    public ListarUsuariosUseCase(UsuarioGateway usuarioGateway) {</span>
-<span class="fc" id="L12">        this.usuarioGateway = usuarioGateway;</span>
-<span class="fc" id="L13">    }</span>
+    /**
+     * @param usuarioGateway porta de listagem
+     */
+<span class="nc" id="L17">    public ListarUsuariosUseCase(UsuarioGateway usuarioGateway) {</span>
+<span class="nc" id="L18">        this.usuarioGateway = usuarioGateway;</span>
+<span class="nc" id="L19">    }</span>
 
+    /**
+     * @return todos os usuários cadastrados
+     */
     public List&lt;Usuario&gt; listarTodos() {
-<span class="fc" id="L16">        return usuarioGateway.listarTodos();</span>
+<span class="nc" id="L25">        return usuarioGateway.listarTodos();</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

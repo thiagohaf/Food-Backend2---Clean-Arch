@@ -11,6 +11,8 @@ import com.thiagoferreira.foodbackend2cleanarch.usuario.core.usecase.CriarTipoUs
 import com.thiagoferreira.foodbackend2cleanarch.usuario.core.usecase.ExcluirTipoUsuarioUseCase;
 import com.thiagoferreira.foodbackend2cleanarch.usuario.core.usecase.ListarTiposUsuarioUseCase;
 import jakarta.validation.Valid;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -21,6 +23,7 @@ import java.util.UUID;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
+@Tag(name = "Tipos de Usuário", description = "Endpoints para gestão de tipos de usuário")
 @RestController
 @RequestMapping("/api/v1/tipos-usuario")
 @RequiredArgsConstructor
@@ -32,6 +35,7 @@ public class TipoUsuarioController {
     private final AtualizarTipoUsuarioUseCase atualizarTipoUsuarioUseCase;
     private final ExcluirTipoUsuarioUseCase excluirTipoUsuarioUseCase;
 
+    @Operation(summary = "Criar tipo de usuário")
     @PostMapping(consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
     public ResponseEntity<TipoUsuarioResponse> criar(@Valid @RequestBody TipoUsuarioRequest request) {
         CriarTipoUsuarioInput input = new CriarTipoUsuarioInput(UUID.randomUUID(), request.nome());
@@ -45,12 +49,14 @@ public class TipoUsuarioController {
                 .body(response);
     }
 
+    @Operation(summary = "Buscar tipo de usuário por id")
     @GetMapping(value = "/{id}", produces = APPLICATION_JSON_VALUE)
     public ResponseEntity<TipoUsuarioResponse> buscarPorId(@PathVariable UUID id) {
         TipoUsuario tipoUsuario = buscarTipoUsuarioPorIdUseCase.buscarPorId(id);
         return ResponseEntity.ok(toResponse(tipoUsuario));
     }
 
+    @Operation(summary = "Listar tipos de usuário")
     @GetMapping(produces = APPLICATION_JSON_VALUE)
     public ResponseEntity<List<TipoUsuarioResponse>> listar() {
         List<TipoUsuario> tipos = listarTiposUsuarioUseCase.listarTodos();
@@ -60,6 +66,7 @@ public class TipoUsuarioController {
         return ResponseEntity.ok(response);
     }
 
+    @Operation(summary = "Atualizar tipo de usuário")
     @PutMapping(value = "/{id}", consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
     public ResponseEntity<TipoUsuarioResponse> atualizar(@PathVariable UUID id,
                                                          @Valid @RequestBody TipoUsuarioRequest request) {
@@ -68,6 +75,7 @@ public class TipoUsuarioController {
         return ResponseEntity.ok(toResponse(tipoUsuario));
     }
 
+    @Operation(summary = "Excluir tipo de usuário")
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> excluir(@PathVariable UUID id) {
         excluirTipoUsuarioUseCase.excluir(id);

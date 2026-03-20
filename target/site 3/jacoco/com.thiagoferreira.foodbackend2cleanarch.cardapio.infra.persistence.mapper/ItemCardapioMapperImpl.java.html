@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ItemCardapioMapperImpl.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">food-backend2-clean-arch</a> &gt; <a href="index.source.html" class="el_package">com.thiagoferreira.foodbackend2cleanarch.cardapio.infra.persistence.mapper</a> &gt; <span class="el_source">ItemCardapioMapperImpl.java</span></div><h1>ItemCardapioMapperImpl.java</h1><pre class="source lang-java linenums">package com.thiagoferreira.foodbackend2cleanarch.cardapio.infra.persistence.mapper;
+
+import com.thiagoferreira.foodbackend2cleanarch.cardapio.core.domain.ItemCardapio;
+import com.thiagoferreira.foodbackend2cleanarch.cardapio.infra.persistence.entity.ItemCardapioEntity;
+import com.thiagoferreira.foodbackend2cleanarch.restaurante.infra.persistence.entity.RestauranteEntity;
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+import java.util.UUID;
+import javax.annotation.processing.Generated;
+import org.springframework.stereotype.Component;
+
+@Generated(
+    value = &quot;org.mapstruct.ap.MappingProcessor&quot;,
+    date = &quot;2026-03-19T22:33:38-0300&quot;,
+    comments = &quot;version: 1.6.3, compiler: javac, environment: Java 21.0.7 (JetBrains s.r.o.)&quot;
+)
+@Component
+<span class="fc" id="L18">public class ItemCardapioMapperImpl implements ItemCardapioMapper {</span>
+
+    @Override
+    public ItemCardapio toDomain(ItemCardapioEntity entity) {
+<span class="pc bpc" id="L22" title="1 of 2 branches missed.">        if ( entity == null ) {</span>
+<span class="nc" id="L23">            return null;</span>
+        }
+
+<span class="fc" id="L26">        ItemCardapio itemCardapio = createItemCardapio( entity );</span>
+
+<span class="fc" id="L28">        return itemCardapio;</span>
+    }
+
+    @Override
+    public ItemCardapioEntity toEntity(ItemCardapio itemCardapio, RestauranteEntity restaurante) {
+<span class="pc bpc" id="L33" title="3 of 4 branches missed.">        if ( itemCardapio == null &amp;&amp; restaurante == null ) {</span>
+<span class="nc" id="L34">            return null;</span>
+        }
+
+<span class="fc" id="L37">        UUID id = null;</span>
+<span class="fc" id="L38">        String nome = null;</span>
+<span class="fc" id="L39">        String descricao = null;</span>
+<span class="fc" id="L40">        BigDecimal preco = null;</span>
+<span class="fc" id="L41">        boolean disponibilidadeLocal = false;</span>
+<span class="fc" id="L42">        String fotoPath = null;</span>
+<span class="pc bpc" id="L43" title="1 of 2 branches missed.">        if ( itemCardapio != null ) {</span>
+<span class="fc" id="L44">            id = itemCardapio.getId();</span>
+<span class="fc" id="L45">            nome = itemCardapio.getNome();</span>
+<span class="fc" id="L46">            descricao = itemCardapio.getDescricao();</span>
+<span class="fc" id="L47">            preco = itemCardapio.getPreco();</span>
+<span class="fc" id="L48">            disponibilidadeLocal = itemCardapio.getDisponibilidadeLocal();</span>
+<span class="fc" id="L49">            fotoPath = itemCardapio.getFotoPath();</span>
+        }
+<span class="fc" id="L51">        RestauranteEntity restaurante1 = null;</span>
+<span class="fc" id="L52">        restaurante1 = restaurante;</span>
+
+<span class="fc" id="L54">        LocalDateTime dataCadastro = java.time.LocalDateTime.now();</span>
+
+<span class="fc" id="L56">        ItemCardapioEntity itemCardapioEntity = new ItemCardapioEntity( id, nome, descricao, preco, disponibilidadeLocal, fotoPath, restaurante1, dataCadastro );</span>
+
+<span class="fc" id="L58">        return itemCardapioEntity;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>
