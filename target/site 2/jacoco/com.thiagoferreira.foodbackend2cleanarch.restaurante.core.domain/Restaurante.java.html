@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Restaurante.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">food-backend2-clean-arch</a> &gt; <a href="index.source.html" class="el_package">com.thiagoferreira.foodbackend2cleanarch.restaurante.core.domain</a> &gt; <span class="el_source">Restaurante.java</span></div><h1>Restaurante.java</h1><pre class="source lang-java linenums">package com.thiagoferreira.foodbackend2cleanarch.restaurante.core.domain;
+
+import com.thiagoferreira.foodbackend2cleanarch.restaurante.core.rule.RestauranteValidador;
+
+import java.util.UUID;
+
+/**
+ * Entidade de domínio do restaurante: identificação, localização, tipo de culinária e vínculo obrigatório
+ * com o usuário dono ({@code donoId}) para garantir rastreabilidade de propriedade no negócio.
+ */
+public class Restaurante {
+    private UUID id;
+    private String nome;
+    private String endereco;
+    private String tipoCozinha;
+    private String horarioFuncionamento;
+    private UUID donoId;
+
+    /**
+     * @return identificador do restaurante
+     */
+    public UUID getId() {
+<span class="fc" id="L23">        return id;</span>
+    }
+
+    /**
+     * @return nome fantasia ou comercial
+     */
+    public String getNome() {
+<span class="fc" id="L30">        return nome;</span>
+    }
+
+    /**
+     * @return endereço físico utilizado na regra de unicidade nome+endereço
+     */
+    public String getEndereco() {
+<span class="fc" id="L37">        return endereco;</span>
+    }
+
+    /**
+     * @return categoria culinária (texto de negócio)
+     */
+    public String getTipoCozinha() {
+<span class="fc" id="L44">        return tipoCozinha;</span>
+    }
+
+    /**
+     * @return descrição textual do horário de funcionamento
+     */
+    public String getHorarioFuncionamento() {
+<span class="fc" id="L51">        return horarioFuncionamento;</span>
+    }
+
+    /**
+     * @return identificador do usuário proprietário
+     */
+    public UUID getDonoId() {
+<span class="fc" id="L58">        return donoId;</span>
+    }
+
+    /**
+     * @param id identificador do restaurante
+     * @param nome nome do estabelecimento
+     * @param endereco endereço
+     * @param tipoCozinha tipo de cozinha
+     * @param horarioFuncionamento horário de funcionamento
+     * @param donoId usuário dono cadastrado no sistema
+     */
+<span class="fc" id="L69">    public Restaurante(UUID id, String nome, String endereco, String tipoCozinha, String horarioFuncionamento, UUID donoId) {</span>
+<span class="fc" id="L70">        this.id = id;</span>
+<span class="fc" id="L71">        this.nome = nome;</span>
+<span class="fc" id="L72">        this.endereco = endereco;</span>
+<span class="fc" id="L73">        this.tipoCozinha = tipoCozinha;</span>
+<span class="fc" id="L74">        this.horarioFuncionamento = horarioFuncionamento;</span>
+<span class="fc" id="L75">        this.donoId = donoId;</span>
+
+<span class="fc" id="L77">        validar();</span>
+<span class="fc" id="L78">    }</span>
+
+    /**
+     * Reexecuta validações de invariantes do restaurante.
+     */
+    public void validar() {
+<span class="fc" id="L84">        RestauranteValidador.validar(this);</span>
+<span class="fc" id="L85">    }</span>
+
+    /**
+     * @param nome nome atualizado
+     * @param endereco endereço atualizado
+     * @param tipoCozinha tipo de cozinha atualizado
+     * @param horarioFuncionamento horário atualizado (identificação do dono não muda)
+     */
+    public void atualizar(String nome, String endereco, String tipoCozinha, String horarioFuncionamento) {
+<span class="fc" id="L94">        this.nome = nome;</span>
+<span class="fc" id="L95">        this.endereco = endereco;</span>
+<span class="fc" id="L96">        this.tipoCozinha = tipoCozinha;</span>
+<span class="fc" id="L97">        this.horarioFuncionamento = horarioFuncionamento;</span>
+
+<span class="fc" id="L99">        validar();</span>
+<span class="fc" id="L100">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

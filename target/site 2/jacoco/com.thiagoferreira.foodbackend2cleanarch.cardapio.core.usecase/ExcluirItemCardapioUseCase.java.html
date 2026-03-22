@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ExcluirItemCardapioUseCase.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">food-backend2-clean-arch</a> &gt; <a href="index.source.html" class="el_package">com.thiagoferreira.foodbackend2cleanarch.cardapio.core.usecase</a> &gt; <span class="el_source">ExcluirItemCardapioUseCase.java</span></div><h1>ExcluirItemCardapioUseCase.java</h1><pre class="source lang-java linenums">package com.thiagoferreira.foodbackend2cleanarch.cardapio.core.usecase;
+
+import com.thiagoferreira.foodbackend2cleanarch.cardapio.core.exception.ItemCardapioNaoEncontradoException;
+import com.thiagoferreira.foodbackend2cleanarch.cardapio.core.gateway.ItemCardapioGateway;
+
+import java.util.UUID;
+
+/**
+ * Caso de uso que remove um item de cardápio após confirmar sua existência.
+ */
+public class ExcluirItemCardapioUseCase {
+
+    private final ItemCardapioGateway itemCardapioGateway;
+
+    /**
+     * @param itemCardapioGateway porta de persistência de cardápio
+     */
+<span class="fc" id="L18">    public ExcluirItemCardapioUseCase(ItemCardapioGateway itemCardapioGateway) {</span>
+<span class="fc" id="L19">        this.itemCardapioGateway = itemCardapioGateway;</span>
+<span class="fc" id="L20">    }</span>
+
+    /**
+     * @param id identificador do item a excluir
+     */
+    public void executar(UUID id) {
+<span class="fc bfc" id="L26" title="All 2 branches covered.">        if (itemCardapioGateway.buscarPorId(id).isEmpty()) {</span>
+<span class="fc" id="L27">            throw new ItemCardapioNaoEncontradoException();</span>
+        }
+
+<span class="fc" id="L30">        itemCardapioGateway.excluir(id);</span>
+<span class="fc" id="L31">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

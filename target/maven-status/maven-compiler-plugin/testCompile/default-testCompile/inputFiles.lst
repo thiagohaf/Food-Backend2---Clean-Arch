@@ -11,7 +11,6 @@
 /Users/thiagoferreira/Documents/FIAP/Fase 2/projeto/Food Backend2 - Clean Arch/src/test/java/com/thiagoferreira/foodbackend2cleanarch/cardapio/infra/gateway/ItemCardapioGatewayImplTest.java
 /Users/thiagoferreira/Documents/FIAP/Fase 2/projeto/Food Backend2 - Clean Arch/src/test/java/com/thiagoferreira/foodbackend2cleanarch/cardapio/infra/persistence/mapper/ItemCardapioMapperTest.java
 /Users/thiagoferreira/Documents/FIAP/Fase 2/projeto/Food Backend2 - Clean Arch/src/test/java/com/thiagoferreira/foodbackend2cleanarch/cardapio/infra/persistence/repository/ItemCardapioRepositoryTest.java
-/Users/thiagoferreira/Documents/FIAP/Fase 2/projeto/Food Backend2 - Clean Arch/src/test/java/com/thiagoferreira/foodbackend2cleanarch/core/DomainExceptionsAndUtilCoverageTest.java
 /Users/thiagoferreira/Documents/FIAP/Fase 2/projeto/Food Backend2 - Clean Arch/src/test/java/com/thiagoferreira/foodbackend2cleanarch/infra/persistence/mapper/MapStructMapperImplementationsTest.java
 /Users/thiagoferreira/Documents/FIAP/Fase 2/projeto/Food Backend2 - Clean Arch/src/test/java/com/thiagoferreira/foodbackend2cleanarch/restaurante/core/mapper/RestauranteCoreMapperTest.java
 /Users/thiagoferreira/Documents/FIAP/Fase 2/projeto/Food Backend2 - Clean Arch/src/test/java/com/thiagoferreira/foodbackend2cleanarch/restaurante/core/rule/RestauranteValidadorTest.java
@@ -47,5 +46,6 @@
 /Users/thiagoferreira/Documents/FIAP/Fase 2/projeto/Food Backend2 - Clean Arch/src/test/java/com/thiagoferreira/foodbackend2cleanarch/usuario/infra/persistence/mapper/UsuarioMapperTest.java
 /Users/thiagoferreira/Documents/FIAP/Fase 2/projeto/Food Backend2 - Clean Arch/src/test/java/com/thiagoferreira/foodbackend2cleanarch/usuario/infra/persistence/repository/TipoUsuarioRepositoryTest.java
 /Users/thiagoferreira/Documents/FIAP/Fase 2/projeto/Food Backend2 - Clean Arch/src/test/java/com/thiagoferreira/foodbackend2cleanarch/usuario/infra/persistence/repository/UsuarioRepositoryTest.java
+/Users/thiagoferreira/Documents/FIAP/Fase 2/projeto/Food Backend2 - Clean Arch/src/test/java/com/thiagoferreira/foodbackend2cleanarch/util/DomainExceptionsAndUtilCoverageTest.java
 /Users/thiagoferreira/Documents/FIAP/Fase 2/projeto/Food Backend2 - Clean Arch/src/test/java/com/thiagoferreira/foodbackend2cleanarch/util/config/AbstractIntegrationTest.java
 /Users/thiagoferreira/Documents/FIAP/Fase 2/projeto/Food Backend2 - Clean Arch/src/test/java/com/thiagoferreira/foodbackend2cleanarch/util/config/GlobalExceptionHandlerTest.java

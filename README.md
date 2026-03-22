@@ -111,7 +111,7 @@ O projeto implementa:
 - **Testes unitários** para use cases, validadores e mapeamentos (JaCoCo habilitado via `jacoco-maven-plugin`).
 - **Testes de integração automatizados** com Testcontainers usando `MySQLContainer` (banco real em Docker) e RestAssured para validar endpoints e retornos JSON.
 
-Além disso, há uma **collection do Postman** para auxiliar a execução manual dos endpoints em `docs/food-backend2-postman.json`.
+Além disso, há uma **collection do Postman** para auxiliar a execução manual dos endpoints em `docs/postman/food-backend2-postman.json`.
 
 Evidência de Testcontainers e RestAssured:
 

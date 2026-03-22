@@ -50,7 +50,7 @@ food-backend2-clean-arch,com.thiagoferreira.foodbackend2cleanarch.restaurante.co
 food-backend2-clean-arch,com.thiagoferreira.foodbackend2cleanarch.restaurante.core.usecase,BuscarRestaurantePorIdUseCase,0,14,0,0,0,5,0,2,0,2
 food-backend2-clean-arch,com.thiagoferreira.foodbackend2cleanarch.restaurante.core.domain,Restaurante,0,59,0,0,0,23,0,9,0,9
 food-backend2-clean-arch,com.thiagoferreira.foodbackend2cleanarch.usuario.core.mapper,TipoUsuarioCoreMapper,0,17,0,2,0,6,0,3,0,2
-food-backend2-clean-arch,com.thiagoferreira.foodbackend2cleanarch.usuario.core.mapper,UsuarioCoreMapper,0,24,0,4,0,8,0,4,0,2
+food-backend2-clean-arch,com.thiagoferreira.foodbackend2cleanarch.usuario.core.mapper,UsuarioCoreMapper,0,24,0,4,0,9,0,4,0,2
 food-backend2-clean-arch,com.thiagoferreira.foodbackend2cleanarch.cardapio.core.usecase,BuscarItemCardapioPorIdUseCase,0,14,0,0,0,5,0,2,0,2
 food-backend2-clean-arch,com.thiagoferreira.foodbackend2cleanarch.cardapio.core.usecase,ListarItensCardapioPorRestauranteUseCase,0,11,0,0,0,4,0,2,0,2
 food-backend2-clean-arch,com.thiagoferreira.foodbackend2cleanarch.cardapio.core.usecase,ExcluirItemCardapioUseCase,0,21,0,2,0,7,0,3,0,2
