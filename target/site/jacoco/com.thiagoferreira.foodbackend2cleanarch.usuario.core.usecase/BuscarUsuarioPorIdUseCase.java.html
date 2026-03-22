@@ -16,17 +16,17 @@ public class BuscarUsuarioPorIdUseCase {
     /**
      * @param usuarioGateway porta de consulta
      */
-<span class="nc" id="L19">    public BuscarUsuarioPorIdUseCase(UsuarioGateway usuarioGateway) {</span>
-<span class="nc" id="L20">        this.usuarioGateway = usuarioGateway;</span>
-<span class="nc" id="L21">    }</span>
+<span class="fc" id="L19">    public BuscarUsuarioPorIdUseCase(UsuarioGateway usuarioGateway) {</span>
+<span class="fc" id="L20">        this.usuarioGateway = usuarioGateway;</span>
+<span class="fc" id="L21">    }</span>
 
     /**
      * @param id identificador do usuário
      * @return usuário encontrado
      */
     public Usuario buscarPorId(UUID id) {
-<span class="nc" id="L28">        return usuarioGateway.buscarPorId(id)</span>
-<span class="nc" id="L29">                .orElseThrow(UsuarioNaoEncontradoException::new);</span>
+<span class="fc" id="L28">        return usuarioGateway.buscarPorId(id)</span>
+<span class="fc" id="L29">                .orElseThrow(UsuarioNaoEncontradoException::new);</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

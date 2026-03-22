@@ -11,6 +11,8 @@ import com.thiagoferreira.foodbackend2cleanarch.usuario.core.usecase.CriarTipoUs
 import com.thiagoferreira.foodbackend2cleanarch.usuario.core.usecase.ExcluirTipoUsuarioUseCase;
 import com.thiagoferreira.foodbackend2cleanarch.usuario.core.usecase.ListarTiposUsuarioUseCase;
 import jakarta.validation.Valid;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -21,6 +23,7 @@ import java.util.UUID;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
+@Tag(name = &quot;Tipos de Usuário&quot;, description = &quot;Endpoints para gestão de tipos de usuário&quot;)
 @RestController
 @RequestMapping(&quot;/api/v1/tipos-usuario&quot;)
 @RequiredArgsConstructor
@@ -32,50 +35,55 @@ public class TipoUsuarioController {
     private final AtualizarTipoUsuarioUseCase atualizarTipoUsuarioUseCase;
     private final ExcluirTipoUsuarioUseCase excluirTipoUsuarioUseCase;
 
+    @Operation(summary = &quot;Criar tipo de usuário&quot;)
     @PostMapping(consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
     public ResponseEntity&lt;TipoUsuarioResponse&gt; criar(@Valid @RequestBody TipoUsuarioRequest request) {
-<span class="fc" id="L37">        CriarTipoUsuarioInput input = new CriarTipoUsuarioInput(UUID.randomUUID(), request.nome());</span>
-<span class="fc" id="L38">        TipoUsuario tipoUsuario = criarTipoUsuarioUseCase.executar(input);</span>
-<span class="fc" id="L39">        TipoUsuarioResponse response = toResponse(tipoUsuario);</span>
-<span class="fc" id="L40">        return ResponseEntity</span>
-<span class="fc" id="L41">                .created(ServletUriComponentsBuilder.fromCurrentRequest()</span>
-<span class="fc" id="L42">                        .path(&quot;/{id}&quot;)</span>
-<span class="fc" id="L43">                        .buildAndExpand(tipoUsuario.getId())</span>
-<span class="fc" id="L44">                        .toUri())</span>
-<span class="fc" id="L45">                .body(response);</span>
+<span class="fc" id="L41">        CriarTipoUsuarioInput input = new CriarTipoUsuarioInput(UUID.randomUUID(), request.nome());</span>
+<span class="fc" id="L42">        TipoUsuario tipoUsuario = criarTipoUsuarioUseCase.executar(input);</span>
+<span class="fc" id="L43">        TipoUsuarioResponse response = toResponse(tipoUsuario);</span>
+<span class="fc" id="L44">        return ResponseEntity</span>
+<span class="fc" id="L45">                .created(ServletUriComponentsBuilder.fromCurrentRequest()</span>
+<span class="fc" id="L46">                        .path(&quot;/{id}&quot;)</span>
+<span class="fc" id="L47">                        .buildAndExpand(tipoUsuario.getId())</span>
+<span class="fc" id="L48">                        .toUri())</span>
+<span class="fc" id="L49">                .body(response);</span>
     }
 
+    @Operation(summary = &quot;Buscar tipo de usuário por id&quot;)
     @GetMapping(value = &quot;/{id}&quot;, produces = APPLICATION_JSON_VALUE)
     public ResponseEntity&lt;TipoUsuarioResponse&gt; buscarPorId(@PathVariable UUID id) {
-<span class="fc" id="L50">        TipoUsuario tipoUsuario = buscarTipoUsuarioPorIdUseCase.buscarPorId(id);</span>
-<span class="fc" id="L51">        return ResponseEntity.ok(toResponse(tipoUsuario));</span>
+<span class="fc" id="L55">        TipoUsuario tipoUsuario = buscarTipoUsuarioPorIdUseCase.buscarPorId(id);</span>
+<span class="fc" id="L56">        return ResponseEntity.ok(toResponse(tipoUsuario));</span>
     }
 
+    @Operation(summary = &quot;Listar tipos de usuário&quot;)
     @GetMapping(produces = APPLICATION_JSON_VALUE)
     public ResponseEntity&lt;List&lt;TipoUsuarioResponse&gt;&gt; listar() {
-<span class="fc" id="L56">        List&lt;TipoUsuario&gt; tipos = listarTiposUsuarioUseCase.listarTodos();</span>
-<span class="fc" id="L57">        List&lt;TipoUsuarioResponse&gt; response = tipos.stream()</span>
-<span class="fc" id="L58">                .map(this::toResponse)</span>
-<span class="fc" id="L59">                .toList();</span>
-<span class="fc" id="L60">        return ResponseEntity.ok(response);</span>
+<span class="fc" id="L62">        List&lt;TipoUsuario&gt; tipos = listarTiposUsuarioUseCase.listarTodos();</span>
+<span class="fc" id="L63">        List&lt;TipoUsuarioResponse&gt; response = tipos.stream()</span>
+<span class="fc" id="L64">                .map(this::toResponse)</span>
+<span class="fc" id="L65">                .toList();</span>
+<span class="fc" id="L66">        return ResponseEntity.ok(response);</span>
     }
 
+    @Operation(summary = &quot;Atualizar tipo de usuário&quot;)
     @PutMapping(value = &quot;/{id}&quot;, consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
     public ResponseEntity&lt;TipoUsuarioResponse&gt; atualizar(@PathVariable UUID id,
                                                          @Valid @RequestBody TipoUsuarioRequest request) {
-<span class="nc" id="L66">        AtualizarTipoUsuarioInput input = new AtualizarTipoUsuarioInput(request.nome());</span>
-<span class="nc" id="L67">        TipoUsuario tipoUsuario = atualizarTipoUsuarioUseCase.executar(id, input);</span>
-<span class="nc" id="L68">        return ResponseEntity.ok(toResponse(tipoUsuario));</span>
+<span class="fc" id="L73">        AtualizarTipoUsuarioInput input = new AtualizarTipoUsuarioInput(request.nome());</span>
+<span class="fc" id="L74">        TipoUsuario tipoUsuario = atualizarTipoUsuarioUseCase.executar(id, input);</span>
+<span class="fc" id="L75">        return ResponseEntity.ok(toResponse(tipoUsuario));</span>
     }
 
+    @Operation(summary = &quot;Excluir tipo de usuário&quot;)
     @DeleteMapping(&quot;/{id}&quot;)
     public ResponseEntity&lt;Void&gt; excluir(@PathVariable UUID id) {
-<span class="nc" id="L73">        excluirTipoUsuarioUseCase.excluir(id);</span>
-<span class="nc" id="L74">        return ResponseEntity.noContent().build();</span>
+<span class="fc" id="L81">        excluirTipoUsuarioUseCase.excluir(id);</span>
+<span class="fc" id="L82">        return ResponseEntity.noContent().build();</span>
     }
 
     private TipoUsuarioResponse toResponse(TipoUsuario tipoUsuario) {
-<span class="fc" id="L78">        return new TipoUsuarioResponse(tipoUsuario.getId(), tipoUsuario.getNome());</span>
+<span class="fc" id="L86">        return new TipoUsuarioResponse(tipoUsuario.getId(), tipoUsuario.getNome());</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

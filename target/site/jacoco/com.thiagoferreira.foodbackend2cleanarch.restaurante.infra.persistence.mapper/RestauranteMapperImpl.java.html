@@ -8,60 +8,60 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = &quot;org.mapstruct.ap.MappingProcessor&quot;,
-    date = &quot;2026-03-20T00:01:22-0300&quot;,
+    date = &quot;2026-03-22T01:35:33-0300&quot;,
     comments = &quot;version: 1.6.3, compiler: javac, environment: Java 21.0.2 (GraalVM Community)&quot;
 )
 @Component
-<span class="nc" id="L15">public class RestauranteMapperImpl implements RestauranteMapper {</span>
+<span class="fc" id="L15">public class RestauranteMapperImpl implements RestauranteMapper {</span>
 
     @Override
     public RestauranteEntity toEntity(Restaurante restaurante) {
-<span class="nc bnc" id="L19" title="All 2 branches missed.">        if ( restaurante == null ) {</span>
-<span class="nc" id="L20">            return null;</span>
+<span class="fc bfc" id="L19" title="All 2 branches covered.">        if ( restaurante == null ) {</span>
+<span class="fc" id="L20">            return null;</span>
         }
 
-<span class="nc" id="L23">        UUID id = null;</span>
-<span class="nc" id="L24">        String nome = null;</span>
-<span class="nc" id="L25">        String endereco = null;</span>
-<span class="nc" id="L26">        String tipoCozinha = null;</span>
-<span class="nc" id="L27">        String horarioFuncionamento = null;</span>
-<span class="nc" id="L28">        UUID donoId = null;</span>
+<span class="fc" id="L23">        UUID id = null;</span>
+<span class="fc" id="L24">        String nome = null;</span>
+<span class="fc" id="L25">        String endereco = null;</span>
+<span class="fc" id="L26">        String tipoCozinha = null;</span>
+<span class="fc" id="L27">        String horarioFuncionamento = null;</span>
+<span class="fc" id="L28">        UUID donoId = null;</span>
 
-<span class="nc" id="L30">        id = restaurante.getId();</span>
-<span class="nc" id="L31">        nome = restaurante.getNome();</span>
-<span class="nc" id="L32">        endereco = restaurante.getEndereco();</span>
-<span class="nc" id="L33">        tipoCozinha = restaurante.getTipoCozinha();</span>
-<span class="nc" id="L34">        horarioFuncionamento = restaurante.getHorarioFuncionamento();</span>
-<span class="nc" id="L35">        donoId = restaurante.getDonoId();</span>
+<span class="fc" id="L30">        id = restaurante.getId();</span>
+<span class="fc" id="L31">        nome = restaurante.getNome();</span>
+<span class="fc" id="L32">        endereco = restaurante.getEndereco();</span>
+<span class="fc" id="L33">        tipoCozinha = restaurante.getTipoCozinha();</span>
+<span class="fc" id="L34">        horarioFuncionamento = restaurante.getHorarioFuncionamento();</span>
+<span class="fc" id="L35">        donoId = restaurante.getDonoId();</span>
 
-<span class="nc" id="L37">        RestauranteEntity restauranteEntity = new RestauranteEntity( id, nome, endereco, tipoCozinha, horarioFuncionamento, donoId );</span>
+<span class="fc" id="L37">        RestauranteEntity restauranteEntity = new RestauranteEntity( id, nome, endereco, tipoCozinha, horarioFuncionamento, donoId );</span>
 
-<span class="nc" id="L39">        return restauranteEntity;</span>
+<span class="fc" id="L39">        return restauranteEntity;</span>
     }
 
     @Override
     public Restaurante toDomain(RestauranteEntity entity) {
-<span class="nc bnc" id="L44" title="All 2 branches missed.">        if ( entity == null ) {</span>
-<span class="nc" id="L45">            return null;</span>
+<span class="fc bfc" id="L44" title="All 2 branches covered.">        if ( entity == null ) {</span>
+<span class="fc" id="L45">            return null;</span>
         }
 
-<span class="nc" id="L48">        UUID id = null;</span>
-<span class="nc" id="L49">        String nome = null;</span>
-<span class="nc" id="L50">        String endereco = null;</span>
-<span class="nc" id="L51">        String tipoCozinha = null;</span>
-<span class="nc" id="L52">        String horarioFuncionamento = null;</span>
-<span class="nc" id="L53">        UUID donoId = null;</span>
+<span class="fc" id="L48">        UUID id = null;</span>
+<span class="fc" id="L49">        String nome = null;</span>
+<span class="fc" id="L50">        String endereco = null;</span>
+<span class="fc" id="L51">        String tipoCozinha = null;</span>
+<span class="fc" id="L52">        String horarioFuncionamento = null;</span>
+<span class="fc" id="L53">        UUID donoId = null;</span>
 
-<span class="nc" id="L55">        id = entity.getId();</span>
-<span class="nc" id="L56">        nome = entity.getNome();</span>
-<span class="nc" id="L57">        endereco = entity.getEndereco();</span>
-<span class="nc" id="L58">        tipoCozinha = entity.getTipoCozinha();</span>
-<span class="nc" id="L59">        horarioFuncionamento = entity.getHorarioFuncionamento();</span>
-<span class="nc" id="L60">        donoId = entity.getDonoId();</span>
+<span class="fc" id="L55">        id = entity.getId();</span>
+<span class="fc" id="L56">        nome = entity.getNome();</span>
+<span class="fc" id="L57">        endereco = entity.getEndereco();</span>
+<span class="fc" id="L58">        tipoCozinha = entity.getTipoCozinha();</span>
+<span class="fc" id="L59">        horarioFuncionamento = entity.getHorarioFuncionamento();</span>
+<span class="fc" id="L60">        donoId = entity.getDonoId();</span>
 
-<span class="nc" id="L62">        Restaurante restaurante = new Restaurante( id, nome, endereco, tipoCozinha, horarioFuncionamento, donoId );</span>
+<span class="fc" id="L62">        Restaurante restaurante = new Restaurante( id, nome, endereco, tipoCozinha, horarioFuncionamento, donoId );</span>
 
-<span class="nc" id="L64">        return restaurante;</span>
+<span class="fc" id="L64">        return restaurante;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

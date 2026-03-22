@@ -11,51 +11,51 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = &quot;org.mapstruct.ap.MappingProcessor&quot;,
-    date = &quot;2026-03-20T00:01:22-0300&quot;,
+    date = &quot;2026-03-22T01:35:33-0300&quot;,
     comments = &quot;version: 1.6.3, compiler: javac, environment: Java 21.0.2 (GraalVM Community)&quot;
 )
 @Component
-<span class="nc" id="L18">public class ItemCardapioMapperImpl implements ItemCardapioMapper {</span>
+<span class="fc" id="L18">public class ItemCardapioMapperImpl implements ItemCardapioMapper {</span>
 
     @Override
     public ItemCardapio toDomain(ItemCardapioEntity entity) {
-<span class="nc bnc" id="L22" title="All 2 branches missed.">        if ( entity == null ) {</span>
-<span class="nc" id="L23">            return null;</span>
+<span class="fc bfc" id="L22" title="All 2 branches covered.">        if ( entity == null ) {</span>
+<span class="fc" id="L23">            return null;</span>
         }
 
-<span class="nc" id="L26">        ItemCardapio itemCardapio = createItemCardapio( entity );</span>
+<span class="fc" id="L26">        ItemCardapio itemCardapio = createItemCardapio( entity );</span>
 
-<span class="nc" id="L28">        return itemCardapio;</span>
+<span class="fc" id="L28">        return itemCardapio;</span>
     }
 
     @Override
     public ItemCardapioEntity toEntity(ItemCardapio itemCardapio, RestauranteEntity restaurante) {
-<span class="nc bnc" id="L33" title="All 4 branches missed.">        if ( itemCardapio == null &amp;&amp; restaurante == null ) {</span>
-<span class="nc" id="L34">            return null;</span>
+<span class="fc bfc" id="L33" title="All 4 branches covered.">        if ( itemCardapio == null &amp;&amp; restaurante == null ) {</span>
+<span class="fc" id="L34">            return null;</span>
         }
 
-<span class="nc" id="L37">        UUID id = null;</span>
-<span class="nc" id="L38">        String nome = null;</span>
-<span class="nc" id="L39">        String descricao = null;</span>
-<span class="nc" id="L40">        BigDecimal preco = null;</span>
-<span class="nc" id="L41">        boolean disponibilidadeLocal = false;</span>
-<span class="nc" id="L42">        String fotoPath = null;</span>
-<span class="nc bnc" id="L43" title="All 2 branches missed.">        if ( itemCardapio != null ) {</span>
-<span class="nc" id="L44">            id = itemCardapio.getId();</span>
-<span class="nc" id="L45">            nome = itemCardapio.getNome();</span>
-<span class="nc" id="L46">            descricao = itemCardapio.getDescricao();</span>
-<span class="nc" id="L47">            preco = itemCardapio.getPreco();</span>
-<span class="nc" id="L48">            disponibilidadeLocal = itemCardapio.getDisponibilidadeLocal();</span>
-<span class="nc" id="L49">            fotoPath = itemCardapio.getFotoPath();</span>
+<span class="fc" id="L37">        UUID id = null;</span>
+<span class="fc" id="L38">        String nome = null;</span>
+<span class="fc" id="L39">        String descricao = null;</span>
+<span class="fc" id="L40">        BigDecimal preco = null;</span>
+<span class="fc" id="L41">        boolean disponibilidadeLocal = false;</span>
+<span class="fc" id="L42">        String fotoPath = null;</span>
+<span class="fc bfc" id="L43" title="All 2 branches covered.">        if ( itemCardapio != null ) {</span>
+<span class="fc" id="L44">            id = itemCardapio.getId();</span>
+<span class="fc" id="L45">            nome = itemCardapio.getNome();</span>
+<span class="fc" id="L46">            descricao = itemCardapio.getDescricao();</span>
+<span class="fc" id="L47">            preco = itemCardapio.getPreco();</span>
+<span class="fc" id="L48">            disponibilidadeLocal = itemCardapio.getDisponibilidadeLocal();</span>
+<span class="fc" id="L49">            fotoPath = itemCardapio.getFotoPath();</span>
         }
-<span class="nc" id="L51">        RestauranteEntity restaurante1 = null;</span>
-<span class="nc" id="L52">        restaurante1 = restaurante;</span>
+<span class="fc" id="L51">        RestauranteEntity restaurante1 = null;</span>
+<span class="fc" id="L52">        restaurante1 = restaurante;</span>
 
-<span class="nc" id="L54">        LocalDateTime dataCadastro = java.time.LocalDateTime.now();</span>
+<span class="fc" id="L54">        LocalDateTime dataCadastro = java.time.LocalDateTime.now();</span>
 
-<span class="nc" id="L56">        ItemCardapioEntity itemCardapioEntity = new ItemCardapioEntity( id, nome, descricao, preco, disponibilidadeLocal, fotoPath, restaurante1, dataCadastro );</span>
+<span class="fc" id="L56">        ItemCardapioEntity itemCardapioEntity = new ItemCardapioEntity( id, nome, descricao, preco, disponibilidadeLocal, fotoPath, restaurante1, dataCadastro );</span>
 
-<span class="nc" id="L58">        return itemCardapioEntity;</span>
+<span class="fc" id="L58">        return itemCardapioEntity;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

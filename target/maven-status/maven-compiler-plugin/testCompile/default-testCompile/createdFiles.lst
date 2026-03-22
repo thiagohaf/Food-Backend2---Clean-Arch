@@ -53,6 +53,7 @@ com/thiagoferreira/foodbackend2cleanarch/usuario/core/usecase/AtualizarUsuarioUs
 com/thiagoferreira/foodbackend2cleanarch/usuario/infra/persistence/mapper/TipoUsuarioMapperTest.class
 com/thiagoferreira/foodbackend2cleanarch/usuario/core/usecase/CriarUsuarioUseCaseTest.class
 com/thiagoferreira/foodbackend2cleanarch/restaurante/infra/persistence/repository/RestauranteRepositoryTest.class
+com/thiagoferreira/foodbackend2cleanarch/core/DomainExceptionsAndUtilCoverageTest.class
 com/thiagoferreira/foodbackend2cleanarch/usuario/infra/controller/TipoUsuarioControllerIntegrationTest.class
 com/thiagoferreira/foodbackend2cleanarch/usuario/infra/persistence/mapper/UsuarioMapperTest.class
 com/thiagoferreira/foodbackend2cleanarch/usuario/core/rule/TipoUsuarioValidadorTest.class

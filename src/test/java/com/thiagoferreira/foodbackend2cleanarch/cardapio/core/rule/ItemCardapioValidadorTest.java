@@ -102,6 +102,14 @@ class ItemCardapioValidadorTest {
     }
 
     @Test
+    @DisplayName("Deve alterar preço com sucesso quando o novo valor é válido")
+    void deveAlterarPrecoComSucessoQuandoValido() {
+        ItemCardapio item = criarItemValido();
+        item.alterarPreco(new BigDecimal("40.00"));
+        assertEquals(new BigDecimal("40.00"), item.getPreco());
+    }
+
+    @Test
     @DisplayName("Deve lançar exceção quando o preço for nulo, zero ou negativo")
     void deveLancarExcecaoQuandoPrecoInvalido() {
         ItemCardapio item = criarItemValido();

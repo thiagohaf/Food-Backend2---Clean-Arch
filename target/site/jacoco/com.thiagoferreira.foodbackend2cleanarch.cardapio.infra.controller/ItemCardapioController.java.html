@@ -11,6 +11,8 @@ import com.thiagoferreira.foodbackend2cleanarch.cardapio.core.usecase.ListarIten
 import com.thiagoferreira.foodbackend2cleanarch.cardapio.infra.dto.ItemCardapioRequest;
 import com.thiagoferreira.foodbackend2cleanarch.cardapio.infra.dto.ItemCardapioResponse;
 import jakarta.validation.Valid;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -29,6 +31,7 @@ import java.util.UUID;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
+@Tag(name = &quot;Cardápio&quot;, description = &quot;Endpoints para gestão de itens do cardápio&quot;)
 @RestController
 @RequestMapping(&quot;/api/v1/itens-cardapio&quot;)
 @RequiredArgsConstructor
@@ -40,73 +43,78 @@ public class ItemCardapioController {
     private final ExcluirItemCardapioUseCase excluirItemCardapioUseCase;
     private final ListarItensCardapioPorRestauranteUseCase listarItensCardapioPorRestauranteUseCase;
 
+    @Operation(summary = &quot;Criar item do cardápio&quot;)
     @PostMapping(consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
     public ResponseEntity&lt;ItemCardapioResponse&gt; criar(@Valid @RequestBody ItemCardapioRequest request) {
-<span class="fc" id="L45">        CriarItemCardapioInput input = new CriarItemCardapioInput(</span>
-<span class="fc" id="L46">                UUID.randomUUID(),</span>
-<span class="fc" id="L47">                request.nome(),</span>
-<span class="fc" id="L48">                request.descricao(),</span>
-<span class="fc" id="L49">                request.preco(),</span>
-<span class="fc" id="L50">                request.disponibilidadeApenasRestaurante(),</span>
-<span class="fc" id="L51">                request.fotoPath(),</span>
-<span class="fc" id="L52">                request.restauranteId()</span>
+<span class="fc" id="L49">        CriarItemCardapioInput input = new CriarItemCardapioInput(</span>
+<span class="fc" id="L50">                UUID.randomUUID(),</span>
+<span class="fc" id="L51">                request.nome(),</span>
+<span class="fc" id="L52">                request.descricao(),</span>
+<span class="fc" id="L53">                request.preco(),</span>
+<span class="fc" id="L54">                request.disponibilidadeApenasRestaurante(),</span>
+<span class="fc" id="L55">                request.fotoPath(),</span>
+<span class="fc" id="L56">                request.restauranteId()</span>
         );
 
-<span class="fc" id="L55">        ItemCardapio item = criarItemCardapioUseCase.executar(input);</span>
-<span class="fc" id="L56">        ItemCardapioResponse response = toResponse(item);</span>
+<span class="fc" id="L59">        ItemCardapio item = criarItemCardapioUseCase.executar(input);</span>
+<span class="fc" id="L60">        ItemCardapioResponse response = toResponse(item);</span>
 
-<span class="fc" id="L58">        return ResponseEntity</span>
-<span class="fc" id="L59">                .created(ServletUriComponentsBuilder.fromCurrentRequest()</span>
-<span class="fc" id="L60">                        .path(&quot;/{id}&quot;)</span>
-<span class="fc" id="L61">                        .buildAndExpand(item.getId())</span>
-<span class="fc" id="L62">                        .toUri())</span>
-<span class="fc" id="L63">                .body(response);</span>
+<span class="fc" id="L62">        return ResponseEntity</span>
+<span class="fc" id="L63">                .created(ServletUriComponentsBuilder.fromCurrentRequest()</span>
+<span class="fc" id="L64">                        .path(&quot;/{id}&quot;)</span>
+<span class="fc" id="L65">                        .buildAndExpand(item.getId())</span>
+<span class="fc" id="L66">                        .toUri())</span>
+<span class="fc" id="L67">                .body(response);</span>
     }
 
+    @Operation(summary = &quot;Buscar item do cardápio por id&quot;)
     @GetMapping(value = &quot;/{id}&quot;, produces = APPLICATION_JSON_VALUE)
     public ResponseEntity&lt;ItemCardapioResponse&gt; buscarPorId(@PathVariable UUID id) {
-<span class="fc" id="L68">        ItemCardapio item = buscarItemCardapioPorIdUseCase.executar(id);</span>
-<span class="fc" id="L69">        return ResponseEntity.ok(toResponse(item));</span>
+<span class="fc" id="L73">        ItemCardapio item = buscarItemCardapioPorIdUseCase.executar(id);</span>
+<span class="fc" id="L74">        return ResponseEntity.ok(toResponse(item));</span>
     }
 
+    @Operation(summary = &quot;Listar itens do cardápio por restaurante&quot;)
     @GetMapping(produces = APPLICATION_JSON_VALUE)
     public ResponseEntity&lt;List&lt;ItemCardapioResponse&gt;&gt; listarPorRestaurante(@RequestParam UUID restauranteId) {
-<span class="fc" id="L74">        List&lt;ItemCardapioResponse&gt; response = listarItensCardapioPorRestauranteUseCase.executar(restauranteId).stream()</span>
-<span class="fc" id="L75">                .map(this::toResponse)</span>
-<span class="fc" id="L76">                .toList();</span>
-<span class="fc" id="L77">        return ResponseEntity.ok(response);</span>
+<span class="fc" id="L80">        List&lt;ItemCardapioResponse&gt; response = listarItensCardapioPorRestauranteUseCase.executar(restauranteId).stream()</span>
+<span class="fc" id="L81">                .map(this::toResponse)</span>
+<span class="fc" id="L82">                .toList();</span>
+<span class="fc" id="L83">        return ResponseEntity.ok(response);</span>
     }
 
+    @Operation(summary = &quot;Atualizar item do cardápio&quot;)
     @PutMapping(value = &quot;/{id}&quot;, consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
     public ResponseEntity&lt;ItemCardapioResponse&gt; atualizar(@PathVariable UUID id,
                                                           @Valid @RequestBody ItemCardapioRequest request) {
-<span class="nc" id="L83">        AtualizarItemCardapioInput input = new AtualizarItemCardapioInput(</span>
-<span class="nc" id="L84">                request.nome(),</span>
-<span class="nc" id="L85">                request.descricao(),</span>
-<span class="nc" id="L86">                request.preco(),</span>
-<span class="nc" id="L87">                request.disponibilidadeApenasRestaurante(),</span>
-<span class="nc" id="L88">                request.fotoPath()</span>
+<span class="fc" id="L90">        AtualizarItemCardapioInput input = new AtualizarItemCardapioInput(</span>
+<span class="fc" id="L91">                request.nome(),</span>
+<span class="fc" id="L92">                request.descricao(),</span>
+<span class="fc" id="L93">                request.preco(),</span>
+<span class="fc" id="L94">                request.disponibilidadeApenasRestaurante(),</span>
+<span class="fc" id="L95">                request.fotoPath()</span>
         );
 
-<span class="nc" id="L91">        ItemCardapio itemAtualizado = atualizarItemCardapioUseCase.executar(id, input);</span>
-<span class="nc" id="L92">        return ResponseEntity.ok(toResponse(itemAtualizado));</span>
+<span class="fc" id="L98">        ItemCardapio itemAtualizado = atualizarItemCardapioUseCase.executar(id, input);</span>
+<span class="fc" id="L99">        return ResponseEntity.ok(toResponse(itemAtualizado));</span>
     }
 
+    @Operation(summary = &quot;Excluir item do cardápio&quot;)
     @DeleteMapping(&quot;/{id}&quot;)
     public ResponseEntity&lt;Void&gt; excluir(@PathVariable UUID id) {
-<span class="nc" id="L97">        excluirItemCardapioUseCase.executar(id);</span>
-<span class="nc" id="L98">        return ResponseEntity.noContent().build();</span>
+<span class="fc" id="L105">        excluirItemCardapioUseCase.executar(id);</span>
+<span class="fc" id="L106">        return ResponseEntity.noContent().build();</span>
     }
 
     private ItemCardapioResponse toResponse(ItemCardapio item) {
-<span class="fc" id="L102">        return new ItemCardapioResponse(</span>
-<span class="fc" id="L103">                item.getId(),</span>
-<span class="fc" id="L104">                item.getNome(),</span>
-<span class="fc" id="L105">                item.getDescricao(),</span>
-<span class="fc" id="L106">                item.getPreco(),</span>
-<span class="fc" id="L107">                item.getDisponibilidadeLocal(),</span>
-<span class="fc" id="L108">                item.getFotoPath(),</span>
-<span class="fc" id="L109">                item.getRestauranteId()</span>
+<span class="fc" id="L110">        return new ItemCardapioResponse(</span>
+<span class="fc" id="L111">                item.getId(),</span>
+<span class="fc" id="L112">                item.getNome(),</span>
+<span class="fc" id="L113">                item.getDescricao(),</span>
+<span class="fc" id="L114">                item.getPreco(),</span>
+<span class="fc" id="L115">                item.getDisponibilidadeLocal(),</span>
+<span class="fc" id="L116">                item.getFotoPath(),</span>
+<span class="fc" id="L117">                item.getRestauranteId()</span>
         );
     }
 }

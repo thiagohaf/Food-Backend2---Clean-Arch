@@ -31,7 +31,7 @@ public class AtualizarTipoUsuarioUseCase {
 <span class="fc" id="L31">        TipoUsuario tipo = tipoUsuarioGateway.buscarPorId(id)</span>
 <span class="fc" id="L32">                .orElseThrow(TipoUsuarioNaoEncontradoException::new);</span>
 
-<span class="pc bpc" id="L34" title="1 of 4 branches missed.">        if (!tipo.getNome().equalsIgnoreCase(input.nome()) &amp;&amp; tipoUsuarioGateway.existePorNome(input.nome())) {</span>
+<span class="fc bfc" id="L34" title="All 4 branches covered.">        if (!tipo.getNome().equalsIgnoreCase(input.nome()) &amp;&amp; tipoUsuarioGateway.existePorNome(input.nome())) {</span>
 <span class="fc" id="L35">            throw new ValidacaoRegraNegocioException(&quot;Já existe outro Tipo de Usuário com este nome.&quot;);</span>
         }
 

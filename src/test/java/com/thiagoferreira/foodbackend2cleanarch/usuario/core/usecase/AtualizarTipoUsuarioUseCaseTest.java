@@ -56,4 +56,21 @@ class AtualizarTipoUsuarioUseCaseTest {
         assertThrows(ValidacaoRegraNegocioException.class, () -> useCase.executar(id, input));
         verify(gateway, never()).salvar(any());
     }
+
+    @Test
+    @DisplayName("Não consulta unicidade quando o nome novo é o mesmo ignorando maiúsculas")
+    void naoConsultaUnicidadeQuandoNomeIgualIgnorandoMaiusculas() {
+        UUID id = UUID.randomUUID();
+        AtualizarTipoUsuarioInput input = new AtualizarTipoUsuarioInput("CLIENTE");
+        TipoUsuario tipoExistente = new TipoUsuario(id, "Cliente");
+
+        when(gateway.buscarPorId(id)).thenReturn(Optional.of(tipoExistente));
+        when(gateway.salvar(any(TipoUsuario.class))).thenAnswer(i -> i.getArguments()[0]);
+
+        TipoUsuario resultado = useCase.executar(id, input);
+
+        assertEquals("CLIENTE", resultado.getNome());
+        verify(gateway, never()).existePorNome(any());
+        verify(gateway, times(1)).salvar(tipoExistente);
+    }
 }

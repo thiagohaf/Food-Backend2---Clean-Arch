@@ -26,18 +26,18 @@ public class ItemCardapioGatewayImpl implements ItemCardapioGateway {
     public ItemCardapio salvar(ItemCardapio itemCardapio) {
 <span class="fc" id="L27">        RestauranteEntity restauranteRef = restauranteRepository.getReferenceById(itemCardapio.getRestauranteId());</span>
 <span class="fc" id="L28">        ItemCardapioEntity entity = itemCardapioMapper.toEntity(itemCardapio, restauranteRef);</span>
-<span class="nc" id="L29">        ItemCardapioEntity saved = itemCardapioRepository.save(entity);</span>
-<span class="nc" id="L30">        return itemCardapioMapper.toDomain(saved);</span>
+<span class="fc" id="L29">        ItemCardapioEntity saved = itemCardapioRepository.save(entity);</span>
+<span class="fc" id="L30">        return itemCardapioMapper.toDomain(saved);</span>
     }
 
     @Override
     public boolean restauranteExiste(UUID restauranteId) {
-<span class="nc" id="L35">        return restauranteRepository.existsById(restauranteId);</span>
+<span class="fc" id="L35">        return restauranteRepository.existsById(restauranteId);</span>
     }
 
     @Override
     public boolean existeItemPorNomeERestaurante(String nome, UUID restauranteId) {
-<span class="nc" id="L40">        return itemCardapioRepository.existsByNomeAndRestaurante_Id(nome, restauranteId);</span>
+<span class="fc" id="L40">        return itemCardapioRepository.existsByNomeAndRestaurante_Id(nome, restauranteId);</span>
     }
 
     @Override
@@ -48,14 +48,14 @@ public class ItemCardapioGatewayImpl implements ItemCardapioGateway {
 
     @Override
     public List&lt;ItemCardapio&gt; listarPorRestaurante(UUID restauranteId) {
-<span class="nc" id="L51">        return itemCardapioRepository.findByRestaurante_Id(restauranteId).stream()</span>
-<span class="nc" id="L52">                .map(itemCardapioMapper::toDomain)</span>
-<span class="nc" id="L53">                .toList();</span>
+<span class="fc" id="L51">        return itemCardapioRepository.findByRestaurante_Id(restauranteId).stream()</span>
+<span class="fc" id="L52">                .map(itemCardapioMapper::toDomain)</span>
+<span class="fc" id="L53">                .toList();</span>
     }
 
     @Override
     public void excluir(UUID id) {
-<span class="nc" id="L58">        itemCardapioRepository.deleteById(id);</span>
-<span class="nc" id="L59">    }</span>
+<span class="fc" id="L58">        itemCardapioRepository.deleteById(id);</span>
+<span class="fc" id="L59">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>
