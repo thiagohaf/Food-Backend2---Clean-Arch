@@ -159,3 +159,7 @@ Base URL: `http://localhost:8080`
 - `PUT /api/v1/itens-cardapio/{id}`
 - `DELETE /api/v1/itens-cardapio/{id}`
 
+## 🎥 Vídeo no YouTube
+
+- Apresentação do projeto: [Demonstração Fase 2](https://www.youtube.com/watch?v=MUQRQEot7rc)
+
